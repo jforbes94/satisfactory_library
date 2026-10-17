@@ -7,3 +7,8 @@ __pycache__/
 .venv/
 venv/
 .env
+
+# Root-level generated report copies (the hosted versions live in docs/)
+/factory_graph.html
+/resource_map.html
+/MATH.md

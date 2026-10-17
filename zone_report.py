@@ -111,23 +111,21 @@ def primary_output(bid, g, book, res_at):
     return None
 
 
-def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    thresh = 600.0
-    if "--thresh" in sys.argv:
-        thresh = float(sys.argv[sys.argv.index("--thresh") + 1])
-    save = args[0] if args else newest_save()
-    print("Reading", os.path.basename(save), "...")
-
-    parsed = sp.readFullSaveFile(save)
-    g = topology.build_graph(save, parsed=parsed)
-    ext = nodemod.resolve_nodes(save)
+def analyze(save_path, thresh=600.0):
+    """Compute the full zone picture. Returns a dict shared by the printed report
+    and the map/site builder:
+        save, mode, graph, res_at, rate_at, up_at, named,
+        zones = {name: {bids, extraction:{res:[pot,live]}, power, produces,
+                        exports, imports, center:(x,y), bbox:(x0,y0,x1,y1)}},
+        order = [zone names, largest first]
+    """
+    parsed = sp.readFullSaveFile(save_path)
+    g = topology.build_graph(save_path, parsed=parsed)
+    ext = nodemod.resolve_nodes(save_path)
     book = RecipeBook.load()
 
     # map each graph extractor building -> its resolved resource (nearest node rec)
-    res_at = {}
-    rate_at = {}
-    up_at = {}
+    res_at, rate_at, up_at = {}, {}, {}
     for bid, nd in g["nodes"].items():
         if nd["class"] in EXTRACTOR_CLASSES and nd.get("pos"):
             x, y = nd["pos"][0], nd["pos"][1]
@@ -137,7 +135,7 @@ def main():
                 rate_at[bid] = best["rate_per_min"]
                 up_at[bid] = best["live_uptime"]
 
-    # ----- zone assignment
+    # ----- zone assignment (named regions from zones.yaml, else auto-cluster)
     named = load_zones_yaml()
     zone_of = {}
     positioned = [(bid, nd["pos"][0], nd["pos"][1]) for bid, nd in g["nodes"].items() if nd.get("pos")]
@@ -146,15 +144,12 @@ def main():
             zone_of[bid] = assign_named(x, y, named) or "(unzoned)"
     else:
         for c in cluster(positioned, thresh):
-            label = None
-            zone_of_members = c["members"]
-            for bid in zone_of_members:
-                zone_of[bid] = (round(c["cx"]), round(c["cy"]))  # temp key; name later
+            for bid in c["members"]:
+                zone_of[bid] = (round(c["cx"]), round(c["cy"]))  # temp key; named below
 
-    # group buildings by zone
-    zones = collections.defaultdict(list)
+    groups = collections.defaultdict(list)
     for bid in g["nodes"]:
-        zones[zone_of.get(bid, "(unplaced)")].append(bid)
+        groups[zone_of.get(bid, "(unplaced)")].append(bid)
 
     # generator clocks (own light pass)
     gv = sp.getPropertyValue
@@ -167,9 +162,9 @@ def main():
                 c = gv(o.properties, "mCurrentPotential")
                 clock_of[iname] = 1.0 if c is None else c
 
-    # cross-zone flows
-    exp = collections.defaultdict(lambda: collections.Counter())
-    imp = collections.defaultdict(lambda: collections.Counter())
+    # cross-zone flows (edge = export of source zone, import of dest zone)
+    exp = collections.defaultdict(collections.Counter)
+    imp = collections.defaultdict(collections.Counter)
     for (a, b) in g["kinds"]:
         za, zb = zone_of.get(a), zone_of.get(b)
         if za is not None and zb is not None and za != zb:
@@ -177,8 +172,7 @@ def main():
             exp[za][item] += 1
             imp[zb][item] += 1
 
-    # ----- name auto-zones by dominant family + report
-    def zone_name(z, bids):
+    def zname(z, bids):
         if isinstance(z, str):
             return z
         fams = collections.Counter()
@@ -189,44 +183,65 @@ def main():
         lead = fams.most_common(1)[0][0] if fams else "mixed"
         return f"{lead} @({z[0]},{z[1]})"
 
-    order = sorted(zones, key=lambda z: -len(zones[z]))
-    mode = f"zones.yaml ({len(named)} named)" if named else f"auto-cluster @ {thresh:.0f} m"
-    print(f"\n{len([z for z in order if len(zones[z]) >= 3])} zones | {mode} | {len(g['nodes'])} placed buildings\n")
-    for z in order:
-        bids = zones[z]
+    zones = {}
+    for z, bids in groups.items():
         if len(bids) < 3:
             continue
-        name = zone_name(z, bids)
-        # extraction
+        name = zname(z, bids)
         ex = collections.defaultdict(lambda: [0.0, 0.0])  # resource -> [potential, live]
+        xs, ys = [], []
         for bid in bids:
+            nd = g["nodes"][bid]
+            if nd.get("pos"):
+                xs.append(nd["pos"][0]); ys.append(nd["pos"][1])
             if bid in res_at and res_at[bid]:
                 ex[res_at[bid]][0] += rate_at[bid]
                 ex[res_at[bid]][1] += rate_at[bid] * up_at[bid]
-        # power
         mw = sum(POWER_MW[g["nodes"][bid]["class"]] * clock_of.get(bid, 1.0)
                  for bid in bids if g["nodes"][bid]["class"] in POWER_MW)
-        # production families
         fam = collections.Counter()
         for bid in bids:
             po = primary_output(bid, g, book, res_at)
             if po and po not in ("Power", "(storage)") and g["nodes"][bid]["class"] not in EXTRACTOR_CLASSES:
                 fam[family_of(po)] += 1
+        zones[name] = {
+            "bids": bids, "extraction": {k: v for k, v in ex.items()}, "power": mw,
+            "produces": fam, "exports": exp.get(z, collections.Counter()),
+            "imports": imp.get(z, collections.Counter()),
+            "center": (sum(xs) / len(xs), sum(ys) / len(ys)) if xs else None,
+            "bbox": (min(xs), min(ys), max(xs), max(ys)) if xs else None,
+        }
 
-        print(f"=== {name}  ({len(bids)} buildings) ===")
-        if ex:
+    order = sorted(zones, key=lambda n: -len(zones[n]["bids"]))
+    mode = f"zones.yaml ({len(named)} named)" if named else f"auto-cluster @ {thresh:.0f} m"
+    return {"save": os.path.basename(save_path), "mode": mode, "graph": g, "named": named,
+            "res_at": res_at, "rate_at": rate_at, "up_at": up_at, "zones": zones, "order": order}
+
+
+def main():
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    thresh = 600.0
+    if "--thresh" in sys.argv:
+        thresh = float(sys.argv[sys.argv.index("--thresh") + 1])
+    save = args[0] if args else newest_save()
+    print("Reading", os.path.basename(save), "...")
+    r = analyze(save, thresh)
+    print(f"\n{len(r['order'])} zones | {r['mode']} | {len(r['graph']['nodes'])} placed buildings\n")
+    for name in r["order"]:
+        z = r["zones"][name]
+        print(f"=== {name}  ({len(z['bids'])} buildings) ===")
+        if z["extraction"]:
             print("  EXTRACTION (potential | live):")
-            for r, (p, l) in sorted(ex.items(), key=lambda a: -a[1][0]):
-                print(f"     {r:14s} {p:7.0f}/min | {l:6.0f}/min live")
-        if mw:
-            print(f"  POWER: {mw:,.0f} MW")
-        if fam:
-            top = ", ".join(f"{k} x{v}" for k, v in fam.most_common(5))
-            print(f"  PRODUCES: {top}")
-        if exp.get(z):
-            print("  EXPORTS ->: " + ", ".join(f"{k}({n})" for k, n in exp[z].most_common(6)))
-        if imp.get(z):
-            print("  IMPORTS <-: " + ", ".join(f"{k}({n})" for k, n in imp[z].most_common(6)))
+            for res, (p, l) in sorted(z["extraction"].items(), key=lambda a: -a[1][0]):
+                print(f"     {res:14s} {p:7.0f}/min | {l:6.0f}/min live")
+        if z["power"]:
+            print(f"  POWER: {z['power']:,.0f} MW")
+        if z["produces"]:
+            print("  PRODUCES: " + ", ".join(f"{k} x{v}" for k, v in z["produces"].most_common(5)))
+        if z["exports"]:
+            print("  EXPORTS ->: " + ", ".join(f"{k}({n})" for k, n in z["exports"].most_common(6)))
+        if z["imports"]:
+            print("  IMPORTS <-: " + ", ".join(f"{k}({n})" for k, n in z["imports"].most_common(6)))
         print()
 
 
