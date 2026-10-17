@@ -1,17 +1,23 @@
 <!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Caterium &middot; Flow</title><style>
+<title>Caterium</title><style>
 :root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;--grid:#e9e3d7;
-  --mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}}
-:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}
+  --pow:#d4a017;--prod:#9aa6b2;--mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
 .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
 a{color:var(--accent);text-decoration:none}
 .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--accent);font-weight:600}
 h1{font-size:26px;margin:2px 0}.sub{color:var(--muted);font-size:14px;margin-bottom:16px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0;box-shadow:0 1px 2px #0001,0 8px 24px #0001}
-.flow{overflow:auto}.flow .mermaid{min-width:100%}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tabs button{font:inherit;font-size:13px;font-weight:600;padding:6px 16px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;cursor:pointer}
+.tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.view{border:1px solid var(--line);border-radius:10px;background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;height:70vh;min-height:360px;overflow:hidden;position:relative}
+.view svg{width:100%;height:100%;display:block}
+.hint{position:absolute;right:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
+.nlab{fill:var(--ink);font-family:var(--mono);font-size:11px;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -32,29 +38,100 @@ td.n{font-family:var(--mono);text-align:right}
 <h1>Caterium</h1>
 <div class="sub">85 buildings &middot; 0 MW &middot; Pull this-10.17.26-13.58.18.sav</div>
 <div class="panel">
-  <h2>Material flow <span class="muted" style="font-weight:400;font-size:12.5px">&mdash; manifolds collapsed, belts aggregated by item</span></h2>
-  <div class="flow"><pre class="mermaid">flowchart LR
-  n1[&quot;Neural-Quantum Processor x1&lt;br/&gt;3/min&quot;]:::mach
-  n2[&quot;Fused Modular Frame x1&lt;br/&gt;2/min&quot;]:::mach
-  n3[&quot;Nuclear Pasta x1&lt;br/&gt;0/min&quot;]:::mach
-  n4[&quot;Dark Matter Crystal x1&lt;br/&gt;30/min&quot;]:::mach
-  n5[&quot;Ballistic Warp Drive x2&lt;br/&gt;2/min&quot;]:::mach
-  n6[&quot;Thermal Propulsion Rocket x2&lt;br/&gt;4/min&quot;]:::mach
-  n7[&quot;Superposition Oscillator x1&lt;br/&gt;5/min&quot;]:::mach
-  n8[&quot;Ficsite Trigon x6&lt;br/&gt;180/min&quot;]:::mach
-  n9[&quot;Caterium Ingot x14&lt;br/&gt;200/min&quot;]:::mach
-  n10[(&quot;Storage x13&quot;)]:::store
-  n11[&quot;Dark Matter Residue x1&lt;br/&gt;100/min&quot;]:::mach
-  n12[&quot;Ficsite Ingot x1&lt;br/&gt;30/min&quot;]:::mach
+  <div class="tabs">
+    <button data-tab="map" class="active">&#128506; Map</button>
+    <button data-tab="flow">&#128257; Flow</button>
+  </div>
+  <div class="view" data-pane="map">
+    <svg viewBox="0 0 760 883" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><circle cx="601.3" cy="179.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="618.3" cy="173.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="598.3" cy="171.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="615.2" cy="164.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="595.7" cy="163.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="612.5" cy="157.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="593.0" cy="156.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="610.0" cy="150.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="590.4" cy="149.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="607.3" cy="143.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="588.2" cy="143.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="605.1" cy="137.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="585.5" cy="136.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="602.5" cy="129.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="588.1" cy="94.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="581.9" cy="77.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="578.5" cy="97.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="572.3" cy="80.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="568.7" cy="101.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="562.5" cy="84.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="559.0" cy="104.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="552.9" cy="87.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="549.4" cy="108.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="543.2" cy="91.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="539.8" cy="111.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="533.6" cy="94.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="524.1" cy="117.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="517.9" cy="100.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="512.4" cy="122.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="506.2" cy="106.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="500.3" cy="127.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="494.1" cy="110.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="110.6" cy="555.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="77.1" cy="396.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="171.0" cy="396.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="147.9" cy="396.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="149.1" cy="493.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="149.1" cy="462.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="234.0" cy="484.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="497.6" cy="785.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="497.6" cy="803.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="507.9" cy="785.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="507.9" cy="803.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="519.4" cy="785.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="519.4" cy="803.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="111.9" cy="696.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="156.9" cy="693.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="156.9" cy="711.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="169.7" cy="693.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="169.7" cy="711.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="180.0" cy="693.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="180.0" cy="711.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="151.7" cy="747.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="172.3" cy="747.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="272.6" cy="725.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="295.7" cy="766.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="308.6" cy="669.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="421.7" cy="723.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="398.6" cy="723.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="471.9" cy="658.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="448.7" cy="658.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="140.1" cy="806.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
+<circle cx="682.9" cy="99.1" r="6" fill="#d4a017" stroke="#0008" stroke-width="0.9"/><text x="691.9" y="103.1" class="nlab">Caterium Ore 600</text>
+<circle cx="471.7" cy="793.6" r="6" fill="#c9b68a" stroke="#0008" stroke-width="0.9"/><text x="480.7" y="797.6" class="nlab">Limestone 300</text></svg>
+    <div class="hint">drag to pan &middot; scroll to zoom</div>
+  </div>
+  <div class="view" data-pane="flow" hidden>
+    <pre class="mermaid" style="margin:0">flowchart LR
+  n1[&quot;Caterium Ingot x14&lt;br/&gt;200/min&quot;]:::mach
+  n2[&quot;Nuclear Pasta x1&lt;br/&gt;0/min&quot;]:::mach
+  n3[&quot;Quickwire x18&lt;br/&gt;1,060/min&quot;]:::mach
+  n4[&quot;Turbo Motor x1&lt;br/&gt;2/min&quot;]:::mach
+  n5[&quot;ResourceSink x1&quot;]:::mach
+  n6[&quot;Fused Modular Frame x1&lt;br/&gt;2/min&quot;]:::mach
+  n7[&quot;Dark Matter Residue x1&lt;br/&gt;100/min&quot;]:::mach
+  n8[&quot;Pressure Conversion Cube x2&lt;br/&gt;2/min&quot;]:::mach
+  n9[&quot;TrainDockingStation x6&quot;]:::mach
+  n10[&quot;Dark Matter Crystal x1&lt;br/&gt;30/min&quot;]:::mach
+  n11[&quot;Ficsite Ingot x1&lt;br/&gt;30/min&quot;]:::mach
+  n12([&quot;Caterium Ore&lt;br/&gt;600/min&quot;]):::res
   n13[&quot;Singularity Cell x2&lt;br/&gt;20/min&quot;]:::mach
-  n14([&quot;Limestone&lt;br/&gt;300/min&quot;]):::res
-  n15[&quot;Pressure Conversion Cube x2&lt;br/&gt;2/min&quot;]:::mach
-  n16[&quot;Quickwire x18&lt;br/&gt;1,060/min&quot;]:::mach
-  n17[&quot;Concrete x6&lt;br/&gt;100/min&quot;]:::mach
-  n18([&quot;Caterium Ore&lt;br/&gt;600/min&quot;]):::res
-  n19[&quot;Turbo Motor x1&lt;br/&gt;2/min&quot;]:::mach
-  n20[&quot;ResourceSink x1&quot;]:::mach
-  n21[&quot;TrainDockingStation x6&quot;]:::mach
+  n14[&quot;Ballistic Warp Drive x2&lt;br/&gt;2/min&quot;]:::mach
+  n15[&quot;Ficsite Trigon x6&lt;br/&gt;180/min&quot;]:::mach
+  n16[&quot;Concrete x6&lt;br/&gt;100/min&quot;]:::mach
+  n17[&quot;Thermal Propulsion Rocket x2&lt;br/&gt;4/min&quot;]:::mach
+  n18([&quot;Limestone&lt;br/&gt;300/min&quot;]):::res
+  n19[(&quot;Storage x13&quot;)]:::store
+  n20[&quot;Neural-Quantum Processor x1&lt;br/&gt;3/min&quot;]:::mach
+  n21[&quot;Superposition Oscillator x1&lt;br/&gt;5/min&quot;]:::mach
   n22&gt;&quot;⇤ mixed&lt;br/&gt;(from Main Base)&quot;]:::io
   n23&gt;&quot;⇥ Quickwire&lt;br/&gt;(to Main Base)&quot;]:::io
   n24&gt;&quot;⇥ mixed&lt;br/&gt;(to Main Base)&quot;]:::io
@@ -67,64 +144,66 @@ td.n{font-family:var(--mono);text-align:right}
   n31&gt;&quot;⇤ Time Crystal&lt;br/&gt;(from Main Base)&quot;]:::io
   n32&gt;&quot;⇤ Ficsite Ingot&lt;br/&gt;(from Main Base)&quot;]:::io
   n22 --&gt; n13
-  n9 --&gt;|&quot;Caterium Ingot&quot;| n16
-  n18 --&gt;|&quot;Caterium Ore&quot;| n9
-  n16 --&gt;|&quot;Quickwire&quot;| n23
+  n1 --&gt;|&quot;Caterium Ingot&quot;| n3
+  n12 --&gt;|&quot;Caterium Ore&quot;| n1
+  n3 --&gt;|&quot;Quickwire&quot;| n23
+  n22 --&gt; n4
   n22 --&gt; n19
-  n22 --&gt; n10
-  n22 --&gt; n1
-  n22 --&gt; n2
-  n14 --&gt;|&quot;Limestone&quot;| n17
+  n22 --&gt; n20
   n22 --&gt; n6
-  n21 --&gt; n24
-  n25 --&gt;|&quot;Crystal Oscillator&quot;| n7
-  n26 --&gt;|&quot;Radio Control Unit&quot;| n15
-  n26 --&gt;|&quot;Radio Control Unit&quot;| n19
-  n2 --&gt;|&quot;Fused Modular Frame&quot;| n6
-  n2 --&gt;|&quot;Fused Modular Frame&quot;| n15
-  n27 --&gt;|&quot;Nitrogen Gas&quot;| n20
-  n19 --&gt;|&quot;Turbo Motor&quot;| n28
-  n6 --&gt;|&quot;Thermal Propulsion Rocket&quot;| n10
-  n15 --&gt;|&quot;Pressure Conversion Cube&quot;| n10
-  n10 --&gt; n3
-  n29 --&gt;|&quot;Copper Powder&quot;| n10
-  n3 --&gt;|&quot;Nuclear Pasta&quot;| n13
-  n17 --&gt;|&quot;Concrete&quot;| n30
-  n22 --&gt; n21
-  n10 --&gt; n5
-  n31 --&gt;|&quot;Time Crystal&quot;| n10
-  n22 --&gt; n12
-  n22 --&gt; n7
-  n12 --&gt;|&quot;Ficsite Ingot&quot;| n10
-  n32 --&gt;|&quot;Ficsite Ingot&quot;| n10
-  n10 --&gt; n8
-  n8 --&gt;|&quot;Ficsite Trigon&quot;| n10
-  n10 --&gt; n1
-  n1 --&gt;|&quot;Neural-Quantum Processor&quot;| n10
+  n18 --&gt;|&quot;Limestone&quot;| n16
+  n22 --&gt; n17
+  n9 --&gt; n24
+  n25 --&gt;|&quot;Crystal Oscillator&quot;| n21
+  n26 --&gt;|&quot;Radio Control Unit&quot;| n8
+  n26 --&gt;|&quot;Radio Control Unit&quot;| n4
+  n6 --&gt;|&quot;Fused Modular Frame&quot;| n17
+  n6 --&gt;|&quot;Fused Modular Frame&quot;| n8
+  n27 --&gt;|&quot;Nitrogen Gas&quot;| n5
+  n4 --&gt;|&quot;Turbo Motor&quot;| n28
+  n17 --&gt;|&quot;Thermal Propulsion Rocket&quot;| n19
+  n8 --&gt;|&quot;Pressure Conversion Cube&quot;| n19
+  n19 --&gt; n2
+  n29 --&gt;|&quot;Copper Powder&quot;| n19
+  n2 --&gt;|&quot;Nuclear Pasta&quot;| n13
+  n16 --&gt;|&quot;Concrete&quot;| n30
+  n22 --&gt; n9
+  n19 --&gt; n14
+  n31 --&gt;|&quot;Time Crystal&quot;| n19
   n22 --&gt; n11
-  n10 --&gt; n4
-  n4 --&gt;|&quot;Dark Matter Crystal&quot;| n7
-  n4 --&gt;|&quot;Dark Matter Crystal&quot;| n10
-  n10 --&gt; n13
-  n7 --&gt;|&quot;Superposition Oscillator&quot;| n10
-  n13 --&gt;|&quot;Singularity Cell&quot;| n5
-  n5 --&gt;|&quot;Ballistic Warp Drive&quot;| n10
-  n27 --&gt;|&quot;Nitrogen Gas&quot;| n2
-  n7 --&gt;|&quot;Superposition Oscillator&quot;| n11
-  n7 --&gt;|&quot;Superposition Oscillator&quot;| n4
-  n1 --&gt;|&quot;Neural-Quantum Processor&quot;| n11
-  n1 --&gt;|&quot;Neural-Quantum Processor&quot;| n4
+  n22 --&gt; n21
+  n11 --&gt;|&quot;Ficsite Ingot&quot;| n19
+  n32 --&gt;|&quot;Ficsite Ingot&quot;| n19
+  n19 --&gt; n15
+  n15 --&gt;|&quot;Ficsite Trigon&quot;| n19
+  n19 --&gt; n20
+  n20 --&gt;|&quot;Neural-Quantum Processor&quot;| n19
+  n22 --&gt; n7
+  n19 --&gt; n10
+  n10 --&gt;|&quot;Dark Matter Crystal&quot;| n21
+  n10 --&gt;|&quot;Dark Matter Crystal&quot;| n19
+  n19 --&gt; n13
+  n21 --&gt;|&quot;Superposition Oscillator&quot;| n19
+  n13 --&gt;|&quot;Singularity Cell&quot;| n14
+  n14 --&gt;|&quot;Ballistic Warp Drive&quot;| n19
+  n27 --&gt;|&quot;Nitrogen Gas&quot;| n6
+  n20 --&gt;|&quot;Neural-Quantum Processor&quot;| n10
+  n20 --&gt;|&quot;Neural-Quantum Processor&quot;| n7
+  n21 --&gt;|&quot;Superposition Oscillator&quot;| n10
+  n21 --&gt;|&quot;Superposition Oscillator&quot;| n7
   classDef res fill:#b36a2b,stroke:#0006,color:#fff;
   classDef gen fill:#d4a017,stroke:#0006,color:#1b2028;
   classDef store fill:#7a8699,stroke:#0006,color:#fff;
   classDef io fill:#c05617,stroke:#0006,color:#fff;
-  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre></div>
+  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre>
+    <div class="hint">drag to pan &middot; scroll to zoom &middot; buttons zoom</div>
+  </div>
   <div class="legend">
     <span><i style="background:#b36a2b"></i>resource node</span>
-    <span><i style="background:#2f7fd6"></i>machine group (xN)</span>
+    <span><i style="background:#2f7fd6"></i>machine group</span>
     <span><i style="background:#d4a017"></i>generator</span>
-    <span><i style="background:#7a8699"></i>storage buffer</span>
-    <span><i style="background:#c05617"></i>&#8676; import / export &#8677; (other zones)</span>
+    <span><i style="background:#7a8699"></i>storage</span>
+    <span><i style="background:#c05617"></i>&#8676; import / export &#8677;</span>
   </div>
 </div>
 <div class="cols">
@@ -137,9 +216,32 @@ td.n{font-family:var(--mono);text-align:right}
     <h2 style="margin-top:12px">&larr; Imports</h2><span class="chip">(storage) <b>25</b></span> <span class="chip">Radio Control Unit <b>6</b></span> <span class="chip">Copper Powder <b>4</b></span> <span class="chip">Crystal Oscillator <b>2</b></span> <span class="chip">Nitrogen Gas <b>2</b></span> <span class="chip">Time Crystal <b>1</b></span> <span class="chip">Ficsite Ingot <b>1</b></span></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg-pan-zoom/3.6.1/svg-pan-zoom.min.js"></script>
 <script>
-  var dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  mermaid.initialize({startOnLoad:true, theme: dark?'dark':'default',
-    flowchart:{useMaxWidth:false, htmlLabels:true, curve:'basis', nodeSpacing:45, rankSpacing:70}});
+var dark = matchMedia('(prefers-color-scheme: dark)').matches;
+mermaid.initialize({startOnLoad:false, theme: dark?'dark':'default',
+  flowchart:{useMaxWidth:true, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:60}});
+
+// pan/zoom the geographic map immediately
+function pz(svg){ if(svg) try{ svgPanZoom(svg,{controlIconsEnabled:true,fit:true,center:true,minZoom:0.15,maxZoom:40}); }catch(e){} }
+pz(document.querySelector('.view[data-pane="map"] svg'));
+
+var flowReady=false;
+function showFlow(){
+  if(flowReady) return; flowReady=true;
+  var pane=document.querySelector('.view[data-pane="flow"]');
+  mermaid.run({nodes:[pane.querySelector('.mermaid')]}).then(function(){
+    var svg=pane.querySelector('svg');
+    if(svg){ svg.removeAttribute('height'); svg.removeAttribute('width');
+      svg.style.width='100%'; svg.style.height='100%'; pz(svg); }
+  });
+}
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('active',x===b);});
+    document.querySelectorAll('.view').forEach(function(p){p.hidden = p.dataset.pane!==b.dataset.tab;});
+    if(b.dataset.tab==='flow') showFlow();
+  };
+});
 </script>
 </div></body></html>
