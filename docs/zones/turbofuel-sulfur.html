@@ -2,9 +2,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Turbofuel &amp; Sulfur</title><style>
 :root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;--grid:#e9e3d7;
-  --pow:#d4a017;--prod:#9aa6b2;--mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}}
-:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}
+  --mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
 .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
 a{color:var(--accent);text-decoration:none}
@@ -14,10 +14,14 @@ h1{font-size:26px;margin:2px 0}.sub{color:var(--muted);font-size:14px;margin-bot
 .tabs{display:flex;gap:6px;margin-bottom:10px}
 .tabs button{font:inherit;font-size:13px;font-weight:600;padding:6px 16px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;cursor:pointer}
 .tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.view{border:1px solid var(--line);border-radius:10px;background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;height:70vh;min-height:360px;overflow:hidden;position:relative}
-.view svg{width:100%;height:100%;display:block}
-.hint{position:absolute;right:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
-.nlab{fill:var(--ink);font-family:var(--mono);font-size:11px;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.view{position:relative;height:72vh;min-height:380px;overflow:hidden;border:1px solid var(--line);border-radius:10px;
+  background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;touch-action:none;cursor:grab}
+.stage{position:absolute;top:0;left:0;transform-origin:0 0}
+.stage svg{display:block}
+.blab{fill:#fff;font-family:var(--sans);font-size:10.5px;font-weight:600;text-anchor:middle;paint-order:stroke;stroke:#0004;stroke-width:.4px}
+.zc{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:5px}
+.zc button{width:30px;height:30px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;font-size:16px;cursor:pointer;line-height:1}
+.hint{position:absolute;left:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -43,133 +47,94 @@ td.n{font-family:var(--mono);text-align:right}
     <button data-tab="flow">&#128257; Flow</button>
   </div>
   <div class="view" data-pane="map">
-    <svg viewBox="0 0 760 787" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><circle cx="84.3" cy="441.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="84.3" cy="455.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="84.3" cy="469.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="252.9" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="252.9" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="252.9" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="252.9" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="238.8" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="238.8" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="238.8" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="238.8" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="224.8" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="224.8" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="224.8" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="224.8" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="210.7" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="210.7" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="210.7" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="210.7" cy="413.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="302.0" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="316.1" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="330.1" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="349.8" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="363.8" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="377.9" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="396.2" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="410.2" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="424.3" cy="514.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.7" cy="559.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="321.7" cy="559.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="335.7" cy="559.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="356.8" cy="560.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="370.9" cy="560.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="384.9" cy="560.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.2" cy="560.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.2" cy="560.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="431.3" cy="560.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="297.8" cy="649.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="316.1" cy="649.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="330.1" cy="649.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="344.2" cy="649.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="362.4" cy="649.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="376.5" cy="649.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="390.5" cy="649.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="408.8" cy="649.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="432.7" cy="618.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="588.6" cy="469.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="616.7" cy="469.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="590.0" cy="507.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="618.1" cy="507.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="588.6" cy="433.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="616.7" cy="433.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="590.0" cy="544.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="618.1" cy="544.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="616.7" cy="593.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="588.6" cy="593.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="616.7" cy="631.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="588.6" cy="631.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="616.7" cy="666.3" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="588.6" cy="666.3" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="616.7" cy="702.8" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="588.6" cy="702.8" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="646.2" cy="469.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="674.3" cy="469.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="644.8" cy="433.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="672.9" cy="433.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="646.2" cy="507.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="674.3" cy="507.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="647.6" cy="544.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="675.7" cy="544.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="238.5" cy="84.3" r="6" fill="#d8c24a" stroke="#0008" stroke-width="0.9"/><text x="247.5" y="88.3" class="nlab">Sulfur 240</text></svg>
+    <div class="stage"><svg viewBox="0 0 1175 1285" width="1175" height="1285" xmlns="http://www.w3.org/2000/svg"><rect x="256.8" y="24.0" width="64.1" height="37.0" rx="6" fill="#c9b53f" stroke="#0007" stroke-width="0.8"/>
+<text x="288.9" y="39.0" class="blab">Sulfur</text>
+<text x="288.9" y="52.0" class="blab">240/min</text>
+<rect x="415.3" y="990.5" width="89.3" height="24.0" rx="6" fill="#7a8699" stroke="#0007" stroke-width="0.8"/>
+<text x="460.0" y="1005.5" class="blab">Storage x13</text>
+<rect x="24.0" y="915.3" width="120.8" height="37.0" rx="6" fill="#c2a12e" stroke="#0007" stroke-width="0.8"/>
+<text x="84.4" y="930.3" class="blab">Sulfuric Acid x4</text>
+<text x="84.4" y="943.3" class="blab">200/min</text>
+<rect x="210.8" y="699.9" width="133.4" height="37.0" rx="6" fill="#c2a12e" stroke="#0007" stroke-width="0.8"/>
+<text x="277.5" y="714.9" class="blab">Compacted Coal x15</text>
+<text x="277.5" y="727.9" class="blab">375/min</text>
+<rect x="172.6" y="745.9" width="114.5" height="37.0" rx="6" fill="#c2a12e" stroke="#0007" stroke-width="0.8"/>
+<text x="229.8" y="760.9" class="blab">Black Powder x1</text>
+<text x="229.8" y="773.9" class="blab">30/min</text>
+<rect x="503.7" y="1069.4" width="114.5" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="560.9" y="1084.4" class="blab">ResourceSink x2</text>
+<rect x="513.6" y="986.4" width="101.9" height="37.0" rx="6" fill="#c0703a" stroke="#0007" stroke-width="0.8"/>
+<text x="564.6" y="1001.4" class="blab">Turbofuel x18</text>
+<text x="564.6" y="1014.4" class="blab">338/min</text>
+<rect x="1055.5" y="995.6" width="95.6" height="37.0" rx="6" fill="#d4a017" stroke="#0007" stroke-width="0.8"/>
+<text x="1103.3" y="1010.6" class="blab">Fuel gen x24</text>
+<text x="1103.3" y="1023.6" class="blab">8,400 MW</text>
+<rect x="502.4" y="1224.0" width="83.0" height="37.0" rx="6" fill="#c0703a" stroke="#0007" stroke-width="0.8"/>
+<text x="543.9" y="1239.0" class="blab">Plastic x7</text>
+<text x="543.9" y="1252.0" class="blab">140/min</text>
+<rect x="637.6" y="1145.1" width="127.1" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="701.1" y="1160.1" class="blab">ConstructorMk1 x3</text>
+<rect x="637.6" y="1178.1" width="127.1" height="37.0" rx="6" fill="#c0703a" stroke="#0007" stroke-width="0.8"/>
+<text x="701.1" y="1193.1" class="blab">Empty Canister x1</text>
+<text x="701.1" y="1206.1" class="blab">60/min</text></svg></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
     <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="view" data-pane="flow" hidden>
-    <pre class="mermaid" style="margin:0">flowchart LR
-  n1[&quot;ResourceSink x2&quot;]:::mach
-  n2[&quot;Turbofuel x18&lt;br/&gt;338/min&quot;]:::mach
-  n3[&quot;Black Powder x1&lt;br/&gt;30/min&quot;]:::mach
-  n4([&quot;Sulfur&lt;br/&gt;240/min&quot;]):::res
-  n5[(&quot;Storage x13&quot;)]:::store
-  n6[&quot;ConstructorMk1 x3&quot;]:::mach
-  n7[&quot;Empty Canister x1&lt;br/&gt;60/min&quot;]:::mach
-  n8[&quot;Plastic x7&lt;br/&gt;140/min&quot;]:::mach
-  n9[&quot;Compacted Coal x15&lt;br/&gt;375/min&quot;]:::mach
-  n10[&quot;Sulfuric Acid x4&lt;br/&gt;200/min&quot;]:::mach
-  n11{{&quot;Fuel gen x24&lt;br/&gt;8,400 MW&quot;}}:::gen
+    <div class="stage"><pre class="mermaid" style="margin:0">flowchart LR
+  n1[&quot;Black Powder x1&lt;br/&gt;30/min&quot;]:::mach
+  n2[&quot;Compacted Coal x15&lt;br/&gt;375/min&quot;]:::mach
+  n3[&quot;ConstructorMk1 x3&quot;]:::mach
+  n4[&quot;Sulfuric Acid x4&lt;br/&gt;200/min&quot;]:::mach
+  n5[&quot;Plastic x7&lt;br/&gt;140/min&quot;]:::mach
+  n6{{&quot;Fuel gen x24&lt;br/&gt;8,400 MW&quot;}}:::gen
+  n7[&quot;ResourceSink x2&quot;]:::mach
+  n8[(&quot;Storage x13&quot;)]:::store
+  n9[&quot;Turbofuel x18&lt;br/&gt;338/min&quot;]:::mach
+  n10([&quot;Sulfur&lt;br/&gt;240/min&quot;]):::res
+  n11[&quot;Empty Canister x1&lt;br/&gt;60/min&quot;]:::mach
   n12&gt;&quot;⇤ Coal&lt;br/&gt;(from Coal Power)&quot;]:::io
   n13&gt;&quot;⇤ Sulfur&lt;br/&gt;(from SW Steel &amp; SAM)&quot;]:::io
   n14&gt;&quot;⇤ Fuel&lt;br/&gt;(from Fuel Refinery)&quot;]:::io
   n15&gt;&quot;⇤ Plastic&lt;br/&gt;(from Fuel Refinery)&quot;]:::io
   n16&gt;&quot;⇤ Water&lt;br/&gt;(from Coal Power)&quot;]:::io
   n17&gt;&quot;⇥ Sulfuric Acid&lt;br/&gt;(to Nuclear)&quot;]:::io
-  n12 --&gt;|&quot;Coal&quot;| n9
-  n12 --&gt;|&quot;Coal&quot;| n3
-  n4 --&gt;|&quot;Sulfur&quot;| n5
-  n13 --&gt;|&quot;Sulfur&quot;| n5
-  n5 --&gt; n9
-  n5 --&gt; n3
-  n14 --&gt;|&quot;Fuel&quot;| n1
-  n14 --&gt;|&quot;Fuel&quot;| n8
-  n14 --&gt;|&quot;Fuel&quot;| n10
-  n5 --&gt; n2
-  n9 --&gt;|&quot;Compacted Coal&quot;| n5
-  n9 --&gt;|&quot;Compacted Coal&quot;| n1
-  n3 --&gt;|&quot;Black Powder&quot;| n5
-  n3 --&gt;|&quot;Black Powder&quot;| n1
-  n15 --&gt;|&quot;Plastic&quot;| n6
-  n15 --&gt;|&quot;Plastic&quot;| n7
-  n8 --&gt;|&quot;Plastic&quot;| n6
-  n8 --&gt;|&quot;Plastic&quot;| n7
-  n10 --&gt;|&quot;Sulfuric Acid&quot;| n6
-  n10 --&gt;|&quot;Sulfuric Acid&quot;| n7
-  n16 --&gt;|&quot;Water&quot;| n10
-  n16 --&gt;|&quot;Water&quot;| n8
-  n10 --&gt;|&quot;Sulfuric Acid&quot;| n17
-  n14 --&gt;|&quot;Fuel&quot;| n2
-  n2 --&gt;|&quot;Turbofuel&quot;| n11
+  n12 --&gt;|&quot;Coal&quot;| n2
+  n12 --&gt;|&quot;Coal&quot;| n1
+  n10 --&gt;|&quot;Sulfur&quot;| n8
+  n13 --&gt;|&quot;Sulfur&quot;| n8
+  n8 --&gt; n2
+  n8 --&gt; n1
+  n14 --&gt;|&quot;Fuel&quot;| n7
+  n14 --&gt;|&quot;Fuel&quot;| n5
+  n14 --&gt;|&quot;Fuel&quot;| n4
+  n8 --&gt; n9
+  n2 --&gt;|&quot;Compacted Coal&quot;| n8
+  n2 --&gt;|&quot;Compacted Coal&quot;| n7
+  n1 --&gt;|&quot;Black Powder&quot;| n8
+  n1 --&gt;|&quot;Black Powder&quot;| n7
+  n15 --&gt;|&quot;Plastic&quot;| n3
+  n15 --&gt;|&quot;Plastic&quot;| n11
+  n5 --&gt;|&quot;Plastic&quot;| n3
+  n5 --&gt;|&quot;Plastic&quot;| n11
+  n4 --&gt;|&quot;Sulfuric Acid&quot;| n3
+  n4 --&gt;|&quot;Sulfuric Acid&quot;| n11
+  n16 --&gt;|&quot;Water&quot;| n4
+  n16 --&gt;|&quot;Water&quot;| n5
+  n4 --&gt;|&quot;Sulfuric Acid&quot;| n17
+  n14 --&gt;|&quot;Fuel&quot;| n9
+  n9 --&gt;|&quot;Turbofuel&quot;| n6
   classDef res fill:#b36a2b,stroke:#0006,color:#fff;
   classDef gen fill:#d4a017,stroke:#0006,color:#1b2028;
   classDef store fill:#7a8699,stroke:#0006,color:#fff;
   classDef io fill:#c05617,stroke:#0006,color:#fff;
-  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre>
-    <div class="hint">drag to pan &middot; scroll to zoom &middot; buttons zoom</div>
+  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
+    <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="legend">
-    <span><i style="background:#b36a2b"></i>resource node</span>
-    <span><i style="background:#2f7fd6"></i>machine group</span>
+    <span><i style="background:#5b86c0"></i>machine group (xN)</span>
+    <span><i style="background:#b36a2b"></i>resource</span>
     <span><i style="background:#d4a017"></i>generator</span>
     <span><i style="background:#7a8699"></i>storage</span>
     <span><i style="background:#c05617"></i>&#8676; import / export &#8677;</span>
@@ -184,15 +149,38 @@ td.n{font-family:var(--mono);text-align:right}
     <h2 style="margin-top:12px">&larr; Imports</h2><span class="chip">Fuel <b>328</b></span> <span class="chip">Water <b>33</b></span> <span class="chip">Coal <b>16</b></span> <span class="chip">Plastic <b>8</b></span> <span class="chip">Sulfur <b>1</b></span></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg-pan-zoom/3.6.1/svg-pan-zoom.min.js"></script>
 <script>
 var dark = matchMedia('(prefers-color-scheme: dark)').matches;
 mermaid.initialize({startOnLoad:false, theme: dark?'dark':'default',
-  flowchart:{useMaxWidth:true, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:60}});
+  flowchart:{useMaxWidth:false, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:65}});
 
-// pan/zoom the geographic map immediately
-function pz(svg){ if(svg) try{ svgPanZoom(svg,{controlIconsEnabled:true,fit:true,center:true,minZoom:0.15,maxZoom:40}); }catch(e){} }
-pz(document.querySelector('.view[data-pane="map"] svg'));
+function panzoom(view){
+  var stage=view.querySelector('.stage'), k=1,x=0,y=0,drag=false,lx,ly;
+  function apply(){stage.style.transform='translate('+x+'px,'+y+'px) scale('+k+')';}
+  function fit(){
+    k=1;x=0;y=0;apply();
+    var s=stage.getBoundingClientRect(), v=view.getBoundingClientRect();
+    if(!s.width||!s.height) return;
+    k=Math.min(v.width/s.width, v.height/s.height)*0.92;
+    x=(v.width - s.width*k)/2; y=(v.height - s.height*k)/2; apply();
+  }
+  function zoomAt(mx,my,f){var nk=Math.min(Math.max(k*f,0.05),60);x=mx-(mx-x)*(nk/k);y=my-(my-y)*(nk/k);k=nk;apply();}
+  view.addEventListener('wheel',function(e){e.preventDefault();var v=view.getBoundingClientRect();
+    zoomAt(e.clientX-v.left,e.clientY-v.top, Math.exp(-e.deltaY*0.0016));},{passive:false});
+  view.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;view.setPointerCapture(e.pointerId);view.style.cursor='grabbing';});
+  view.addEventListener('pointermove',function(e){if(!drag)return;x+=e.clientX-lx;y+=e.clientY-ly;lx=e.clientX;ly=e.clientY;apply();});
+  function end(){drag=false;view.style.cursor='grab';}
+  view.addEventListener('pointerup',end); view.addEventListener('pointercancel',end);
+  view.querySelectorAll('.zc button').forEach(function(btn){btn.onclick=function(){
+    var v=view.getBoundingClientRect();
+    if(btn.dataset.z==='in') zoomAt(v.width/2,v.height/2,1.3);
+    else if(btn.dataset.z==='out') zoomAt(v.width/2,v.height/2,1/1.3);
+    else fit();
+  };});
+  fit();
+}
+
+panzoom(document.querySelector('.view[data-pane="map"]'));
 
 var flowReady=false;
 function showFlow(){
@@ -200,8 +188,8 @@ function showFlow(){
   var pane=document.querySelector('.view[data-pane="flow"]');
   mermaid.run({nodes:[pane.querySelector('.mermaid')]}).then(function(){
     var svg=pane.querySelector('svg');
-    if(svg){ svg.removeAttribute('height'); svg.removeAttribute('width');
-      svg.style.width='100%'; svg.style.height='100%'; pz(svg); }
+    if(svg){svg.removeAttribute('style');svg.removeAttribute('width');svg.removeAttribute('height');}
+    panzoom(pane);
   });
 }
 document.querySelectorAll('.tabs button').forEach(function(b){

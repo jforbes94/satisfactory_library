@@ -2,9 +2,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aluminum Plant</title><style>
 :root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;--grid:#e9e3d7;
-  --pow:#d4a017;--prod:#9aa6b2;--mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}}
-:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}
+  --mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
 .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
 a{color:var(--accent);text-decoration:none}
@@ -14,10 +14,14 @@ h1{font-size:26px;margin:2px 0}.sub{color:var(--muted);font-size:14px;margin-bot
 .tabs{display:flex;gap:6px;margin-bottom:10px}
 .tabs button{font:inherit;font-size:13px;font-weight:600;padding:6px 16px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;cursor:pointer}
 .tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.view{border:1px solid var(--line);border-radius:10px;background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;height:70vh;min-height:360px;overflow:hidden;position:relative}
-.view svg{width:100%;height:100%;display:block}
-.hint{position:absolute;right:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
-.nlab{fill:var(--ink);font-family:var(--mono);font-size:11px;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.view{position:relative;height:72vh;min-height:380px;overflow:hidden;border:1px solid var(--line);border-radius:10px;
+  background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;touch-action:none;cursor:grab}
+.stage{position:absolute;top:0;left:0;transform-origin:0 0}
+.stage svg{display:block}
+.blab{fill:#fff;font-family:var(--sans);font-size:10.5px;font-weight:600;text-anchor:middle;paint-order:stroke;stroke:#0004;stroke-width:.4px}
+.zc{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:5px}
+.zc button{width:30px;height:30px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;font-size:16px;cursor:pointer;line-height:1}
+.hint{position:absolute;left:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -43,112 +47,88 @@ td.n{font-family:var(--mono);text-align:right}
     <button data-tab="flow">&#128257; Flow</button>
   </div>
   <div class="view" data-pane="map">
-    <svg viewBox="0 0 760 1059" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><circle cx="368.0" cy="326.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="368.0" cy="343.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="368.0" cy="360.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="368.0" cy="376.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="310.0" cy="325.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="310.0" cy="340.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="310.0" cy="357.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="310.0" cy="374.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="363.5" cy="430.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="363.5" cy="412.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="324.5" cy="430.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="324.5" cy="411.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="339.0" cy="518.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="339.0" cy="507.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="339.0" cy="496.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="304.5" cy="523.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="288.9" cy="523.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="304.5" cy="530.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="288.9" cy="530.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="304.5" cy="537.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="288.9" cy="537.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="305.6" cy="575.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="290.0" cy="575.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="305.6" cy="586.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="290.0" cy="586.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="305.6" cy="596.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="290.0" cy="596.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="376.9" cy="556.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.6" cy="556.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="376.9" cy="572.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.6" cy="572.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="355.7" cy="596.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="340.1" cy="596.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.5" cy="643.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="380.2" cy="643.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="355.7" cy="606.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="340.1" cy="606.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="400.3" cy="748.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="356.8" cy="750.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="341.2" cy="750.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="356.8" cy="761.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="341.2" cy="761.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="356.8" cy="771.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="341.2" cy="771.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="428.1" cy="699.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="412.5" cy="699.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="428.1" cy="708.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="412.5" cy="708.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="428.1" cy="717.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="412.5" cy="717.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="428.1" cy="726.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="412.5" cy="726.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.5" cy="812.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.5" cy="821.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="429.2" cy="822.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="429.2" cy="832.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="429.2" cy="841.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="400.3" cy="773.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.5" cy="654.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="380.2" cy="654.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="355.7" cy="615.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="340.1" cy="615.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="355.7" cy="624.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="340.1" cy="624.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="304.5" cy="517.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="288.9" cy="517.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="160.7" cy="908.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="185.2" cy="986.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="183.0" cy="908.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="205.3" cy="908.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="207.5" cy="986.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="73.1" cy="648.0" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/><text x="82.1" y="652.0" class="nlab">Crude Oil 180</text>
-<circle cx="244.9" cy="73.1" r="6" fill="#9a6b4b" stroke="#0008" stroke-width="0.9"/><text x="253.9" y="77.1" class="nlab">Bauxite 300</text>
-<circle cx="686.9" cy="449.2" r="6" fill="#9a6b4b" stroke="#0008" stroke-width="0.9"/><text x="695.9" y="453.2" class="nlab">Bauxite 600</text>
-<circle cx="190.0" cy="344.2" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/><text x="199.0" y="348.2" class="nlab">Water 100</text>
-<circle cx="172.9" cy="358.5" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/><text x="181.9" y="362.5" class="nlab">Water 100</text>
-<circle cx="155.8" cy="372.9" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/><text x="164.8" y="376.9" class="nlab">Water 100</text>
-<circle cx="205.0" cy="362.0" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/><text x="214.0" y="366.0" class="nlab">Water 100</text>
-<circle cx="187.9" cy="376.3" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/><text x="196.9" y="380.3" class="nlab">Water 100</text>
-<circle cx="170.8" cy="390.7" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/><text x="179.8" y="394.7" class="nlab">Water 100</text>
-<circle cx="138.8" cy="387.1" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/><text x="147.8" y="391.1" class="nlab">Water 100</text>
-<circle cx="153.7" cy="405.0" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/><text x="162.7" y="409.0" class="nlab">Water 100</text></svg>
+    <div class="stage"><svg viewBox="0 0 813 1285" width="813" height="1285" xmlns="http://www.w3.org/2000/svg"><rect x="24.0" y="708.4" width="76.7" height="37.0" rx="6" fill="#4b4b57" stroke="#0007" stroke-width="0.8"/>
+<text x="62.3" y="723.4" class="blab">Crude Oil</text>
+<text x="62.3" y="736.4" class="blab">180/min</text>
+<rect x="725.3" y="24.0" width="64.1" height="37.0" rx="6" fill="#9a6b4b" stroke="#0007" stroke-width="0.8"/>
+<text x="757.4" y="39.0" class="blab">Bauxite</text>
+<text x="757.4" y="52.0" class="blab">900/min</text>
+<rect x="474.3" y="545.3" width="89.3" height="24.0" rx="6" fill="#7a8699" stroke="#0007" stroke-width="0.8"/>
+<text x="518.9" y="560.3" class="blab">Storage x26</text>
+<rect x="221.7" y="1224.0" width="89.3" height="37.0" rx="6" fill="#d4a017" stroke="#0007" stroke-width="0.8"/>
+<text x="266.4" y="1239.0" class="blab">Fuel gen x5</text>
+<text x="266.4" y="1252.0" class="blab">1,250 MW</text>
+<rect x="205.1" y="224.7" width="64.1" height="37.0" rx="6" fill="#2f7fd6" stroke="#0007" stroke-width="0.8"/>
+<text x="237.2" y="239.7" class="blab">Water</text>
+<text x="237.2" y="252.7" class="blab">800/min</text>
+<rect x="463.0" y="182.3" width="139.7" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="532.8" y="197.3" class="blab">Alumina Solution x8</text>
+<text x="532.8" y="210.3" class="blab">800/min</text>
+<rect x="478.2" y="307.0" width="127.1" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="541.7" y="322.0" class="blab">Aluminum Scrap x4</text>
+<text x="541.7" y="335.0" class="blab">1,440/min</text>
+<rect x="469.3" y="453.3" width="127.1" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="532.8" y="468.3" class="blab">Aluminum Ingot x3</text>
+<text x="532.8" y="481.3" class="blab">210/min</text>
+<rect x="394.4" y="499.3" width="127.1" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="457.9" y="514.3" class="blab">Aluminum Ingot x8</text>
+<text x="457.9" y="527.3" class="blab">240/min</text>
+<rect x="393.2" y="597.3" width="133.4" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="459.9" y="612.3" class="blab">Aluminum Casing x6</text>
+<text x="459.9" y="625.3" class="blab">360/min</text>
+<rect x="537.9" y="578.3" width="171.2" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="623.5" y="593.3" class="blab">Alclad Aluminum Sheet x4</text>
+<text x="623.5" y="606.3" class="blab">180/min</text>
+<rect x="486.1" y="835.0" width="114.5" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="543.3" y="850.0" class="blab">ResourceSink x3</text>
+<rect x="491.4" y="643.3" width="114.5" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="548.6" y="658.3" class="blab">Copper Sheet x8</text>
+<text x="548.6" y="671.3" class="blab">80/min</text>
+<rect x="534.3" y="709.5" width="95.6" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="582.1" y="724.5" class="blab">Heat Sink x4</text>
+<text x="582.1" y="737.5" class="blab">26/min</text>
+<rect x="577.7" y="922.1" width="127.1" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="641.3" y="937.1" class="blab">Cooling System x2</text>
+<text x="641.3" y="950.1" class="blab">12/min</text>
+<rect x="487.0" y="876.1" width="127.1" height="37.0" rx="6" fill="#c0703a" stroke="#0007" stroke-width="0.8"/>
+<text x="550.6" y="891.1" class="blab">Empty Canister x6</text>
+<text x="550.6" y="904.1" class="blab">360/min</text>
+<rect x="609.6" y="823.9" width="139.7" height="37.0" rx="6" fill="#6fa3c7" stroke="#0007" stroke-width="0.8"/>
+<text x="679.4" y="838.9" class="blab">Empty Fluid Tank x8</text>
+<text x="679.4" y="851.9" class="blab">480/min</text>
+<rect x="494.9" y="1001.1" width="127.1" height="37.0" rx="6" fill="#c0703a" stroke="#0007" stroke-width="0.8"/>
+<text x="558.5" y="1016.1" class="blab">Packaged Water x2</text>
+<text x="558.5" y="1029.1" class="blab">120/min</text>
+<rect x="606.9" y="1047.1" width="171.2" height="37.0" rx="6" fill="#c0703a" stroke="#0007" stroke-width="0.8"/>
+<text x="692.5" y="1062.1" class="blab">Packaged Nitrogen Gas x3</text>
+<text x="692.5" y="1075.1" class="blab">180/min</text>
+<rect x="483.1" y="968.1" width="158.6" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="562.4" y="983.1" class="blab">TrainDockingStation x4</text></svg></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
     <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="view" data-pane="flow" hidden>
-    <pre class="mermaid" style="margin:0">flowchart LR
-  n1[&quot;Aluminum Casing x6&lt;br/&gt;360/min&quot;]:::mach
-  n2[&quot;Aluminum Ingot x3&lt;br/&gt;210/min&quot;]:::mach
-  n3([&quot;Water&lt;br/&gt;800/min&quot;]):::res
-  n4[&quot;Packaged Nitrogen Gas x3&lt;br/&gt;180/min&quot;]:::mach
-  n5[&quot;Empty Fluid Tank x8&lt;br/&gt;480/min&quot;]:::mach
-  n6[&quot;ResourceSink x3&quot;]:::mach
-  n7[&quot;Heat Sink x4&lt;br/&gt;26/min&quot;]:::mach
-  n8[&quot;Empty Canister x6&lt;br/&gt;360/min&quot;]:::mach
+    <div class="stage"><pre class="mermaid" style="margin:0">flowchart LR
+  n1[&quot;Alumina Solution x8&lt;br/&gt;800/min&quot;]:::mach
+  n2[&quot;TrainDockingStation x4&quot;]:::mach
+  n3[&quot;Cooling System x2&lt;br/&gt;12/min&quot;]:::mach
+  n4([&quot;Crude Oil&lt;br/&gt;180/min&quot;]):::res
+  n5[&quot;ResourceSink x3&quot;]:::mach
+  n6[(&quot;Storage x26&quot;)]:::store
+  n7[&quot;Aluminum Casing x6&lt;br/&gt;360/min&quot;]:::mach
+  n8[&quot;Alclad Aluminum Sheet x4&lt;br/&gt;180/min&quot;]:::mach
   n9[&quot;Aluminum Scrap x4&lt;br/&gt;1,440/min&quot;]:::mach
-  n10{{&quot;Fuel gen x5&lt;br/&gt;1,250 MW&quot;}}:::gen
-  n11[&quot;TrainDockingStation x4&quot;]:::mach
-  n12([&quot;Crude Oil&lt;br/&gt;180/min&quot;]):::res
-  n13([&quot;Bauxite&lt;br/&gt;900/min&quot;]):::res
-  n14[&quot;Copper Sheet x8&lt;br/&gt;80/min&quot;]:::mach
-  n15[&quot;Alclad Aluminum Sheet x4&lt;br/&gt;180/min&quot;]:::mach
-  n16[&quot;Cooling System x2&lt;br/&gt;12/min&quot;]:::mach
-  n17[(&quot;Storage x26&quot;)]:::store
-  n18[&quot;Packaged Water x2&lt;br/&gt;120/min&quot;]:::mach
+  n10([&quot;Bauxite&lt;br/&gt;900/min&quot;]):::res
+  n11[&quot;Empty Fluid Tank x8&lt;br/&gt;480/min&quot;]:::mach
+  n12([&quot;Water&lt;br/&gt;800/min&quot;]):::res
+  n13[&quot;Copper Sheet x8&lt;br/&gt;80/min&quot;]:::mach
+  n14{{&quot;Fuel gen x5&lt;br/&gt;1,250 MW&quot;}}:::gen
+  n15[&quot;Packaged Water x2&lt;br/&gt;120/min&quot;]:::mach
+  n16[&quot;Aluminum Ingot x3&lt;br/&gt;210/min&quot;]:::mach
+  n17[&quot;Packaged Nitrogen Gas x3&lt;br/&gt;180/min&quot;]:::mach
+  n18[&quot;Heat Sink x4&lt;br/&gt;26/min&quot;]:::mach
   n19[&quot;Aluminum Ingot x8&lt;br/&gt;240/min&quot;]:::mach
-  n20[&quot;Alumina Solution x8&lt;br/&gt;800/min&quot;]:::mach
+  n20[&quot;Empty Canister x6&lt;br/&gt;360/min&quot;]:::mach
   n21&gt;&quot;⇤ Plastic&lt;br/&gt;(from Oil Power Plant)&quot;]:::io
   n22&gt;&quot;⇤ Rubber&lt;br/&gt;(from Oil Power Plant)&quot;]:::io
   n23&gt;&quot;⇤ Packaged Fuel&lt;br/&gt;(from Oil Power Plant)&quot;]:::io
@@ -156,60 +136,61 @@ td.n{font-family:var(--mono);text-align:right}
   n25&gt;&quot;⇥ Crude Oil&lt;br/&gt;(to Oil Power Plant)&quot;]:::io
   n26&gt;&quot;⇤ Fuel&lt;br/&gt;(from Oil Power Plant)&quot;]:::io
   n27&gt;&quot;⇤ Nitrogen Gas&lt;br/&gt;(from Nitrogen Wells)&quot;]:::io
-  n21 --&gt;|&quot;Plastic&quot;| n17
-  n22 --&gt;|&quot;Rubber&quot;| n16
-  n22 --&gt;|&quot;Rubber&quot;| n17
-  n13 --&gt;|&quot;Bauxite&quot;| n20
-  n23 --&gt;|&quot;Packaged Fuel&quot;| n17
-  n20 --&gt;|&quot;Alumina Solution&quot;| n17
-  n9 --&gt;|&quot;Aluminum Scrap&quot;| n17
-  n17 --&gt; n2
-  n17 --&gt; n24
-  n17 --&gt; n9
-  n2 --&gt;|&quot;Aluminum Ingot&quot;| n17
-  n17 --&gt; n5
-  n17 --&gt; n15
-  n19 --&gt;|&quot;Aluminum Ingot&quot;| n17
-  n17 --&gt; n1
-  n1 --&gt;|&quot;Aluminum Casing&quot;| n17
-  n17 --&gt; n11
-  n15 --&gt;|&quot;Alclad Aluminum Sheet&quot;| n6
-  n15 --&gt;|&quot;Alclad Aluminum Sheet&quot;| n11
-  n15 --&gt;|&quot;Alclad Aluminum Sheet&quot;| n7
-  n17 --&gt; n6
-  n17 --&gt; n8
-  n14 --&gt;|&quot;Copper Sheet&quot;| n7
-  n7 --&gt;|&quot;Heat Sink&quot;| n17
-  n16 --&gt;|&quot;Cooling System&quot;| n11
-  n8 --&gt;|&quot;Empty Canister&quot;| n18
-  n5 --&gt;|&quot;Empty Fluid Tank&quot;| n17
-  n17 --&gt; n4
-  n18 --&gt;|&quot;Packaged Water&quot;| n17
-  n4 --&gt;|&quot;Packaged Nitrogen Gas&quot;| n17
-  n17 --&gt; n14
-  n17 --&gt; n16
-  n17 --&gt; n19
-  n12 --&gt;|&quot;Crude Oil&quot;| n25
-  n26 --&gt;|&quot;Fuel&quot;| n10
-  n27 --&gt;|&quot;Nitrogen Gas&quot;| n4
-  n27 --&gt;|&quot;Nitrogen Gas&quot;| n16
-  n3 --&gt;|&quot;Water&quot;| n16
-  n3 --&gt;|&quot;Water&quot;| n20
-  n3 --&gt;|&quot;Water&quot;| n18
-  n9 --&gt;|&quot;Aluminum Scrap&quot;| n16
-  n9 --&gt;|&quot;Aluminum Scrap&quot;| n20
-  n9 --&gt;|&quot;Aluminum Scrap&quot;| n18
-  n20 --&gt;|&quot;Alumina Solution&quot;| n9
+  n21 --&gt;|&quot;Plastic&quot;| n6
+  n22 --&gt;|&quot;Rubber&quot;| n3
+  n22 --&gt;|&quot;Rubber&quot;| n6
+  n10 --&gt;|&quot;Bauxite&quot;| n1
+  n23 --&gt;|&quot;Packaged Fuel&quot;| n6
+  n1 --&gt;|&quot;Alumina Solution&quot;| n6
+  n9 --&gt;|&quot;Aluminum Scrap&quot;| n6
+  n6 --&gt; n16
+  n6 --&gt; n24
+  n6 --&gt; n9
+  n16 --&gt;|&quot;Aluminum Ingot&quot;| n6
+  n6 --&gt; n11
+  n6 --&gt; n8
+  n19 --&gt;|&quot;Aluminum Ingot&quot;| n6
+  n6 --&gt; n7
+  n7 --&gt;|&quot;Aluminum Casing&quot;| n6
+  n6 --&gt; n2
+  n8 --&gt;|&quot;Alclad Aluminum Sheet&quot;| n5
+  n8 --&gt;|&quot;Alclad Aluminum Sheet&quot;| n2
+  n8 --&gt;|&quot;Alclad Aluminum Sheet&quot;| n18
+  n6 --&gt; n5
+  n6 --&gt; n20
+  n13 --&gt;|&quot;Copper Sheet&quot;| n18
+  n18 --&gt;|&quot;Heat Sink&quot;| n6
+  n3 --&gt;|&quot;Cooling System&quot;| n2
+  n20 --&gt;|&quot;Empty Canister&quot;| n15
+  n11 --&gt;|&quot;Empty Fluid Tank&quot;| n6
+  n6 --&gt; n17
+  n15 --&gt;|&quot;Packaged Water&quot;| n6
+  n17 --&gt;|&quot;Packaged Nitrogen Gas&quot;| n6
+  n6 --&gt; n13
+  n6 --&gt; n3
+  n6 --&gt; n19
+  n4 --&gt;|&quot;Crude Oil&quot;| n25
+  n26 --&gt;|&quot;Fuel&quot;| n14
+  n27 --&gt;|&quot;Nitrogen Gas&quot;| n17
+  n27 --&gt;|&quot;Nitrogen Gas&quot;| n3
+  n12 --&gt;|&quot;Water&quot;| n1
+  n12 --&gt;|&quot;Water&quot;| n15
+  n12 --&gt;|&quot;Water&quot;| n3
+  n9 --&gt;|&quot;Aluminum Scrap&quot;| n1
+  n9 --&gt;|&quot;Aluminum Scrap&quot;| n15
+  n9 --&gt;|&quot;Aluminum Scrap&quot;| n3
+  n1 --&gt;|&quot;Alumina Solution&quot;| n9
   classDef res fill:#b36a2b,stroke:#0006,color:#fff;
   classDef gen fill:#d4a017,stroke:#0006,color:#1b2028;
   classDef store fill:#7a8699,stroke:#0006,color:#fff;
   classDef io fill:#c05617,stroke:#0006,color:#fff;
-  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre>
-    <div class="hint">drag to pan &middot; scroll to zoom &middot; buttons zoom</div>
+  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
+    <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="legend">
-    <span><i style="background:#b36a2b"></i>resource node</span>
-    <span><i style="background:#2f7fd6"></i>machine group</span>
+    <span><i style="background:#5b86c0"></i>machine group (xN)</span>
+    <span><i style="background:#b36a2b"></i>resource</span>
     <span><i style="background:#d4a017"></i>generator</span>
     <span><i style="background:#7a8699"></i>storage</span>
     <span><i style="background:#c05617"></i>&#8676; import / export &#8677;</span>
@@ -226,15 +207,38 @@ td.n{font-family:var(--mono);text-align:right}
     <h2 style="margin-top:12px">&larr; Imports</h2><span class="chip">Fuel <b>35</b></span> <span class="chip">Rubber <b>33</b></span> <span class="chip">Plastic <b>17</b></span> <span class="chip">Nitrogen Gas <b>17</b></span> <span class="chip">Packaged Fuel <b>1</b></span></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg-pan-zoom/3.6.1/svg-pan-zoom.min.js"></script>
 <script>
 var dark = matchMedia('(prefers-color-scheme: dark)').matches;
 mermaid.initialize({startOnLoad:false, theme: dark?'dark':'default',
-  flowchart:{useMaxWidth:true, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:60}});
+  flowchart:{useMaxWidth:false, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:65}});
 
-// pan/zoom the geographic map immediately
-function pz(svg){ if(svg) try{ svgPanZoom(svg,{controlIconsEnabled:true,fit:true,center:true,minZoom:0.15,maxZoom:40}); }catch(e){} }
-pz(document.querySelector('.view[data-pane="map"] svg'));
+function panzoom(view){
+  var stage=view.querySelector('.stage'), k=1,x=0,y=0,drag=false,lx,ly;
+  function apply(){stage.style.transform='translate('+x+'px,'+y+'px) scale('+k+')';}
+  function fit(){
+    k=1;x=0;y=0;apply();
+    var s=stage.getBoundingClientRect(), v=view.getBoundingClientRect();
+    if(!s.width||!s.height) return;
+    k=Math.min(v.width/s.width, v.height/s.height)*0.92;
+    x=(v.width - s.width*k)/2; y=(v.height - s.height*k)/2; apply();
+  }
+  function zoomAt(mx,my,f){var nk=Math.min(Math.max(k*f,0.05),60);x=mx-(mx-x)*(nk/k);y=my-(my-y)*(nk/k);k=nk;apply();}
+  view.addEventListener('wheel',function(e){e.preventDefault();var v=view.getBoundingClientRect();
+    zoomAt(e.clientX-v.left,e.clientY-v.top, Math.exp(-e.deltaY*0.0016));},{passive:false});
+  view.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;view.setPointerCapture(e.pointerId);view.style.cursor='grabbing';});
+  view.addEventListener('pointermove',function(e){if(!drag)return;x+=e.clientX-lx;y+=e.clientY-ly;lx=e.clientX;ly=e.clientY;apply();});
+  function end(){drag=false;view.style.cursor='grab';}
+  view.addEventListener('pointerup',end); view.addEventListener('pointercancel',end);
+  view.querySelectorAll('.zc button').forEach(function(btn){btn.onclick=function(){
+    var v=view.getBoundingClientRect();
+    if(btn.dataset.z==='in') zoomAt(v.width/2,v.height/2,1.3);
+    else if(btn.dataset.z==='out') zoomAt(v.width/2,v.height/2,1/1.3);
+    else fit();
+  };});
+  fit();
+}
+
+panzoom(document.querySelector('.view[data-pane="map"]'));
 
 var flowReady=false;
 function showFlow(){
@@ -242,8 +246,8 @@ function showFlow(){
   var pane=document.querySelector('.view[data-pane="flow"]');
   mermaid.run({nodes:[pane.querySelector('.mermaid')]}).then(function(){
     var svg=pane.querySelector('svg');
-    if(svg){ svg.removeAttribute('height'); svg.removeAttribute('width');
-      svg.style.width='100%'; svg.style.height='100%'; pz(svg); }
+    if(svg){svg.removeAttribute('style');svg.removeAttribute('width');svg.removeAttribute('height');}
+    panzoom(pane);
   });
 }
 document.querySelectorAll('.tabs button').forEach(function(b){

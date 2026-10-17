@@ -2,9 +2,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Caterium</title><style>
 :root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;--grid:#e9e3d7;
-  --pow:#d4a017;--prod:#9aa6b2;--mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}}
-:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}
+  --mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
 .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
 a{color:var(--accent);text-decoration:none}
@@ -14,10 +14,14 @@ h1{font-size:26px;margin:2px 0}.sub{color:var(--muted);font-size:14px;margin-bot
 .tabs{display:flex;gap:6px;margin-bottom:10px}
 .tabs button{font:inherit;font-size:13px;font-weight:600;padding:6px 16px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;cursor:pointer}
 .tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.view{border:1px solid var(--line);border-radius:10px;background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;height:70vh;min-height:360px;overflow:hidden;position:relative}
-.view svg{width:100%;height:100%;display:block}
-.hint{position:absolute;right:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
-.nlab{fill:var(--ink);font-family:var(--mono);font-size:11px;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.view{position:relative;height:72vh;min-height:380px;overflow:hidden;border:1px solid var(--line);border-radius:10px;
+  background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;touch-action:none;cursor:grab}
+.stage{position:absolute;top:0;left:0;transform-origin:0 0}
+.stage svg{display:block}
+.blab{fill:#fff;font-family:var(--sans);font-size:10.5px;font-weight:600;text-anchor:middle;paint-order:stroke;stroke:#0004;stroke-width:.4px}
+.zc{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:5px}
+.zc button{width:30px;height:30px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;font-size:16px;cursor:pointer;line-height:1}
+.hint{position:absolute;left:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -43,95 +47,97 @@ td.n{font-family:var(--mono);text-align:right}
     <button data-tab="flow">&#128257; Flow</button>
   </div>
   <div class="view" data-pane="map">
-    <svg viewBox="0 0 760 883" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><circle cx="601.3" cy="179.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="618.3" cy="173.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="598.3" cy="171.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="615.2" cy="164.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="595.7" cy="163.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="612.5" cy="157.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="593.0" cy="156.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="610.0" cy="150.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="590.4" cy="149.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="607.3" cy="143.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="588.2" cy="143.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="605.1" cy="137.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="585.5" cy="136.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="602.5" cy="129.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="588.1" cy="94.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="581.9" cy="77.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="578.5" cy="97.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="572.3" cy="80.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="568.7" cy="101.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="562.5" cy="84.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="559.0" cy="104.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="552.9" cy="87.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="549.4" cy="108.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="543.2" cy="91.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="539.8" cy="111.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="533.6" cy="94.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="524.1" cy="117.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="517.9" cy="100.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="512.4" cy="122.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="506.2" cy="106.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="500.3" cy="127.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="494.1" cy="110.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="110.6" cy="555.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="77.1" cy="396.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="171.0" cy="396.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="147.9" cy="396.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="149.1" cy="493.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="149.1" cy="462.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.0" cy="484.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="497.6" cy="785.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="497.6" cy="803.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="507.9" cy="785.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="507.9" cy="803.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.4" cy="785.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.4" cy="803.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="111.9" cy="696.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="156.9" cy="693.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="156.9" cy="711.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="169.7" cy="693.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="169.7" cy="711.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="180.0" cy="693.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="180.0" cy="711.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="151.7" cy="747.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="172.3" cy="747.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="272.6" cy="725.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="295.7" cy="766.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="308.6" cy="669.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="421.7" cy="723.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="398.6" cy="723.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="471.9" cy="658.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="448.7" cy="658.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="140.1" cy="806.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="682.9" cy="99.1" r="6" fill="#d4a017" stroke="#0008" stroke-width="0.9"/><text x="691.9" y="103.1" class="nlab">Caterium Ore 600</text>
-<circle cx="471.7" cy="793.6" r="6" fill="#c9b68a" stroke="#0008" stroke-width="0.9"/><text x="480.7" y="797.6" class="nlab">Limestone 300</text></svg>
+    <div class="stage"><svg viewBox="0 0 1189 1285" width="1189" height="1285" xmlns="http://www.w3.org/2000/svg"><rect x="912.5" y="117.1" width="133.4" height="37.0" rx="6" fill="#d4a017" stroke="#0007" stroke-width="0.8"/>
+<text x="979.2" y="132.1" class="blab">Caterium Ingot x14</text>
+<text x="979.2" y="145.1" class="blab">200/min</text>
+<rect x="1069.2" y="24.0" width="95.6" height="37.0" rx="6" fill="#d4a017" stroke="#0007" stroke-width="0.8"/>
+<text x="1117.0" y="39.0" class="blab">Caterium Ore</text>
+<text x="1117.0" y="52.0" class="blab">600/min</text>
+<rect x="829.7" y="27.1" width="101.9" height="37.0" rx="6" fill="#d4a017" stroke="#0007" stroke-width="0.8"/>
+<text x="880.6" y="42.1" class="blab">Quickwire x18</text>
+<text x="880.6" y="55.1" class="blab">1,060/min</text>
+<rect x="705.3" y="1202.6" width="76.7" height="37.0" rx="6" fill="#b9a978" stroke="#0007" stroke-width="0.8"/>
+<text x="743.7" y="1217.6" class="blab">Limestone</text>
+<text x="743.7" y="1230.6" class="blab">300/min</text>
+<rect x="119.6" y="777.9" width="158.6" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="198.9" y="792.9" class="blab">TrainDockingStation x6</text>
+<rect x="66.4" y="810.9" width="158.6" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="145.7" y="825.9" class="blab">Fused Modular Frame x1</text>
+<text x="145.7" y="838.9" class="blab">2/min</text>
+<rect x="24.0" y="527.9" width="108.2" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="78.1" y="542.9" class="blab">Turbo Motor x1</text>
+<text x="78.1" y="555.9" class="blab">2/min</text>
+<rect x="114.6" y="975.2" width="114.5" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="171.8" y="990.2" class="blab">ResourceSink x1</text>
+<rect x="141.2" y="527.9" width="196.4" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="239.4" y="542.9" class="blab">Thermal Propulsion Rocket x2</text>
+<text x="239.4" y="555.9" class="blab">4/min</text>
+<rect x="105.9" y="667.5" width="190.1" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="200.9" y="682.5" class="blab">Pressure Conversion Cube x2</text>
+<text x="200.9" y="695.5" class="blab">2/min</text>
+<rect x="334.2" y="879.0" width="89.3" height="24.0" rx="6" fill="#7a8699" stroke="#0007" stroke-width="0.8"/>
+<text x="378.8" y="894.0" class="blab">Storage x13</text>
+<rect x="432.2" y="591.1" width="120.8" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="492.6" y="606.1" class="blab">SpaceElevator x1</text>
+<rect x="305.0" y="678.4" width="120.8" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="365.4" y="693.4" class="blab">Nuclear Pasta x1</text>
+<text x="365.4" y="706.4" class="blab">0/min</text>
+<rect x="791.0" y="1204.4" width="89.3" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="835.7" y="1219.4" class="blab">Concrete x6</text>
+<text x="835.7" y="1232.4" class="blab">100/min</text>
+<rect x="69.3" y="1038.5" width="120.8" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="129.7" y="1053.5" class="blab">Ficsite Ingot x1</text>
+<text x="129.7" y="1066.5" class="blab">30/min</text>
+<rect x="199.1" y="1043.9" width="127.1" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="262.7" y="1058.9" class="blab">Ficsite Trigon x6</text>
+<text x="262.7" y="1071.9" class="blab">180/min</text>
+<rect x="136.9" y="1123.6" width="183.8" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="228.8" y="1138.6" class="blab">Excited Photonic Matter x2</text>
+<text x="228.8" y="1151.6" class="blab">400/min</text>
+<rect x="329.7" y="1089.9" width="190.1" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="424.8" y="1104.9" class="blab">Neural-Quantum Processor x1</text>
+<text x="424.8" y="1117.9" class="blab">3/min</text>
+<rect x="380.6" y="1156.4" width="158.6" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="459.9" y="1171.4" class="blab">Dark Matter Crystal x1</text>
+<text x="459.9" y="1184.4" class="blab">30/min</text>
+<rect x="386.7" y="992.7" width="190.1" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="481.7" y="1007.7" class="blab">Superposition Oscillator x1</text>
+<text x="481.7" y="1020.7" class="blab">5/min</text>
+<rect x="584.3" y="1084.3" width="139.7" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="654.1" y="1099.3" class="blab">Singularity Cell x2</text>
+<text x="654.1" y="1112.3" class="blab">20/min</text>
+<rect x="656.8" y="973.0" width="164.9" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="739.2" y="988.0" class="blab">Ballistic Warp Drive x2</text>
+<text x="739.2" y="1001.0" class="blab">2/min</text>
+<rect x="116.5" y="1224.0" width="158.6" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="195.8" y="1239.0" class="blab">Dark Matter Residue x1</text>
+<text x="195.8" y="1252.0" class="blab">100/min</text></svg></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
     <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="view" data-pane="flow" hidden>
-    <pre class="mermaid" style="margin:0">flowchart LR
-  n1[&quot;Caterium Ingot x14&lt;br/&gt;200/min&quot;]:::mach
-  n2[&quot;Nuclear Pasta x1&lt;br/&gt;0/min&quot;]:::mach
+    <div class="stage"><pre class="mermaid" style="margin:0">flowchart LR
+  n1[&quot;TrainDockingStation x6&quot;]:::mach
+  n2([&quot;Limestone&lt;br/&gt;300/min&quot;]):::res
   n3[&quot;Quickwire x18&lt;br/&gt;1,060/min&quot;]:::mach
-  n4[&quot;Turbo Motor x1&lt;br/&gt;2/min&quot;]:::mach
-  n5[&quot;ResourceSink x1&quot;]:::mach
-  n6[&quot;Fused Modular Frame x1&lt;br/&gt;2/min&quot;]:::mach
-  n7[&quot;Dark Matter Residue x1&lt;br/&gt;100/min&quot;]:::mach
-  n8[&quot;Pressure Conversion Cube x2&lt;br/&gt;2/min&quot;]:::mach
-  n9[&quot;TrainDockingStation x6&quot;]:::mach
-  n10[&quot;Dark Matter Crystal x1&lt;br/&gt;30/min&quot;]:::mach
-  n11[&quot;Ficsite Ingot x1&lt;br/&gt;30/min&quot;]:::mach
-  n12([&quot;Caterium Ore&lt;br/&gt;600/min&quot;]):::res
-  n13[&quot;Singularity Cell x2&lt;br/&gt;20/min&quot;]:::mach
+  n4[&quot;ResourceSink x1&quot;]:::mach
+  n5[&quot;Pressure Conversion Cube x2&lt;br/&gt;2/min&quot;]:::mach
+  n6[&quot;Turbo Motor x1&lt;br/&gt;2/min&quot;]:::mach
+  n7([&quot;Caterium Ore&lt;br/&gt;600/min&quot;]):::res
+  n8[(&quot;Storage x13&quot;)]:::store
+  n9[&quot;Concrete x6&lt;br/&gt;100/min&quot;]:::mach
+  n10[&quot;Caterium Ingot x14&lt;br/&gt;200/min&quot;]:::mach
+  n11[&quot;Nuclear Pasta x1&lt;br/&gt;0/min&quot;]:::mach
+  n12[&quot;Ficsite Trigon x6&lt;br/&gt;180/min&quot;]:::mach
+  n13[&quot;Fused Modular Frame x1&lt;br/&gt;2/min&quot;]:::mach
   n14[&quot;Ballistic Warp Drive x2&lt;br/&gt;2/min&quot;]:::mach
-  n15[&quot;Ficsite Trigon x6&lt;br/&gt;180/min&quot;]:::mach
-  n16[&quot;Concrete x6&lt;br/&gt;100/min&quot;]:::mach
-  n17[&quot;Thermal Propulsion Rocket x2&lt;br/&gt;4/min&quot;]:::mach
-  n18([&quot;Limestone&lt;br/&gt;300/min&quot;]):::res
-  n19[(&quot;Storage x13&quot;)]:::store
-  n20[&quot;Neural-Quantum Processor x1&lt;br/&gt;3/min&quot;]:::mach
-  n21[&quot;Superposition Oscillator x1&lt;br/&gt;5/min&quot;]:::mach
+  n15[&quot;Superposition Oscillator x1&lt;br/&gt;5/min&quot;]:::mach
+  n16[&quot;Thermal Propulsion Rocket x2&lt;br/&gt;4/min&quot;]:::mach
+  n17[&quot;Dark Matter Residue x1&lt;br/&gt;100/min&quot;]:::mach
+  n18[&quot;Ficsite Ingot x1&lt;br/&gt;30/min&quot;]:::mach
+  n19[&quot;Singularity Cell x2&lt;br/&gt;20/min&quot;]:::mach
+  n20[&quot;Dark Matter Crystal x1&lt;br/&gt;30/min&quot;]:::mach
+  n21[&quot;Neural-Quantum Processor x1&lt;br/&gt;3/min&quot;]:::mach
   n22&gt;&quot;⇤ mixed&lt;br/&gt;(from Main Base)&quot;]:::io
   n23&gt;&quot;⇥ Quickwire&lt;br/&gt;(to Main Base)&quot;]:::io
   n24&gt;&quot;⇥ mixed&lt;br/&gt;(to Main Base)&quot;]:::io
@@ -143,64 +149,65 @@ td.n{font-family:var(--mono);text-align:right}
   n30&gt;&quot;⇥ Concrete&lt;br/&gt;(to Main Base)&quot;]:::io
   n31&gt;&quot;⇤ Time Crystal&lt;br/&gt;(from Main Base)&quot;]:::io
   n32&gt;&quot;⇤ Ficsite Ingot&lt;br/&gt;(from Main Base)&quot;]:::io
-  n22 --&gt; n13
-  n1 --&gt;|&quot;Caterium Ingot&quot;| n3
-  n12 --&gt;|&quot;Caterium Ore&quot;| n1
-  n3 --&gt;|&quot;Quickwire&quot;| n23
-  n22 --&gt; n4
   n22 --&gt; n19
-  n22 --&gt; n20
+  n10 --&gt;|&quot;Caterium Ingot&quot;| n3
+  n7 --&gt;|&quot;Caterium Ore&quot;| n10
+  n3 --&gt;|&quot;Quickwire&quot;| n23
   n22 --&gt; n6
-  n18 --&gt;|&quot;Limestone&quot;| n16
-  n22 --&gt; n17
-  n9 --&gt; n24
-  n25 --&gt;|&quot;Crystal Oscillator&quot;| n21
-  n26 --&gt;|&quot;Radio Control Unit&quot;| n8
-  n26 --&gt;|&quot;Radio Control Unit&quot;| n4
-  n6 --&gt;|&quot;Fused Modular Frame&quot;| n17
-  n6 --&gt;|&quot;Fused Modular Frame&quot;| n8
-  n27 --&gt;|&quot;Nitrogen Gas&quot;| n5
-  n4 --&gt;|&quot;Turbo Motor&quot;| n28
-  n17 --&gt;|&quot;Thermal Propulsion Rocket&quot;| n19
-  n8 --&gt;|&quot;Pressure Conversion Cube&quot;| n19
-  n19 --&gt; n2
-  n29 --&gt;|&quot;Copper Powder&quot;| n19
-  n2 --&gt;|&quot;Nuclear Pasta&quot;| n13
-  n16 --&gt;|&quot;Concrete&quot;| n30
-  n22 --&gt; n9
-  n19 --&gt; n14
-  n31 --&gt;|&quot;Time Crystal&quot;| n19
-  n22 --&gt; n11
+  n22 --&gt; n8
   n22 --&gt; n21
-  n11 --&gt;|&quot;Ficsite Ingot&quot;| n19
-  n32 --&gt;|&quot;Ficsite Ingot&quot;| n19
-  n19 --&gt; n15
-  n15 --&gt;|&quot;Ficsite Trigon&quot;| n19
-  n19 --&gt; n20
-  n20 --&gt;|&quot;Neural-Quantum Processor&quot;| n19
-  n22 --&gt; n7
-  n19 --&gt; n10
-  n10 --&gt;|&quot;Dark Matter Crystal&quot;| n21
-  n10 --&gt;|&quot;Dark Matter Crystal&quot;| n19
-  n19 --&gt; n13
-  n21 --&gt;|&quot;Superposition Oscillator&quot;| n19
-  n13 --&gt;|&quot;Singularity Cell&quot;| n14
-  n14 --&gt;|&quot;Ballistic Warp Drive&quot;| n19
-  n27 --&gt;|&quot;Nitrogen Gas&quot;| n6
-  n20 --&gt;|&quot;Neural-Quantum Processor&quot;| n10
-  n20 --&gt;|&quot;Neural-Quantum Processor&quot;| n7
-  n21 --&gt;|&quot;Superposition Oscillator&quot;| n10
-  n21 --&gt;|&quot;Superposition Oscillator&quot;| n7
+  n22 --&gt; n13
+  n2 --&gt;|&quot;Limestone&quot;| n9
+  n22 --&gt; n16
+  n1 --&gt; n24
+  n25 --&gt;|&quot;Crystal Oscillator&quot;| n15
+  n26 --&gt;|&quot;Radio Control Unit&quot;| n5
+  n26 --&gt;|&quot;Radio Control Unit&quot;| n6
+  n13 --&gt;|&quot;Fused Modular Frame&quot;| n16
+  n13 --&gt;|&quot;Fused Modular Frame&quot;| n5
+  n27 --&gt;|&quot;Nitrogen Gas&quot;| n4
+  n6 --&gt;|&quot;Turbo Motor&quot;| n28
+  n16 --&gt;|&quot;Thermal Propulsion Rocket&quot;| n8
+  n5 --&gt;|&quot;Pressure Conversion Cube&quot;| n8
+  n8 --&gt; n11
+  n29 --&gt;|&quot;Copper Powder&quot;| n8
+  n11 --&gt;|&quot;Nuclear Pasta&quot;| n19
+  n9 --&gt;|&quot;Concrete&quot;| n30
+  n22 --&gt; n1
+  n8 --&gt; n14
+  n31 --&gt;|&quot;Time Crystal&quot;| n8
+  n22 --&gt; n18
+  n22 --&gt; n15
+  n18 --&gt;|&quot;Ficsite Ingot&quot;| n8
+  n32 --&gt;|&quot;Ficsite Ingot&quot;| n8
+  n8 --&gt; n12
+  n12 --&gt;|&quot;Ficsite Trigon&quot;| n8
+  n8 --&gt; n21
+  n21 --&gt;|&quot;Neural-Quantum Processor&quot;| n8
+  n22 --&gt; n17
+  n8 --&gt; n20
+  n20 --&gt;|&quot;Dark Matter Crystal&quot;| n15
+  n20 --&gt;|&quot;Dark Matter Crystal&quot;| n8
+  n8 --&gt; n19
+  n15 --&gt;|&quot;Superposition Oscillator&quot;| n8
+  n19 --&gt;|&quot;Singularity Cell&quot;| n14
+  n14 --&gt;|&quot;Ballistic Warp Drive&quot;| n8
+  n27 --&gt;|&quot;Nitrogen Gas&quot;| n13
+  n15 --&gt;|&quot;Superposition Oscillator&quot;| n17
+  n15 --&gt;|&quot;Superposition Oscillator&quot;| n20
+  n21 --&gt;|&quot;Neural-Quantum Processor&quot;| n17
+  n21 --&gt;|&quot;Neural-Quantum Processor&quot;| n20
   classDef res fill:#b36a2b,stroke:#0006,color:#fff;
   classDef gen fill:#d4a017,stroke:#0006,color:#1b2028;
   classDef store fill:#7a8699,stroke:#0006,color:#fff;
   classDef io fill:#c05617,stroke:#0006,color:#fff;
-  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre>
-    <div class="hint">drag to pan &middot; scroll to zoom &middot; buttons zoom</div>
+  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
+    <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="legend">
-    <span><i style="background:#b36a2b"></i>resource node</span>
-    <span><i style="background:#2f7fd6"></i>machine group</span>
+    <span><i style="background:#5b86c0"></i>machine group (xN)</span>
+    <span><i style="background:#b36a2b"></i>resource</span>
     <span><i style="background:#d4a017"></i>generator</span>
     <span><i style="background:#7a8699"></i>storage</span>
     <span><i style="background:#c05617"></i>&#8676; import / export &#8677;</span>
@@ -216,15 +223,38 @@ td.n{font-family:var(--mono);text-align:right}
     <h2 style="margin-top:12px">&larr; Imports</h2><span class="chip">(storage) <b>25</b></span> <span class="chip">Radio Control Unit <b>6</b></span> <span class="chip">Copper Powder <b>4</b></span> <span class="chip">Crystal Oscillator <b>2</b></span> <span class="chip">Nitrogen Gas <b>2</b></span> <span class="chip">Time Crystal <b>1</b></span> <span class="chip">Ficsite Ingot <b>1</b></span></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg-pan-zoom/3.6.1/svg-pan-zoom.min.js"></script>
 <script>
 var dark = matchMedia('(prefers-color-scheme: dark)').matches;
 mermaid.initialize({startOnLoad:false, theme: dark?'dark':'default',
-  flowchart:{useMaxWidth:true, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:60}});
+  flowchart:{useMaxWidth:false, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:65}});
 
-// pan/zoom the geographic map immediately
-function pz(svg){ if(svg) try{ svgPanZoom(svg,{controlIconsEnabled:true,fit:true,center:true,minZoom:0.15,maxZoom:40}); }catch(e){} }
-pz(document.querySelector('.view[data-pane="map"] svg'));
+function panzoom(view){
+  var stage=view.querySelector('.stage'), k=1,x=0,y=0,drag=false,lx,ly;
+  function apply(){stage.style.transform='translate('+x+'px,'+y+'px) scale('+k+')';}
+  function fit(){
+    k=1;x=0;y=0;apply();
+    var s=stage.getBoundingClientRect(), v=view.getBoundingClientRect();
+    if(!s.width||!s.height) return;
+    k=Math.min(v.width/s.width, v.height/s.height)*0.92;
+    x=(v.width - s.width*k)/2; y=(v.height - s.height*k)/2; apply();
+  }
+  function zoomAt(mx,my,f){var nk=Math.min(Math.max(k*f,0.05),60);x=mx-(mx-x)*(nk/k);y=my-(my-y)*(nk/k);k=nk;apply();}
+  view.addEventListener('wheel',function(e){e.preventDefault();var v=view.getBoundingClientRect();
+    zoomAt(e.clientX-v.left,e.clientY-v.top, Math.exp(-e.deltaY*0.0016));},{passive:false});
+  view.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;view.setPointerCapture(e.pointerId);view.style.cursor='grabbing';});
+  view.addEventListener('pointermove',function(e){if(!drag)return;x+=e.clientX-lx;y+=e.clientY-ly;lx=e.clientX;ly=e.clientY;apply();});
+  function end(){drag=false;view.style.cursor='grab';}
+  view.addEventListener('pointerup',end); view.addEventListener('pointercancel',end);
+  view.querySelectorAll('.zc button').forEach(function(btn){btn.onclick=function(){
+    var v=view.getBoundingClientRect();
+    if(btn.dataset.z==='in') zoomAt(v.width/2,v.height/2,1.3);
+    else if(btn.dataset.z==='out') zoomAt(v.width/2,v.height/2,1/1.3);
+    else fit();
+  };});
+  fit();
+}
+
+panzoom(document.querySelector('.view[data-pane="map"]'));
 
 var flowReady=false;
 function showFlow(){
@@ -232,8 +262,8 @@ function showFlow(){
   var pane=document.querySelector('.view[data-pane="flow"]');
   mermaid.run({nodes:[pane.querySelector('.mermaid')]}).then(function(){
     var svg=pane.querySelector('svg');
-    if(svg){ svg.removeAttribute('height'); svg.removeAttribute('width');
-      svg.style.width='100%'; svg.style.height='100%'; pz(svg); }
+    if(svg){svg.removeAttribute('style');svg.removeAttribute('width');svg.removeAttribute('height');}
+    panzoom(pane);
   });
 }
 document.querySelectorAll('.tabs button').forEach(function(b){

@@ -2,9 +2,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Main Base</title><style>
 :root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;--grid:#e9e3d7;
-  --pow:#d4a017;--prod:#9aa6b2;--mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}}
-:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}
+  --mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
 .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
 a{color:var(--accent);text-decoration:none}
@@ -14,10 +14,14 @@ h1{font-size:26px;margin:2px 0}.sub{color:var(--muted);font-size:14px;margin-bot
 .tabs{display:flex;gap:6px;margin-bottom:10px}
 .tabs button{font:inherit;font-size:13px;font-weight:600;padding:6px 16px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;cursor:pointer}
 .tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.view{border:1px solid var(--line);border-radius:10px;background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;height:70vh;min-height:360px;overflow:hidden;position:relative}
-.view svg{width:100%;height:100%;display:block}
-.hint{position:absolute;right:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
-.nlab{fill:var(--ink);font-family:var(--mono);font-size:11px;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.view{position:relative;height:72vh;min-height:380px;overflow:hidden;border:1px solid var(--line);border-radius:10px;
+  background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;touch-action:none;cursor:grab}
+.stage{position:absolute;top:0;left:0;transform-origin:0 0}
+.stage svg{display:block}
+.blab{fill:#fff;font-family:var(--sans);font-size:10.5px;font-weight:600;text-anchor:middle;paint-order:stroke;stroke:#0004;stroke-width:.4px}
+.zc{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:5px}
+.zc button{width:30px;height:30px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;font-size:16px;cursor:pointer;line-height:1}
+.hint{position:absolute;left:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -43,367 +47,233 @@ td.n{font-family:var(--mono);text-align:right}
     <button data-tab="flow">&#128257; Flow</button>
   </div>
   <div class="view" data-pane="map">
-    <svg viewBox="0 0 760 641" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><circle cx="535.4" cy="372.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="538.6" cy="366.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.4" cy="363.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="533.8" cy="379.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="416.6" cy="346.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="425.4" cy="347.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="433.3" cy="347.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="402.7" cy="262.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="394.8" cy="262.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="373.8" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="381.7" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="474.7" cy="546.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="472.5" cy="542.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="470.3" cy="538.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="468.2" cy="534.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="481.1" cy="527.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="483.3" cy="531.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="485.5" cy="534.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="487.7" cy="538.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="498.9" cy="570.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="507.2" cy="584.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="505.0" cy="567.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="511.0" cy="563.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="517.1" cy="560.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="523.2" cy="556.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="513.3" cy="581.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.3" cy="577.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="525.4" cy="574.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="501.2" cy="588.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="492.9" cy="574.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="529.2" cy="553.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="535.3" cy="549.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="531.5" cy="570.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="537.5" cy="567.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="543.6" cy="563.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="523.1" cy="535.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.6" cy="529.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="516.1" cy="523.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="512.6" cy="517.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="509.1" cy="511.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="505.6" cy="505.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="502.1" cy="498.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="498.6" cy="492.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="495.1" cy="486.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="491.6" cy="480.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="488.1" cy="474.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="484.6" cy="468.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="537.5" cy="527.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="534.0" cy="520.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="530.5" cy="514.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="527.0" cy="508.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="523.5" cy="502.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="520.0" cy="496.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="516.5" cy="490.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="513.0" cy="484.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="509.5" cy="478.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="506.0" cy="472.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="502.5" cy="466.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="499.0" cy="460.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="367.6" cy="556.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="375.0" cy="569.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="373.7" cy="552.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="381.1" cy="565.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.5" cy="416.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.5" cy="411.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.5" cy="407.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.5" cy="403.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.5" cy="398.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.5" cy="416.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.5" cy="411.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.5" cy="407.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.5" cy="403.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.5" cy="398.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="381.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.5" cy="381.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.5" cy="374.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="374.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="367.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.5" cy="367.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.5" cy="360.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="360.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="353.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.5" cy="353.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.5" cy="346.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="346.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="399.2" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="399.2" cy="311.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="374.7" cy="310.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="374.7" cy="318.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.8" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.7" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="415.8" cy="382.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="415.8" cy="375.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="428.0" cy="375.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="428.0" cy="382.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="377.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="369.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="360.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="386.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="323.9" cy="386.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="323.9" cy="377.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="323.9" cy="369.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="323.9" cy="360.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="351.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="368.5" cy="373.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="368.5" cy="366.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.7" cy="373.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.7" cy="366.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="376.4" cy="354.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="376.4" cy="346.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="331.8" cy="318.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="344.9" cy="318.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="344.9" cy="314.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="331.8" cy="314.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="331.8" cy="309.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="344.9" cy="309.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="330.9" cy="290.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="330.9" cy="283.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.8" cy="290.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.8" cy="283.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="326.6" cy="251.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="338.8" cy="251.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="217.0" cy="141.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="230.8" cy="143.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="218.7" cy="136.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="230.8" cy="138.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="224.1" cy="105.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="236.1" cy="108.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="225.3" cy="99.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="237.4" cy="101.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="222.6" cy="114.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.6" cy="116.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="227.3" cy="87.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="239.4" cy="89.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="228.5" cy="80.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="424.5" cy="295.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="448.1" cy="295.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="424.5" cy="284.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="193.3" cy="376.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="172.3" cy="376.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="193.3" cy="365.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="172.3" cy="365.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="227.4" cy="266.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="227.4" cy="287.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="214.3" cy="266.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="214.3" cy="287.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="394.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="394.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="387.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="387.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="380.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="380.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="372.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="372.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="365.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="365.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="358.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="358.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="351.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.8" cy="217.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.8" cy="200.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="479.6" cy="209.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="463.9" cy="209.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.7" cy="297.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="369.4" cy="297.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="267.1" cy="279.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="251.4" cy="279.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="254.8" cy="241.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="254.8" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="315.2" cy="282.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="315.2" cy="232.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="315.2" cy="211.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="415.8" cy="368.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="218.7" cy="141.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="230.8" cy="143.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.8" cy="135.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="137.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="220.7" cy="130.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="232.7" cy="132.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="222.0" cy="117.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.0" cy="120.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="222.5" cy="110.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.6" cy="112.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="224.5" cy="103.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="236.6" cy="105.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="227.6" cy="91.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="239.6" cy="93.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="228.9" cy="83.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="240.9" cy="85.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="386.8" cy="549.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="392.9" cy="560.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="581.1" cy="286.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="565.3" cy="286.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="664.7" cy="374.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="648.9" cy="374.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="681.3" cy="455.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="682.2" cy="283.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="677.8" cy="324.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="677.8" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="688.3" cy="324.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="688.3" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="341.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="341.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="331.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="331.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="345.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="345.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="349.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="349.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="354.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="354.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="358.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="358.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="362.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="362.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="367.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="367.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="371.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="371.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="542.6" cy="295.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="542.6" cy="307.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="559.2" cy="292.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="559.2" cy="271.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="146.1" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="161.8" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="537.9" cy="185.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="568.5" cy="167.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="707.5" cy="488.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="360.7" cy="251.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="360.7" cy="251.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="360.7" cy="251.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="360.7" cy="251.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="365.9" cy="286.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="378.2" cy="286.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="365.9" cy="279.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="378.2" cy="279.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="365.9" cy="271.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.3" cy="369.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="319.6" cy="369.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.3" cy="362.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="319.6" cy="362.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.3" cy="355.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="319.6" cy="355.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.3" cy="349.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="319.6" cy="349.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="516.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="512.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="508.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="503.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="499.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="516.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="512.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="508.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="503.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="499.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="516.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="516.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="512.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="508.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="503.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="499.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="512.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="508.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="503.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="499.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="414.5" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="414.5" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="421.5" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="421.5" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="429.4" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="429.4" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="436.4" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="436.4" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="443.4" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="443.4" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.3" cy="480.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.3" cy="480.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.3" cy="480.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.3" cy="480.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="440.3" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="440.3" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="440.3" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="440.3" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="404.1" cy="479.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="404.1" cy="479.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="404.1" cy="479.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="143.4" cy="304.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="159.2" cy="304.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="52.5" cy="327.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="68.2" cy="327.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="385.2" cy="418.7" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/><text x="394.2" y="422.7" class="nlab">Iron Ore 300</text>
-<circle cx="363.2" cy="509.4" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/><text x="372.2" y="513.4" class="nlab">Iron Ore 240</text>
-<circle cx="429.9" cy="520.7" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/><text x="438.9" y="524.7" class="nlab">Iron Ore 240</text>
-<circle cx="335.4" cy="565.9" r="6" fill="#c9b68a" stroke="#0008" stroke-width="0.9"/><text x="344.4" y="569.9" class="nlab">Limestone 300</text>
-<circle cx="410.8" cy="424.5" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/><text x="419.8" y="428.5" class="nlab">Iron Ore 300</text>
-<circle cx="210.3" cy="149.6" r="6" fill="#c0703a" stroke="#0008" stroke-width="0.9"/><text x="219.3" y="153.6" class="nlab">Copper Ore 240</text>
-<circle cx="324.8" cy="298.3" r="6" fill="#c0703a" stroke="#0008" stroke-width="0.9"/><text x="333.8" y="302.3" class="nlab">Copper Ore 600</text>
-<circle cx="338.4" cy="330.4" r="6" fill="#c0703a" stroke="#0008" stroke-width="0.9"/><text x="347.4" y="334.4" class="nlab">Copper Ore 600</text>
-<circle cx="396.1" cy="537.2" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/><text x="405.1" y="541.2" class="nlab">Iron Ore 600</text></svg>
+    <div class="stage"><svg viewBox="0 0 1369 1016" width="1369" height="1016" xmlns="http://www.w3.org/2000/svg"><rect x="859.4" y="504.8" width="95.6" height="24.0" rx="6" fill="#7a8699" stroke="#0007" stroke-width="0.8"/>
+<text x="907.2" y="519.8" class="blab">Storage x143</text>
+<rect x="923.8" y="708.8" width="83.0" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="965.3" y="723.8" class="blab">Biomass x1</text>
+<text x="965.3" y="736.8" class="blab">60/min</text>
+<rect x="929.8" y="537.8" width="83.0" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="971.3" y="552.8" class="blab">Biomass x1</text>
+<text x="971.3" y="565.8" class="blab">300/min</text>
+<rect x="875.2" y="662.8" width="120.8" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="935.6" y="677.8" class="blab">Solid Biofuel x1</text>
+<text x="935.6" y="690.8" class="blab">60/min</text>
+<rect x="890.1" y="583.8" width="114.5" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="947.3" y="598.8" class="blab">ResourceSink x4</text>
+<rect x="920.8" y="616.8" width="83.0" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="962.3" y="631.8" class="blab">Biomass x1</text>
+<text x="962.3" y="644.8" class="blab">150/min</text>
+<rect x="688.6" y="543.3" width="171.2" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="774.2" y="558.3" class="blab">Reinforced Iron Plate x3</text>
+<text x="774.2" y="571.3" class="blab">18/min</text>
+<rect x="670.3" y="769.6" width="76.7" height="37.0" rx="6" fill="#b36a2b" stroke="#0007" stroke-width="0.8"/>
+<text x="708.7" y="784.6" class="blab">Iron Ore</text>
+<text x="708.7" y="797.6" class="blab">1,680/min</text>
+<rect x="646.7" y="402.5" width="158.6" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="726.0" y="417.5" class="blab">Versatile Framework x2</text>
+<text x="726.0" y="430.5" class="blab">10/min</text>
+<rect x="649.3" y="254.8" width="70.4" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="684.5" y="269.8" class="blab">Motor x2</text>
+<text x="684.5" y="282.8" class="blab">10/min</text>
+<rect x="692.8" y="861.6" width="108.2" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="746.9" y="876.6" class="blab">Iron Ingot x38</text>
+<text x="746.9" y="889.6" class="blab">1,140/min</text>
+<rect x="793.6" y="787.2" width="95.6" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="841.4" y="802.2" class="blab">Iron Rod x28</text>
+<text x="841.4" y="815.2" class="blab">420/min</text>
+<rect x="884.7" y="833.2" width="76.7" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="923.0" y="848.2" class="blab">Screw x24</text>
+<text x="923.0" y="861.2" class="blab">960/min</text>
+<rect x="551.0" y="955.0" width="76.7" height="37.0" rx="6" fill="#b9a978" stroke="#0007" stroke-width="0.8"/>
+<text x="589.3" y="970.0" class="blab">Limestone</text>
+<text x="589.3" y="983.0" class="blab">300/min</text>
+<rect x="636.7" y="942.0" width="89.3" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="681.3" y="957.0" class="blab">Concrete x6</text>
+<text x="681.3" y="970.0" class="blab">100/min</text>
+<rect x="650.2" y="497.3" width="70.4" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="685.4" y="512.3" class="blab">Rotor x4</text>
+<text x="685.4" y="525.3" class="blab">16/min</text>
+<rect x="554.8" y="300.8" width="139.7" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="624.7" y="315.8" class="blab">Automated Wiring x2</text>
+<text x="624.7" y="328.8" class="blab">8/min</text>
+<rect x="708.8" y="723.6" width="108.2" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="762.9" y="738.6" class="blab">Iron Plate x15</text>
+<text x="762.9" y="751.6" class="blab">308/min</text>
+<rect x="543.4" y="701.8" width="108.2" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="597.5" y="716.8" class="blab">Steel Ingot x9</text>
+<text x="597.5" y="729.8" class="blab">585/min</text>
+<rect x="577.7" y="563.8" width="101.9" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="628.6" y="578.8" class="blab">Steel Beam x4</text>
+<text x="628.6" y="591.8" class="blab">60/min</text>
+<rect x="578.6" y="655.8" width="183.8" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="670.5" y="670.8" class="blab">Encased Industrial Beam x2</text>
+<text x="670.5" y="683.8" class="blab">20/min</text>
+<rect x="408.3" y="484.8" width="120.8" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="468.7" y="499.8" class="blab">Copper Ingot x36</text>
+<text x="468.7" y="512.8" class="blab">1,350/min</text>
+<rect x="463.7" y="208.8" width="70.4" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="498.9" y="223.8" class="blab">Wire x21</text>
+<text x="498.9" y="236.8" class="blab">705/min</text>
+<rect x="410.7" y="135.7" width="70.4" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="445.9" y="150.7" class="blab">Cable x9</text>
+<text x="445.9" y="163.7" class="blab">315/min</text>
+<rect x="470.9" y="346.8" width="83.0" height="37.0" rx="6" fill="#c0703a" stroke="#0007" stroke-width="0.8"/>
+<text x="512.4" y="361.8" class="blab">Copper Ore</text>
+<text x="512.4" y="374.8" class="blab">1,440/min</text>
+<rect x="722.5" y="448.5" width="120.8" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="782.9" y="463.5" class="blab">Smart Plating x3</text>
+<text x="782.9" y="476.5" class="blab">6/min</text>
+<rect x="251.0" y="574.4" width="120.8" height="37.0" rx="6" fill="#3fa6a6" stroke="#0007" stroke-width="0.8"/>
+<text x="311.4" y="589.4" class="blab">Circuit Board x4</text>
+<text x="311.4" y="602.4" class="blab">34/min</text>
+<rect x="331.0" y="387.5" width="101.9" height="37.0" rx="6" fill="#3fa6a6" stroke="#0007" stroke-width="0.8"/>
+<text x="382.0" y="402.5" class="blab">AI Limiter x4</text>
+<text x="382.0" y="415.5" class="blab">20/min</text>
+<rect x="329.6" y="620.4" width="120.8" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="390.0" y="635.4" class="blab">Copper Sheet x13</text>
+<text x="390.0" y="648.4" class="blab">130/min</text>
+<rect x="474.4" y="530.8" width="127.1" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="538.0" y="545.8" class="blab">ConstructorMk1 x2</text>
+<rect x="879.2" y="320.8" width="114.5" height="37.0" rx="6" fill="#c2a12e" stroke="#0007" stroke-width="0.8"/>
+<text x="936.4" y="335.8" class="blab">Black Powder x1</text>
+<text x="936.4" y="348.8" class="blab">45/min</text>
+<rect x="905.8" y="274.8" width="89.3" height="37.0" rx="6" fill="#c2a12e" stroke="#0007" stroke-width="0.8"/>
+<text x="950.4" y="289.8" class="blab">Nobelisk x1</text>
+<text x="950.4" y="302.8" class="blab">10/min</text>
+<rect x="769.7" y="274.8" width="127.1" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="833.2" y="289.8" class="blab">Modular Engine x2</text>
+<text x="833.2" y="302.8" class="blab">2/min</text>
+<rect x="554.9" y="451.3" width="158.6" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="634.2" y="466.3" class="blab">Heavy Modular Frame x2</text>
+<text x="634.2" y="479.3" class="blab">4/min</text>
+<rect x="367.6" y="438.8" width="171.2" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="453.2" y="453.8" class="blab">Adaptive Control Unit x2</text>
+<text x="453.2" y="466.8" class="blab">2/min</text>
+<rect x="336.8" y="300.8" width="209.0" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="441.3" y="315.8" class="blab">Electromagnetic Control Rod x2</text>
+<text x="441.3" y="328.8" class="blab">8/min</text>
+<rect x="447.6" y="392.8" width="190.1" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="542.7" y="407.8" class="blab">Assembly Director System x1</text>
+<text x="542.7" y="420.8" class="blab">1/min</text>
+<rect x="597.9" y="609.8" width="114.5" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="655.1" y="624.8" class="blab">AssemblerMk1 x2</text>
+<rect x="450.2" y="254.8" width="190.1" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="545.3" y="269.8" class="blab">Magnetic Field Generator x2</text>
+<text x="545.3" y="282.8" class="blab">2/min</text>
+<rect x="959.2" y="412.8" width="152.3" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="1035.3" y="427.8" class="blab">Crystal Oscillator x2</text>
+<text x="1035.3" y="440.8" class="blab">3/min</text>
+<rect x="1114.2" y="599.7" width="152.3" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="1190.3" y="614.7" class="blab">Radio Control Unit x2</text>
+<text x="1190.3" y="627.7" class="blab">6/min</text>
+<rect x="1178.5" y="750.5" width="114.5" height="37.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="1235.8" y="765.5" class="blab">Nitrogen Gas x1</text>
+<text x="1235.8" y="778.5" class="blab">240/min</text>
+<rect x="1183.3" y="431.0" width="108.2" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="1237.4" y="446.0" class="blab">Turbo Motor x1</text>
+<text x="1237.4" y="459.0" class="blab">2/min</text>
+<rect x="1178.6" y="518.6" width="120.8" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="1239.0" y="533.6" class="blab">Copper Powder x4</text>
+<text x="1239.0" y="546.6" class="blab">200/min</text>
+<rect x="927.6" y="458.8" width="101.9" height="37.0" rx="6" fill="#c2a12e" stroke="#0007" stroke-width="0.8"/>
+<text x="978.6" y="473.8" class="blab">Iron Rebar x2</text>
+<text x="978.6" y="486.8" class="blab">30/min</text>
+<rect x="958.4" y="366.8" width="101.9" height="37.0" rx="6" fill="#c2a12e" stroke="#0007" stroke-width="0.8"/>
+<text x="1009.4" y="381.8" class="blab">Stun Rebar x2</text>
+<text x="1009.4" y="394.8" class="blab">20/min</text>
+<rect x="213.3" y="528.4" width="89.3" height="37.0" rx="6" fill="#3fa6a6" stroke="#0007" stroke-width="0.8"/>
+<text x="257.9" y="543.4" class="blab">Computer x2</text>
+<text x="257.9" y="556.4" class="blab">8/min</text>
+<rect x="925.2" y="228.8" width="89.3" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="969.8" y="243.8" class="blab">Diamonds x1</text>
+<text x="969.8" y="256.8" class="blab">12/min</text>
+<rect x="969.3" y="182.8" width="114.5" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="1026.6" y="197.8" class="blab">Time Crystal x1</text>
+<text x="1026.6" y="210.8" class="blab">6/min</text>
+<rect x="1224.0" y="810.5" width="120.8" height="37.0" rx="6" fill="#9b6bd6" stroke="#0007" stroke-width="0.8"/>
+<text x="1284.4" y="825.5" class="blab">Ficsite Ingot x1</text>
+<text x="1284.4" y="838.5" class="blab">30/min</text>
+<rect x="602.9" y="346.8" width="76.7" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="641.3" y="361.8" class="blab">Stator x4</text>
+<text x="641.3" y="374.8" class="blab">45/min</text>
+<rect x="487.0" y="609.8" width="101.9" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="537.9" y="624.8" class="blab">Steel Pipe x8</text>
+<text x="537.9" y="637.8" class="blab">160/min</text>
+<rect x="613.4" y="815.6" width="171.2" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="699.0" y="830.6" class="blab">Reinforced Iron Plate x7</text>
+<text x="699.0" y="843.6" class="blab">36/min</text>
+<rect x="729.6" y="494.5" width="120.8" height="37.0" rx="6" fill="#5b86c0" stroke="#0007" stroke-width="0.8"/>
+<text x="790.0" y="509.5" class="blab">Modular Frame x4</text>
+<text x="790.0" y="522.5" class="blab">17/min</text>
+<rect x="600.5" y="24.0" width="133.4" height="24.0" rx="6" fill="#5b7088" stroke="#0007" stroke-width="0.8"/>
+<text x="667.2" y="39.0" class="blab">ManufacturerMk1 x2</text>
+<rect x="170.6" y="469.9" width="164.9" height="37.0" rx="6" fill="#3fa6a6" stroke="#0007" stroke-width="0.8"/>
+<text x="253.0" y="484.9" class="blab">High-Speed Connector x2</text>
+<text x="253.0" y="497.9" class="blab">8/min</text>
+<rect x="24.0" y="512.1" width="120.8" height="37.0" rx="6" fill="#3fa6a6" stroke="#0007" stroke-width="0.8"/>
+<text x="84.4" y="527.1" class="blab">Supercomputer x2</text>
+<text x="84.4" y="540.1" class="blab">4/min</text></svg></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
     <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="view" data-pane="flow" hidden>
-    <pre class="mermaid" style="margin:0">flowchart LR
-  n1[&quot;Automated Wiring x2&lt;br/&gt;8/min&quot;]:::mach
-  n2[&quot;Copper Powder x4&lt;br/&gt;200/min&quot;]:::mach
-  n3[&quot;Copper Ingot x36&lt;br/&gt;1,350/min&quot;]:::mach
-  n4[&quot;Diamonds x1&lt;br/&gt;12/min&quot;]:::mach
-  n5[&quot;Supercomputer x2&lt;br/&gt;4/min&quot;]:::mach
-  n6[&quot;Nitrogen Gas x1&lt;br/&gt;240/min&quot;]:::mach
-  n7[&quot;Steel Ingot x9&lt;br/&gt;585/min&quot;]:::mach
-  n8[&quot;Smart Plating x3&lt;br/&gt;6/min&quot;]:::mach
-  n9[&quot;AI Limiter x4&lt;br/&gt;20/min&quot;]:::mach
-  n10[&quot;Time Crystal x1&lt;br/&gt;6/min&quot;]:::mach
-  n11[&quot;Adaptive Control Unit x2&lt;br/&gt;2/min&quot;]:::mach
-  n12[&quot;Reinforced Iron Plate x3&lt;br/&gt;18/min&quot;]:::mach
-  n13[&quot;Assembly Director System x1&lt;br/&gt;1/min&quot;]:::mach
-  n14[&quot;Biomass x1&lt;br/&gt;150/min&quot;]:::mach
-  n15[&quot;Electromagnetic Control Rod x2&lt;br/&gt;8/min&quot;]:::mach
-  n16[&quot;Turbo Motor x1&lt;br/&gt;2/min&quot;]:::mach
-  n17[&quot;ResourceSink x4&quot;]:::mach
-  n18[&quot;Wire x21&lt;br/&gt;705/min&quot;]:::mach
-  n19[&quot;Encased Industrial Beam x2&lt;br/&gt;20/min&quot;]:::mach
-  n20[&quot;Iron Plate x15&lt;br/&gt;308/min&quot;]:::mach
-  n21[&quot;Radio Control Unit x2&lt;br/&gt;6/min&quot;]:::mach
-  n22[&quot;Stator x4&lt;br/&gt;45/min&quot;]:::mach
-  n23[&quot;Steel Pipe x8&lt;br/&gt;160/min&quot;]:::mach
-  n24[&quot;Modular Engine x2&lt;br/&gt;2/min&quot;]:::mach
-  n25([&quot;Copper Ore&lt;br/&gt;1,440/min&quot;]):::res
-  n26[&quot;High-Speed Connector x2&lt;br/&gt;8/min&quot;]:::mach
-  n27[&quot;AssemblerMk1 x2&quot;]:::mach
-  n28([&quot;Iron Ore&lt;br/&gt;1,680/min&quot;]):::res
-  n29[&quot;Biomass x1&lt;br/&gt;60/min&quot;]:::mach
-  n30[&quot;Steel Beam x4&lt;br/&gt;60/min&quot;]:::mach
-  n31[&quot;Magnetic Field Generator x2&lt;br/&gt;2/min&quot;]:::mach
-  n32[&quot;Circuit Board x4&lt;br/&gt;34/min&quot;]:::mach
-  n33[&quot;Modular Frame x4&lt;br/&gt;17/min&quot;]:::mach
-  n34[&quot;Black Powder x1&lt;br/&gt;45/min&quot;]:::mach
-  n35[&quot;Screw x24&lt;br/&gt;960/min&quot;]:::mach
-  n36[&quot;Cable x9&lt;br/&gt;315/min&quot;]:::mach
-  n37[&quot;Versatile Framework x2&lt;br/&gt;10/min&quot;]:::mach
-  n38[&quot;Computer x2&lt;br/&gt;8/min&quot;]:::mach
-  n39[&quot;Reinforced Iron Plate x7&lt;br/&gt;36/min&quot;]:::mach
-  n40[&quot;Heavy Modular Frame x2&lt;br/&gt;4/min&quot;]:::mach
+    <div class="stage"><pre class="mermaid" style="margin:0">flowchart LR
+  n1[&quot;Stator x4&lt;br/&gt;45/min&quot;]:::mach
+  n2[&quot;AI Limiter x4&lt;br/&gt;20/min&quot;]:::mach
+  n3[&quot;Magnetic Field Generator x2&lt;br/&gt;2/min&quot;]:::mach
+  n4[&quot;Steel Pipe x8&lt;br/&gt;160/min&quot;]:::mach
+  n5[&quot;ConstructorMk1 x2&quot;]:::mach
+  n6[&quot;Modular Frame x4&lt;br/&gt;17/min&quot;]:::mach
+  n7[&quot;Steel Beam x4&lt;br/&gt;60/min&quot;]:::mach
+  n8[&quot;Electromagnetic Control Rod x2&lt;br/&gt;8/min&quot;]:::mach
+  n9([&quot;Limestone&lt;br/&gt;300/min&quot;]):::res
+  n10[&quot;ResourceSink x4&quot;]:::mach
+  n11[&quot;Radio Control Unit x2&lt;br/&gt;6/min&quot;]:::mach
+  n12[&quot;Adaptive Control Unit x2&lt;br/&gt;2/min&quot;]:::mach
+  n13[&quot;Biomass x1&lt;br/&gt;150/min&quot;]:::mach
+  n14[&quot;Turbo Motor x1&lt;br/&gt;2/min&quot;]:::mach
+  n15[(&quot;Storage x143&quot;)]:::store
+  n16[&quot;Concrete x6&lt;br/&gt;100/min&quot;]:::mach
+  n17[&quot;Modular Engine x2&lt;br/&gt;2/min&quot;]:::mach
+  n18[&quot;Cable x9&lt;br/&gt;315/min&quot;]:::mach
+  n19[&quot;Supercomputer x2&lt;br/&gt;4/min&quot;]:::mach
+  n20[&quot;AssemblerMk1 x2&quot;]:::mach
+  n21[&quot;Computer x2&lt;br/&gt;8/min&quot;]:::mach
+  n22[&quot;Rotor x4&lt;br/&gt;16/min&quot;]:::mach
+  n23[&quot;Automated Wiring x2&lt;br/&gt;8/min&quot;]:::mach
+  n24[&quot;Nitrogen Gas x1&lt;br/&gt;240/min&quot;]:::mach
+  n25[&quot;Biomass x1&lt;br/&gt;60/min&quot;]:::mach
+  n26[&quot;Screw x24&lt;br/&gt;960/min&quot;]:::mach
+  n27[&quot;Smart Plating x3&lt;br/&gt;6/min&quot;]:::mach
+  n28[&quot;Black Powder x1&lt;br/&gt;45/min&quot;]:::mach
+  n29[&quot;Time Crystal x1&lt;br/&gt;6/min&quot;]:::mach
+  n30[&quot;High-Speed Connector x2&lt;br/&gt;8/min&quot;]:::mach
+  n31[&quot;Assembly Director System x1&lt;br/&gt;1/min&quot;]:::mach
+  n32[&quot;Iron Plate x15&lt;br/&gt;308/min&quot;]:::mach
+  n33[&quot;Encased Industrial Beam x2&lt;br/&gt;20/min&quot;]:::mach
+  n34[&quot;Copper Sheet x13&lt;br/&gt;130/min&quot;]:::mach
+  n35[&quot;Iron Ingot x38&lt;br/&gt;1,140/min&quot;]:::mach
+  n36[&quot;Diamonds x1&lt;br/&gt;12/min&quot;]:::mach
+  n37[&quot;Iron Rebar x2&lt;br/&gt;30/min&quot;]:::mach
+  n38[&quot;Nobelisk x1&lt;br/&gt;10/min&quot;]:::mach
+  n39[&quot;Iron Rod x28&lt;br/&gt;420/min&quot;]:::mach
+  n40[&quot;Crystal Oscillator x2&lt;br/&gt;3/min&quot;]:::mach
   n41[&quot;Solid Biofuel x1&lt;br/&gt;60/min&quot;]:::mach
-  n42[&quot;Ficsite Ingot x1&lt;br/&gt;30/min&quot;]:::mach
-  n43[&quot;Biomass x1&lt;br/&gt;300/min&quot;]:::mach
-  n44[&quot;Copper Sheet x13&lt;br/&gt;130/min&quot;]:::mach
-  n45[&quot;Nobelisk x1&lt;br/&gt;10/min&quot;]:::mach
-  n46[&quot;Iron Rod x28&lt;br/&gt;420/min&quot;]:::mach
-  n47[&quot;Motor x2&lt;br/&gt;10/min&quot;]:::mach
-  n48[&quot;Rotor x4&lt;br/&gt;16/min&quot;]:::mach
-  n49[&quot;Concrete x6&lt;br/&gt;100/min&quot;]:::mach
-  n50[&quot;Stun Rebar x2&lt;br/&gt;20/min&quot;]:::mach
-  n51([&quot;Limestone&lt;br/&gt;300/min&quot;]):::res
-  n52[(&quot;Storage x143&quot;)]:::store
-  n53[&quot;Crystal Oscillator x2&lt;br/&gt;3/min&quot;]:::mach
-  n54[&quot;Iron Ingot x38&lt;br/&gt;1,140/min&quot;]:::mach
-  n55[&quot;ConstructorMk1 x2&quot;]:::mach
-  n56[&quot;Iron Rebar x2&lt;br/&gt;30/min&quot;]:::mach
+  n42[&quot;Copper Ingot x36&lt;br/&gt;1,350/min&quot;]:::mach
+  n43[&quot;Steel Ingot x9&lt;br/&gt;585/min&quot;]:::mach
+  n44[&quot;Reinforced Iron Plate x7&lt;br/&gt;36/min&quot;]:::mach
+  n45[&quot;Motor x2&lt;br/&gt;10/min&quot;]:::mach
+  n46[&quot;Ficsite Ingot x1&lt;br/&gt;30/min&quot;]:::mach
+  n47[&quot;Versatile Framework x2&lt;br/&gt;10/min&quot;]:::mach
+  n48[&quot;Reinforced Iron Plate x3&lt;br/&gt;18/min&quot;]:::mach
+  n49[&quot;Circuit Board x4&lt;br/&gt;34/min&quot;]:::mach
+  n50[&quot;Heavy Modular Frame x2&lt;br/&gt;4/min&quot;]:::mach
+  n51[&quot;Wire x21&lt;br/&gt;705/min&quot;]:::mach
+  n52[&quot;Copper Powder x4&lt;br/&gt;200/min&quot;]:::mach
+  n53([&quot;Iron Ore&lt;br/&gt;1,680/min&quot;]):::res
+  n54[&quot;Biomass x1&lt;br/&gt;300/min&quot;]:::mach
+  n55[&quot;Stun Rebar x2&lt;br/&gt;20/min&quot;]:::mach
+  n56([&quot;Copper Ore&lt;br/&gt;1,440/min&quot;]):::res
   n57&gt;&quot;⇤ Plastic&lt;br/&gt;(from Oil Power Plant)&quot;]:::io
   n58&gt;&quot;⇤ Rubber&lt;br/&gt;(from Oil Power Plant)&quot;]:::io
   n59&gt;&quot;⇥ mixed&lt;br/&gt;(to Caterium)&quot;]:::io
@@ -418,165 +288,166 @@ td.n{font-family:var(--mono);text-align:right}
   n68&gt;&quot;⇤ Coal&lt;br/&gt;(from Coal Field)&quot;]:::io
   n69&gt;&quot;⇥ Time Crystal&lt;br/&gt;(to Caterium)&quot;]:::io
   n70&gt;&quot;⇥ Ficsite Ingot&lt;br/&gt;(to Caterium)&quot;]:::io
-  n52 --&gt; n43
-  n52 --&gt; n29
-  n29 --&gt;|&quot;Biomass&quot;| n52
-  n43 --&gt;|&quot;Biomass&quot;| n52
-  n41 --&gt;|&quot;Solid Biofuel&quot;| n52
-  n52 --&gt; n14
-  n14 --&gt;|&quot;Biomass&quot;| n52
-  n12 --&gt;|&quot;Reinforced Iron Plate&quot;| n8
-  n12 --&gt;|&quot;Reinforced Iron Plate&quot;| n52
-  n12 --&gt;|&quot;Reinforced Iron Plate&quot;| n33
-  n28 --&gt;|&quot;Iron Ore&quot;| n7
-  n28 --&gt;|&quot;Iron Ore&quot;| n52
-  n37 --&gt;|&quot;Versatile Framework&quot;| n52
-  n37 --&gt;|&quot;Versatile Framework&quot;| n31
-  n47 --&gt;|&quot;Motor&quot;| n52
-  n47 --&gt;|&quot;Motor&quot;| n24
-  n57 --&gt;|&quot;Plastic&quot;| n52
-  n58 --&gt;|&quot;Rubber&quot;| n52
-  n52 --&gt; n5
-  n52 --&gt; n38
-  n52 --&gt; n32
-  n52 --&gt; n24
-  n54 --&gt;|&quot;Iron Ingot&quot;| n52
-  n46 --&gt;|&quot;Iron Rod&quot;| n35
-  n35 --&gt;|&quot;Screw&quot;| n52
-  n35 --&gt;|&quot;Screw&quot;| n48
-  n35 --&gt;|&quot;Screw&quot;| n12
-  n51 --&gt;|&quot;Limestone&quot;| n49
-  n49 --&gt;|&quot;Concrete&quot;| n52
-  n49 --&gt;|&quot;Concrete&quot;| n19
-  n28 --&gt;|&quot;Iron Ore&quot;| n54
-  n54 --&gt;|&quot;Iron Ingot&quot;| n20
-  n54 --&gt;|&quot;Iron Ingot&quot;| n46
-  n46 --&gt;|&quot;Iron Rod&quot;| n52
-  n46 --&gt;|&quot;Iron Rod&quot;| n48
-  n48 --&gt;|&quot;Rotor&quot;| n47
-  n48 --&gt;|&quot;Rotor&quot;| n8
-  n48 --&gt;|&quot;Rotor&quot;| n52
-  n1 --&gt;|&quot;Automated Wiring&quot;| n11
-  n20 --&gt;|&quot;Iron Plate&quot;| n12
-  n20 --&gt;|&quot;Iron Plate&quot;| n52
-  n7 --&gt;|&quot;Steel Ingot&quot;| n23
-  n7 --&gt;|&quot;Steel Ingot&quot;| n30
-  n30 --&gt;|&quot;Steel Beam&quot;| n37
-  n30 --&gt;|&quot;Steel Beam&quot;| n52
-  n30 --&gt;|&quot;Steel Beam&quot;| n19
-  n19 --&gt;|&quot;Encased Industrial Beam&quot;| n40
-  n19 --&gt;|&quot;Encased Industrial Beam&quot;| n52
-  n3 --&gt;|&quot;Copper Ingot&quot;| n18
-  n3 --&gt;|&quot;Copper Ingot&quot;| n55
-  n18 --&gt;|&quot;Wire&quot;| n52
-  n18 --&gt;|&quot;Wire&quot;| n22
-  n36 --&gt;|&quot;Cable&quot;| n1
-  n25 --&gt;|&quot;Copper Ore&quot;| n3
-  n18 --&gt;|&quot;Wire&quot;| n36
-  n36 --&gt;|&quot;Cable&quot;| n38
-  n36 --&gt;|&quot;Cable&quot;| n26
-  n36 --&gt;|&quot;Cable&quot;| n52
-  n52 --&gt; n4
-  n52 --&gt; n34
-  n8 --&gt;|&quot;Smart Plating&quot;| n52
-  n8 --&gt;|&quot;Smart Plating&quot;| n24
-  n52 --&gt; n59
-  n52 --&gt; n53
-  n32 --&gt;|&quot;Circuit Board&quot;| n11
-  n32 --&gt;|&quot;Circuit Board&quot;| n38
-  n32 --&gt;|&quot;Circuit Board&quot;| n26
-  n9 --&gt;|&quot;AI Limiter&quot;| n15
-  n9 --&gt;|&quot;AI Limiter&quot;| n5
-  n44 --&gt;|&quot;Copper Sheet&quot;| n52
-  n44 --&gt;|&quot;Copper Sheet&quot;| n32
-  n44 --&gt;|&quot;Copper Sheet&quot;| n9
-  n55 --&gt; n52
-  n55 --&gt; n32
-  n55 --&gt; n9
-  n60 --&gt;|&quot;Quickwire&quot;| n26
-  n60 --&gt;|&quot;Quickwire&quot;| n9
-  n60 --&gt;|&quot;Quickwire&quot;| n50
-  n60 --&gt;|&quot;Quickwire&quot;| n52
-  n34 --&gt;|&quot;Black Powder&quot;| n45
-  n45 --&gt;|&quot;Nobelisk&quot;| n52
-  n52 --&gt; n16
-  n24 --&gt;|&quot;Modular Engine&quot;| n52
-  n40 --&gt;|&quot;Heavy Modular Frame&quot;| n52
-  n40 --&gt;|&quot;Heavy Modular Frame&quot;| n11
-  n11 --&gt;|&quot;Adaptive Control Unit&quot;| n13
-  n15 --&gt;|&quot;Electromagnetic Control Rod&quot;| n52
-  n15 --&gt;|&quot;Electromagnetic Control Rod&quot;| n31
-  n13 --&gt;|&quot;Assembly Director System&quot;| n52
-  n52 --&gt; n21
-  n52 --&gt; n17
-  n31 --&gt;|&quot;Magnetic Field Generator&quot;| n52
-  n52 --&gt; n2
-  n61 --&gt; n52
-  n61 --&gt; n17
-  n52 --&gt; n45
-  n52 --&gt; n56
-  n53 --&gt;|&quot;Crystal Oscillator&quot;| n62
-  n53 --&gt;|&quot;Crystal Oscillator&quot;| n21
-  n21 --&gt;|&quot;Radio Control Unit&quot;| n63
-  n21 --&gt;|&quot;Radio Control Unit&quot;| n16
-  n6 --&gt;|&quot;Nitrogen Gas&quot;| n64
-  n6 --&gt;|&quot;Nitrogen Gas&quot;| n52
-  n52 --&gt; n6
-  n65 --&gt;|&quot;Turbo Motor&quot;| n52
-  n16 --&gt;|&quot;Turbo Motor&quot;| n52
-  n2 --&gt;|&quot;Copper Powder&quot;| n66
-  n67 --&gt;|&quot;Concrete&quot;| n52
-  n67 --&gt;|&quot;Concrete&quot;| n19
-  n52 --&gt; n40
-  n68 --&gt;|&quot;Coal&quot;| n52
-  n68 --&gt;|&quot;Coal&quot;| n7
-  n52 --&gt; n54
-  n52 --&gt; n46
-  n25 --&gt;|&quot;Copper Ore&quot;| n52
-  n3 --&gt;|&quot;Copper Ingot&quot;| n52
-  n3 --&gt;|&quot;Copper Ingot&quot;| n44
-  n52 --&gt; n3
-  n56 --&gt;|&quot;Iron Rebar&quot;| n50
-  n50 --&gt;|&quot;Stun Rebar&quot;| n52
-  n38 --&gt;|&quot;Computer&quot;| n52
-  n38 --&gt;|&quot;Computer&quot;| n11
-  n38 --&gt;|&quot;Computer&quot;| n5
-  n4 --&gt;|&quot;Diamonds&quot;| n52
-  n52 --&gt; n10
-  n10 --&gt;|&quot;Time Crystal&quot;| n69
-  n52 --&gt; n42
-  n42 --&gt;|&quot;Ficsite Ingot&quot;| n70
-  n22 --&gt;|&quot;Stator&quot;| n52
-  n52 --&gt; n22
-  n52 --&gt; n47
-  n52 --&gt; n1
-  n52 --&gt; n15
-  n55 --&gt; n22
-  n23 --&gt;|&quot;Steel Pipe&quot;| n52
-  n23 --&gt;|&quot;Steel Pipe&quot;| n40
-  n52 --&gt; n36
-  n52 --&gt; n20
-  n52 --&gt; n39
-  n52 --&gt; n27
-  n39 --&gt;|&quot;Reinforced Iron Plate&quot;| n52
-  n52 --&gt; n8
-  n52 --&gt; n33
-  n33 --&gt;|&quot;Modular Frame&quot;| n37
-  n33 --&gt;|&quot;Modular Frame&quot;| n52
-  n27 --&gt; n52
-  n5 --&gt;|&quot;Supercomputer&quot;| n52
-  n5 --&gt;|&quot;Supercomputer&quot;| n27
-  n5 --&gt;|&quot;Supercomputer&quot;| n13
+  n15 --&gt; n54
+  n15 --&gt; n25
+  n25 --&gt;|&quot;Biomass&quot;| n15
+  n54 --&gt;|&quot;Biomass&quot;| n15
+  n41 --&gt;|&quot;Solid Biofuel&quot;| n15
+  n15 --&gt; n13
+  n13 --&gt;|&quot;Biomass&quot;| n15
+  n48 --&gt;|&quot;Reinforced Iron Plate&quot;| n27
+  n48 --&gt;|&quot;Reinforced Iron Plate&quot;| n15
+  n48 --&gt;|&quot;Reinforced Iron Plate&quot;| n6
+  n53 --&gt;|&quot;Iron Ore&quot;| n43
+  n53 --&gt;|&quot;Iron Ore&quot;| n15
+  n47 --&gt;|&quot;Versatile Framework&quot;| n15
+  n47 --&gt;|&quot;Versatile Framework&quot;| n3
+  n45 --&gt;|&quot;Motor&quot;| n15
+  n45 --&gt;|&quot;Motor&quot;| n17
+  n57 --&gt;|&quot;Plastic&quot;| n15
+  n58 --&gt;|&quot;Rubber&quot;| n15
+  n15 --&gt; n19
+  n15 --&gt; n21
+  n15 --&gt; n49
+  n15 --&gt; n17
+  n35 --&gt;|&quot;Iron Ingot&quot;| n15
+  n39 --&gt;|&quot;Iron Rod&quot;| n26
+  n26 --&gt;|&quot;Screw&quot;| n15
+  n26 --&gt;|&quot;Screw&quot;| n22
+  n26 --&gt;|&quot;Screw&quot;| n48
+  n9 --&gt;|&quot;Limestone&quot;| n16
+  n16 --&gt;|&quot;Concrete&quot;| n15
+  n16 --&gt;|&quot;Concrete&quot;| n33
+  n53 --&gt;|&quot;Iron Ore&quot;| n35
+  n35 --&gt;|&quot;Iron Ingot&quot;| n32
+  n35 --&gt;|&quot;Iron Ingot&quot;| n39
+  n39 --&gt;|&quot;Iron Rod&quot;| n15
+  n39 --&gt;|&quot;Iron Rod&quot;| n22
+  n22 --&gt;|&quot;Rotor&quot;| n45
+  n22 --&gt;|&quot;Rotor&quot;| n27
+  n22 --&gt;|&quot;Rotor&quot;| n15
+  n23 --&gt;|&quot;Automated Wiring&quot;| n12
+  n32 --&gt;|&quot;Iron Plate&quot;| n48
+  n32 --&gt;|&quot;Iron Plate&quot;| n15
+  n43 --&gt;|&quot;Steel Ingot&quot;| n4
+  n43 --&gt;|&quot;Steel Ingot&quot;| n7
+  n7 --&gt;|&quot;Steel Beam&quot;| n47
+  n7 --&gt;|&quot;Steel Beam&quot;| n15
+  n7 --&gt;|&quot;Steel Beam&quot;| n33
+  n33 --&gt;|&quot;Encased Industrial Beam&quot;| n50
+  n33 --&gt;|&quot;Encased Industrial Beam&quot;| n15
+  n42 --&gt;|&quot;Copper Ingot&quot;| n51
+  n42 --&gt;|&quot;Copper Ingot&quot;| n5
+  n51 --&gt;|&quot;Wire&quot;| n15
+  n51 --&gt;|&quot;Wire&quot;| n1
+  n18 --&gt;|&quot;Cable&quot;| n23
+  n56 --&gt;|&quot;Copper Ore&quot;| n42
+  n51 --&gt;|&quot;Wire&quot;| n18
+  n18 --&gt;|&quot;Cable&quot;| n21
+  n18 --&gt;|&quot;Cable&quot;| n30
+  n18 --&gt;|&quot;Cable&quot;| n15
+  n15 --&gt; n36
+  n15 --&gt; n28
+  n27 --&gt;|&quot;Smart Plating&quot;| n15
+  n27 --&gt;|&quot;Smart Plating&quot;| n17
+  n15 --&gt; n59
+  n15 --&gt; n40
+  n49 --&gt;|&quot;Circuit Board&quot;| n12
+  n49 --&gt;|&quot;Circuit Board&quot;| n21
+  n49 --&gt;|&quot;Circuit Board&quot;| n30
+  n2 --&gt;|&quot;AI Limiter&quot;| n8
+  n2 --&gt;|&quot;AI Limiter&quot;| n19
+  n34 --&gt;|&quot;Copper Sheet&quot;| n15
+  n34 --&gt;|&quot;Copper Sheet&quot;| n49
+  n34 --&gt;|&quot;Copper Sheet&quot;| n2
+  n5 --&gt; n15
+  n5 --&gt; n49
+  n5 --&gt; n2
+  n60 --&gt;|&quot;Quickwire&quot;| n30
+  n60 --&gt;|&quot;Quickwire&quot;| n2
+  n60 --&gt;|&quot;Quickwire&quot;| n55
+  n60 --&gt;|&quot;Quickwire&quot;| n15
+  n28 --&gt;|&quot;Black Powder&quot;| n38
+  n38 --&gt;|&quot;Nobelisk&quot;| n15
+  n15 --&gt; n14
+  n17 --&gt;|&quot;Modular Engine&quot;| n15
+  n50 --&gt;|&quot;Heavy Modular Frame&quot;| n15
+  n50 --&gt;|&quot;Heavy Modular Frame&quot;| n12
+  n12 --&gt;|&quot;Adaptive Control Unit&quot;| n31
+  n8 --&gt;|&quot;Electromagnetic Control Rod&quot;| n15
+  n8 --&gt;|&quot;Electromagnetic Control Rod&quot;| n3
+  n31 --&gt;|&quot;Assembly Director System&quot;| n15
+  n15 --&gt; n11
+  n15 --&gt; n10
+  n3 --&gt;|&quot;Magnetic Field Generator&quot;| n15
+  n15 --&gt; n52
+  n61 --&gt; n15
+  n61 --&gt; n10
+  n15 --&gt; n38
+  n15 --&gt; n37
+  n40 --&gt;|&quot;Crystal Oscillator&quot;| n62
+  n40 --&gt;|&quot;Crystal Oscillator&quot;| n11
+  n11 --&gt;|&quot;Radio Control Unit&quot;| n63
+  n11 --&gt;|&quot;Radio Control Unit&quot;| n14
+  n24 --&gt;|&quot;Nitrogen Gas&quot;| n64
+  n24 --&gt;|&quot;Nitrogen Gas&quot;| n15
+  n15 --&gt; n24
+  n65 --&gt;|&quot;Turbo Motor&quot;| n15
+  n14 --&gt;|&quot;Turbo Motor&quot;| n15
+  n52 --&gt;|&quot;Copper Powder&quot;| n66
+  n67 --&gt;|&quot;Concrete&quot;| n15
+  n67 --&gt;|&quot;Concrete&quot;| n33
+  n15 --&gt; n50
+  n68 --&gt;|&quot;Coal&quot;| n15
+  n68 --&gt;|&quot;Coal&quot;| n43
+  n15 --&gt; n35
+  n15 --&gt; n39
+  n56 --&gt;|&quot;Copper Ore&quot;| n15
+  n42 --&gt;|&quot;Copper Ingot&quot;| n15
+  n42 --&gt;|&quot;Copper Ingot&quot;| n34
+  n15 --&gt; n42
+  n37 --&gt;|&quot;Iron Rebar&quot;| n55
+  n55 --&gt;|&quot;Stun Rebar&quot;| n15
+  n21 --&gt;|&quot;Computer&quot;| n15
+  n21 --&gt;|&quot;Computer&quot;| n12
+  n21 --&gt;|&quot;Computer&quot;| n19
+  n36 --&gt;|&quot;Diamonds&quot;| n15
+  n15 --&gt; n29
+  n29 --&gt;|&quot;Time Crystal&quot;| n69
+  n15 --&gt; n46
+  n46 --&gt;|&quot;Ficsite Ingot&quot;| n70
+  n1 --&gt;|&quot;Stator&quot;| n15
+  n15 --&gt; n1
+  n15 --&gt; n45
+  n15 --&gt; n23
+  n15 --&gt; n8
+  n5 --&gt; n1
+  n4 --&gt;|&quot;Steel Pipe&quot;| n15
+  n4 --&gt;|&quot;Steel Pipe&quot;| n50
+  n15 --&gt; n18
+  n15 --&gt; n32
+  n15 --&gt; n44
+  n15 --&gt; n20
+  n44 --&gt;|&quot;Reinforced Iron Plate&quot;| n15
+  n15 --&gt; n27
+  n15 --&gt; n6
+  n6 --&gt;|&quot;Modular Frame&quot;| n47
+  n6 --&gt;|&quot;Modular Frame&quot;| n15
+  n20 --&gt; n15
+  n19 --&gt;|&quot;Supercomputer&quot;| n15
+  n19 --&gt;|&quot;Supercomputer&quot;| n20
+  n19 --&gt;|&quot;Supercomputer&quot;| n31
   classDef res fill:#b36a2b,stroke:#0006,color:#fff;
   classDef gen fill:#d4a017,stroke:#0006,color:#1b2028;
   classDef store fill:#7a8699,stroke:#0006,color:#fff;
   classDef io fill:#c05617,stroke:#0006,color:#fff;
-  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre>
-    <div class="hint">drag to pan &middot; scroll to zoom &middot; buttons zoom</div>
+  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
+    <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="legend">
-    <span><i style="background:#b36a2b"></i>resource node</span>
-    <span><i style="background:#2f7fd6"></i>machine group</span>
+    <span><i style="background:#5b86c0"></i>machine group (xN)</span>
+    <span><i style="background:#b36a2b"></i>resource</span>
     <span><i style="background:#d4a017"></i>generator</span>
     <span><i style="background:#7a8699"></i>storage</span>
     <span><i style="background:#c05617"></i>&#8676; import / export &#8677;</span>
@@ -593,15 +464,38 @@ td.n{font-family:var(--mono);text-align:right}
     <h2 style="margin-top:12px">&larr; Imports</h2><span class="chip">Quickwire <b>162</b></span> <span class="chip">Coal <b>40</b></span> <span class="chip">Rubber <b>22</b></span> <span class="chip">Concrete <b>18</b></span> <span class="chip">Plastic <b>17</b></span> <span class="chip">? <b>8</b></span> <span class="chip">Turbo Motor <b>1</b></span></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg-pan-zoom/3.6.1/svg-pan-zoom.min.js"></script>
 <script>
 var dark = matchMedia('(prefers-color-scheme: dark)').matches;
 mermaid.initialize({startOnLoad:false, theme: dark?'dark':'default',
-  flowchart:{useMaxWidth:true, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:60}});
+  flowchart:{useMaxWidth:false, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:65}});
 
-// pan/zoom the geographic map immediately
-function pz(svg){ if(svg) try{ svgPanZoom(svg,{controlIconsEnabled:true,fit:true,center:true,minZoom:0.15,maxZoom:40}); }catch(e){} }
-pz(document.querySelector('.view[data-pane="map"] svg'));
+function panzoom(view){
+  var stage=view.querySelector('.stage'), k=1,x=0,y=0,drag=false,lx,ly;
+  function apply(){stage.style.transform='translate('+x+'px,'+y+'px) scale('+k+')';}
+  function fit(){
+    k=1;x=0;y=0;apply();
+    var s=stage.getBoundingClientRect(), v=view.getBoundingClientRect();
+    if(!s.width||!s.height) return;
+    k=Math.min(v.width/s.width, v.height/s.height)*0.92;
+    x=(v.width - s.width*k)/2; y=(v.height - s.height*k)/2; apply();
+  }
+  function zoomAt(mx,my,f){var nk=Math.min(Math.max(k*f,0.05),60);x=mx-(mx-x)*(nk/k);y=my-(my-y)*(nk/k);k=nk;apply();}
+  view.addEventListener('wheel',function(e){e.preventDefault();var v=view.getBoundingClientRect();
+    zoomAt(e.clientX-v.left,e.clientY-v.top, Math.exp(-e.deltaY*0.0016));},{passive:false});
+  view.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;view.setPointerCapture(e.pointerId);view.style.cursor='grabbing';});
+  view.addEventListener('pointermove',function(e){if(!drag)return;x+=e.clientX-lx;y+=e.clientY-ly;lx=e.clientX;ly=e.clientY;apply();});
+  function end(){drag=false;view.style.cursor='grab';}
+  view.addEventListener('pointerup',end); view.addEventListener('pointercancel',end);
+  view.querySelectorAll('.zc button').forEach(function(btn){btn.onclick=function(){
+    var v=view.getBoundingClientRect();
+    if(btn.dataset.z==='in') zoomAt(v.width/2,v.height/2,1.3);
+    else if(btn.dataset.z==='out') zoomAt(v.width/2,v.height/2,1/1.3);
+    else fit();
+  };});
+  fit();
+}
+
+panzoom(document.querySelector('.view[data-pane="map"]'));
 
 var flowReady=false;
 function showFlow(){
@@ -609,8 +503,8 @@ function showFlow(){
   var pane=document.querySelector('.view[data-pane="flow"]');
   mermaid.run({nodes:[pane.querySelector('.mermaid')]}).then(function(){
     var svg=pane.querySelector('svg');
-    if(svg){ svg.removeAttribute('height'); svg.removeAttribute('width');
-      svg.style.width='100%'; svg.style.height='100%'; pz(svg); }
+    if(svg){svg.removeAttribute('style');svg.removeAttribute('width');svg.removeAttribute('height');}
+    panzoom(pane);
   });
 }
 document.querySelectorAll('.tabs button').forEach(function(b){

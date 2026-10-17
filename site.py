@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 """Build the static site into ./docs for GitHub Pages.
 
-Each zone page has TWO views (tabbed):
-  * Map  -- geographic sub-map zoomed to the zone, resource nodes labelled with rate
+Each zone page has TWO tabbed views, both inside a fixed-height pan/zoom viewport
+(drag to pan, wheel/pinch to zoom, buttons) driven by a tiny custom controller:
+  * Map  -- schematic: each manifold is a labelled, family-coloured box at its
+            rough location (de-overlapped so labels stay legible). Not to scale.
   * Flow -- material-flow diagram (manifolds collapsed, belts aggregated by item),
-            rendered with Mermaid inside a fixed-height pan/zoom viewport
+            rendered with Mermaid.
 
-Plus docs/index.html (zone cards), and copies of factory_graph.html + resource_map.html.
+Plus docs/index.html (zone cards) and copies of factory_graph + resource_map.
 
 Run:  python site.py [save.sav]
 GitHub Pages: Settings -> Pages -> Deploy from branch -> main -> /docs.
@@ -24,14 +26,18 @@ import factory_report
 
 DOCS = os.path.join(HERE, "docs")
 MERMAID = "https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"
-PANZOOM = "https://cdnjs.cloudflare.com/ajax/libs/svg-pan-zoom/3.6.1/svg-pan-zoom.min.js"
 
 RES_COLOR = {
     "Coal": "#6b7280", "Iron Ore": "#b36a2b", "Copper Ore": "#c0703a",
-    "Limestone": "#c9b68a", "Caterium Ore": "#d4a017", "Bauxite": "#9a6b4b",
-    "Sulfur": "#d8c24a", "Raw Quartz": "#c76fb0", "Uranium": "#3faa5a",
-    "SAM": "#8a5fc0", "Crude Oil": "#2b2b33", "Water": "#2f7fd6",
+    "Limestone": "#b9a978", "Caterium Ore": "#d4a017", "Bauxite": "#9a6b4b",
+    "Sulfur": "#c9b53f", "Raw Quartz": "#c76fb0", "Uranium": "#3faa5a",
+    "SAM": "#8a5fc0", "Crude Oil": "#4b4b57", "Water": "#2f7fd6",
     "Nitrogen Gas": "#59b0b8",
+}
+FAM_COLOR = {
+    "Base/Steel": "#5b86c0", "Computing": "#3fa6a6", "Quantum": "#9b6bd6",
+    "Aluminum": "#6fa3c7", "Nuclear": "#3faa5a", "Sulfur/Ammo": "#c2a12e",
+    "Oil/Fuel": "#c0703a", "Caterium": "#d4a017", "Power": "#d4a017",
 }
 
 
@@ -55,36 +61,63 @@ def extraction_rows(ex):
     return "\n".join(rows) or '<tr><td class="muted" colspan="4">no extraction in this zone</td></tr>'
 
 
-def zone_map_svg(z, r):
-    """Geographic sub-map zoomed to one zone: labelled resource nodes, machine
-    dots, generator marks."""
-    g = r["graph"]
-    if not z["bbox"]:
-        return 760, 240, ""
-    x0, y0, x1, y1 = z["bbox"]
-    span = max(x1 - x0, y1 - y0, 1.0); pad = max(span * 0.08, 60.0)
-    x0 -= pad; y0 -= pad; x1 += pad; y1 += pad
-    W = 760.0
-    H = max(W * (y1 - y0) / (x1 - x0), 240.0)
-    sx = lambda x: (x - x0) / (x1 - x0) * W
-    sy = lambda y: (y - y0) / (y1 - y0) * H
+def _box_color(gp):
+    if gp["cls"] == "res":
+        return RES_COLOR.get(gp["family"], "#9a6b4b")
+    if gp["cls"] == "gen":
+        return "#d4a017"
+    if gp["cls"] == "store":
+        return "#7a8699"
+    return FAM_COLOR.get(gp["family"], "#5b7088")
 
-    dots, power, nodes = [], [], []
-    for bid in z["bids"]:
-        nd = g["nodes"][bid]; pos = nd.get("pos")
-        if not pos:
-            continue
-        cls = nd["class"]
-        X, Y = sx(pos[0]), sy(pos[1])
-        if bid in r["res_at"] and r["res_at"][bid]:
-            col = RES_COLOR.get(r["res_at"][bid], "#999")
-            nodes.append(f'<circle cx="{X:.1f}" cy="{Y:.1f}" r="6" fill="{col}" stroke="#0008" stroke-width="0.9"/>'
-                         f'<text x="{X+9:.1f}" y="{Y+4:.1f}" class="nlab">{html.escape(r["res_at"][bid])} {r["rate_at"].get(bid,0):.0f}</text>')
-        elif cls in zr.POWER_MW:
-            power.append(f'<circle cx="{X:.1f}" cy="{Y:.1f}" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>')
-        elif nd.get("recipe"):
-            dots.append(f'<circle cx="{X:.1f}" cy="{Y:.1f}" r="2.4" fill="var(--prod)" opacity="0.5"/>')
-    return W, H, "\n".join(dots + power + nodes)
+
+def zone_map_svg(name, r):
+    """Schematic map: one labelled, family-coloured box per manifold, placed at
+    its rough location then de-overlapped. Readable, not to scale."""
+    gps = flow.zone_groups(r, name)
+    if not gps:
+        return 800, 400, ""
+    xs = [g["cx"] for g in gps]; ys = [g["cy"] for g in gps]
+    minx, miny = min(xs), min(ys)
+    span = max(max(xs) - minx, max(ys) - miny, 1.0)
+    SC = 1200.0 / span
+    boxes = []
+    for gp in gps:
+        lines = gp["label"].split("\n")
+        w = max(len(ln) for ln in lines) * 6.3 + 20
+        h = len(lines) * 13 + 11
+        boxes.append({"x": (gp["cx"] - minx) * SC, "y": (gp["cy"] - miny) * SC,
+                      "w": w, "h": h, "lines": lines, "col": _box_color(gp)})
+    # push overlapping boxes apart (labels must be readable; scale isn't sacred)
+    for _ in range(150):
+        moved = False
+        for i in range(len(boxes)):
+            for j in range(i + 1, len(boxes)):
+                a, b = boxes[i], boxes[j]
+                dx = b["x"] - a["x"]; dy = b["y"] - a["y"]
+                ox = (a["w"] + b["w"]) / 2 - abs(dx) + 9
+                oy = (a["h"] + b["h"]) / 2 - abs(dy) + 9
+                if ox > 0 and oy > 0:
+                    if ox < oy:
+                        s = ox / 2 * (1 if dx >= 0 else -1); a["x"] -= s; b["x"] += s
+                    else:
+                        s = oy / 2 * (1 if dy >= 0 else -1); a["y"] -= s; b["y"] += s
+                    moved = True
+        if not moved:
+            break
+    x0 = min(b["x"] - b["w"] / 2 for b in boxes); x1 = max(b["x"] + b["w"] / 2 for b in boxes)
+    y0 = min(b["y"] - b["h"] / 2 for b in boxes); y1 = max(b["y"] + b["h"] / 2 for b in boxes)
+    pad = 24
+    vbW, vbH = x1 - x0 + 2 * pad, y1 - y0 + 2 * pad
+    parts = []
+    for b in boxes:
+        bx = b["x"] - b["w"] / 2 - x0 + pad; by = b["y"] - b["h"] / 2 - y0 + pad
+        parts.append(f'<rect x="{bx:.1f}" y="{by:.1f}" width="{b["w"]:.1f}" height="{b["h"]:.1f}" '
+                     f'rx="6" fill="{b["col"]}" stroke="#0007" stroke-width="0.8"/>')
+        for li, ln in enumerate(b["lines"]):
+            parts.append(f'<text x="{bx + b["w"] / 2:.1f}" y="{by + 15 + li * 13:.1f}" '
+                         f'class="blab">{html.escape(ln)}</text>')
+    return vbW, vbH, "\n".join(parts)
 
 
 def build():
@@ -104,9 +137,8 @@ def build():
     cards = []
     for name in r["order"]:
         z = r["zones"][name]
-        nodes, edges = flow.build_zone_flow(r, name)
-        mm = flow.to_mermaid(nodes, edges)
-        W, H, svg = zone_map_svg(z, r)
+        mm = flow.to_mermaid(*flow.build_zone_flow(r, name))
+        W, H, svg = zone_map_svg(name, r)
         page = (_ZONE.replace("__NAME__", html.escape(name))
                 .replace("__SAVE__", html.escape(r["save"]))
                 .replace("__NB__", str(len(z["bids"])))
@@ -118,7 +150,7 @@ def build():
                 .replace("__PRODUCES__", chips(z["produces"]))
                 .replace("__EXPORTS__", chips(z["exports"]))
                 .replace("__IMPORTS__", chips(z["imports"]))
-                .replace("__MERMAIDJS__", MERMAID).replace("__PANZOOMJS__", PANZOOM))
+                .replace("__MERMAIDJS__", MERMAID))
         with open(os.path.join(DOCS, "zones", slug(name) + ".html"), "w", encoding="utf-8") as fh:
             fh.write(page)
 
@@ -137,15 +169,15 @@ def build():
            .replace("__CARDS__", "\n".join(cards)))
     with open(os.path.join(DOCS, "index.html"), "w", encoding="utf-8") as fh:
         fh.write(idx)
-    print(f"Wrote docs/index.html + {len(cards)} zone pages (map + flow) + 2 reports")
+    print(f"Wrote docs/index.html + {len(cards)} zone pages (schematic map + flow) + 2 reports")
 
 
 # ---------------------------------------------------------------- templates
 _CSS = """<style>
 :root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;--grid:#e9e3d7;
-  --pow:#d4a017;--prod:#9aa6b2;--mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}}
-:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;--pow:#e3b94a;--prod:#4a5663;}
+  --mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
 .wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
 a{color:var(--accent);text-decoration:none}
@@ -155,10 +187,14 @@ h1{font-size:26px;margin:2px 0}.sub{color:var(--muted);font-size:14px;margin-bot
 .tabs{display:flex;gap:6px;margin-bottom:10px}
 .tabs button{font:inherit;font-size:13px;font-weight:600;padding:6px 16px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;cursor:pointer}
 .tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.view{border:1px solid var(--line);border-radius:10px;background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;height:70vh;min-height:360px;overflow:hidden;position:relative}
-.view svg{width:100%;height:100%;display:block}
-.hint{position:absolute;right:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
-.nlab{fill:var(--ink);font-family:var(--mono);font-size:11px;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.view{position:relative;height:72vh;min-height:380px;overflow:hidden;border:1px solid var(--line);border-radius:10px;
+  background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:26px 26px;touch-action:none;cursor:grab}
+.stage{position:absolute;top:0;left:0;transform-origin:0 0}
+.stage svg{display:block}
+.blab{fill:#fff;font-family:var(--sans);font-size:10.5px;font-weight:600;text-anchor:middle;paint-order:stroke;stroke:#0004;stroke-width:.4px}
+.zc{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:5px}
+.zc button{width:30px;height:30px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;font-size:16px;cursor:pointer;line-height:1}
+.hint{position:absolute;left:10px;bottom:8px;font-size:11.5px;color:var(--muted);background:var(--panel);padding:2px 8px;border-radius:6px;opacity:.85}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -186,7 +222,7 @@ _INDEX = """<!doctype html><html><head><meta charset="utf-8">
   <a href="factory_graph.html">&#128202; Production &amp; bottlenecks</a>
   <a href="resource_map.html">&#128506; Full geographic map</a>
 </div>
-<h2>Zones <span class="muted" style="font-weight:400;font-size:13px">&mdash; each has a map + a flow view</span></h2>
+<h2>Zones <span class="muted" style="font-weight:400;font-size:13px">&mdash; each has a schematic map + a flow view</span></h2>
 <div class="grid">__CARDS__</div>
 </div></body></html>"""
 
@@ -202,16 +238,18 @@ _ZONE = """<!doctype html><html><head><meta charset="utf-8">
     <button data-tab="flow">&#128257; Flow</button>
   </div>
   <div class="view" data-pane="map">
-    <svg viewBox="0 0 __W__ __H__" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">__MAPSVG__</svg>
+    <div class="stage"><svg viewBox="0 0 __W__ __H__" width="__W__" height="__H__" xmlns="http://www.w3.org/2000/svg">__MAPSVG__</svg></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
     <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="view" data-pane="flow" hidden>
-    <pre class="mermaid" style="margin:0">__MERMAID__</pre>
-    <div class="hint">drag to pan &middot; scroll to zoom &middot; buttons zoom</div>
+    <div class="stage"><pre class="mermaid" style="margin:0">__MERMAID__</pre></div>
+    <div class="zc"><button data-z="in">+</button><button data-z="out">&minus;</button><button data-z="fit">&#9635;</button></div>
+    <div class="hint">drag to pan &middot; scroll to zoom</div>
   </div>
   <div class="legend">
-    <span><i style="background:#b36a2b"></i>resource node</span>
-    <span><i style="background:#2f7fd6"></i>machine group</span>
+    <span><i style="background:#5b86c0"></i>machine group (xN)</span>
+    <span><i style="background:#b36a2b"></i>resource</span>
     <span><i style="background:#d4a017"></i>generator</span>
     <span><i style="background:#7a8699"></i>storage</span>
     <span><i style="background:#c05617"></i>&#8676; import / export &#8677;</span>
@@ -226,15 +264,38 @@ _ZONE = """<!doctype html><html><head><meta charset="utf-8">
     <h2 style="margin-top:12px">&larr; Imports</h2>__IMPORTS__</div>
 </div>
 <script src="__MERMAIDJS__"></script>
-<script src="__PANZOOMJS__"></script>
 <script>
 var dark = matchMedia('(prefers-color-scheme: dark)').matches;
 mermaid.initialize({startOnLoad:false, theme: dark?'dark':'default',
-  flowchart:{useMaxWidth:true, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:60}});
+  flowchart:{useMaxWidth:false, htmlLabels:true, curve:'basis', nodeSpacing:40, rankSpacing:65}});
 
-// pan/zoom the geographic map immediately
-function pz(svg){ if(svg) try{ svgPanZoom(svg,{controlIconsEnabled:true,fit:true,center:true,minZoom:0.15,maxZoom:40}); }catch(e){} }
-pz(document.querySelector('.view[data-pane="map"] svg'));
+function panzoom(view){
+  var stage=view.querySelector('.stage'), k=1,x=0,y=0,drag=false,lx,ly;
+  function apply(){stage.style.transform='translate('+x+'px,'+y+'px) scale('+k+')';}
+  function fit(){
+    k=1;x=0;y=0;apply();
+    var s=stage.getBoundingClientRect(), v=view.getBoundingClientRect();
+    if(!s.width||!s.height) return;
+    k=Math.min(v.width/s.width, v.height/s.height)*0.92;
+    x=(v.width - s.width*k)/2; y=(v.height - s.height*k)/2; apply();
+  }
+  function zoomAt(mx,my,f){var nk=Math.min(Math.max(k*f,0.05),60);x=mx-(mx-x)*(nk/k);y=my-(my-y)*(nk/k);k=nk;apply();}
+  view.addEventListener('wheel',function(e){e.preventDefault();var v=view.getBoundingClientRect();
+    zoomAt(e.clientX-v.left,e.clientY-v.top, Math.exp(-e.deltaY*0.0016));},{passive:false});
+  view.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;view.setPointerCapture(e.pointerId);view.style.cursor='grabbing';});
+  view.addEventListener('pointermove',function(e){if(!drag)return;x+=e.clientX-lx;y+=e.clientY-ly;lx=e.clientX;ly=e.clientY;apply();});
+  function end(){drag=false;view.style.cursor='grab';}
+  view.addEventListener('pointerup',end); view.addEventListener('pointercancel',end);
+  view.querySelectorAll('.zc button').forEach(function(btn){btn.onclick=function(){
+    var v=view.getBoundingClientRect();
+    if(btn.dataset.z==='in') zoomAt(v.width/2,v.height/2,1.3);
+    else if(btn.dataset.z==='out') zoomAt(v.width/2,v.height/2,1/1.3);
+    else fit();
+  };});
+  fit();
+}
+
+panzoom(document.querySelector('.view[data-pane="map"]'));
 
 var flowReady=false;
 function showFlow(){
@@ -242,8 +303,8 @@ function showFlow(){
   var pane=document.querySelector('.view[data-pane="flow"]');
   mermaid.run({nodes:[pane.querySelector('.mermaid')]}).then(function(){
     var svg=pane.querySelector('svg');
-    if(svg){ svg.removeAttribute('height'); svg.removeAttribute('width');
-      svg.style.width='100%'; svg.style.height='100%'; pz(svg); }
+    if(svg){svg.removeAttribute('style');svg.removeAttribute('width');svg.removeAttribute('height');}
+    panzoom(pane);
   });
 }
 document.querySelectorAll('.tabs button').forEach(function(b){

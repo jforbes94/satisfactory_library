@@ -68,6 +68,32 @@ def _label(key, members, r):
     return f"{val.replace('Build_', '').replace('_C', '')} x{n}", "mach"
 
 
+def zone_groups(r, zone_name):
+    """Collapsed groups for the schematic MAP: one entry per manifold, with its
+    centroid (metres), machine count, label, kind and production family."""
+    from zone_report import family_of, primary_output
+    g = r["graph"]; book = r["book"]
+    members = collections.defaultdict(list)
+    for b in r["zones"][zone_name]["bids"]:
+        members[_gkey(b, r)].append(b)
+    out = []
+    for key, mem in members.items():
+        xs = [g["nodes"][b]["pos"][0] for b in mem if g["nodes"][b].get("pos")]
+        ys = [g["nodes"][b]["pos"][1] for b in mem if g["nodes"][b].get("pos")]
+        if not xs:
+            continue
+        label, cls = _label(key, mem, r)
+        fam = None
+        if key[0] == "res":
+            fam = key[1]
+        elif key[0] == "rec":
+            rec = book.by_class.get(key[1])
+            fam = family_of(rec.primary_output) if rec else None
+        out.append({"label": label, "cls": cls, "family": fam, "count": len(mem),
+                    "cx": sum(xs) / len(xs), "cy": sum(ys) / len(ys)})
+    return out
+
+
 def build_zone_flow(r, zone_name):
     g = r["graph"]; book = r["book"]
     zone_of = r["zone_of"]
