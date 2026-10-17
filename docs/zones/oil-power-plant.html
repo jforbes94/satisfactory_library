@@ -1,20 +1,17 @@
 <!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Oil Power Plant &middot; Zone</title><style>
-:root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;
-  --pow:#d4a017;--prod:#9aa6b2;--grid:#e9e3d7;--mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;
-  --accent:#f6963c;--pow:#e3b94a;--prod:#4a5663;--grid:#1a232f;}}
-:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--pow:#e3b94a;--prod:#4a5663;--grid:#1a232f;}
+<title>Oil Power Plant &middot; Flow</title><style>
+:root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;--grid:#e9e3d7;
+  --mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
-.wrap{max-width:1040px;margin:0 auto;padding:26px 18px 60px}
+.wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
 a{color:var(--accent);text-decoration:none}
 .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--accent);font-weight:600}
 h1{font-size:26px;margin:2px 0}.sub{color:var(--muted);font-size:14px;margin-bottom:16px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0;box-shadow:0 1px 2px #0001,0 8px 24px #0001}
-.mapwrap{background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:28px 28px;border-radius:10px;overflow:auto}
-svg{display:block;max-width:100%;height:auto}
-.nlab{fill:var(--ink);font-family:var(--mono);font-size:11px;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.flow{overflow:auto}.flow .mermaid{min-width:100%}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -27,179 +24,98 @@ td.n{font-family:var(--mono);text-align:right}
 .card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .card h3{margin:0 0 4px;font-size:15px;color:var(--ink)}.meta{font-size:12.5px;color:var(--ink)}
 .links a{margin-right:16px;font-weight:600}
-@media (max-width:560px){.wrap{padding:18px 14px 48px}}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media (max-width:620px){.cols{grid-template-columns:1fr}.wrap{padding:18px 14px 48px}}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding-top:8px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 </style></head><body><div class="wrap">
 <div class="eyebrow"><a href="../index.html">&#8592; Atlas</a></div>
 <h1>Oil Power Plant</h1>
 <div class="sub">149 buildings &middot; 13,250 MW &middot; Pull this-10.17.26-13.58.18.sav</div>
-<div class="panel"><div class="mapwrap">
-  <svg viewBox="0 0 760 640" width="760" height="640" xmlns="http://www.w3.org/2000/svg"><circle cx="552.1" cy="254.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="565.2" cy="291.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="555.7" cy="294.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="542.6" cy="258.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="588.4" cy="334.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="546.2" cy="297.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="533.1" cy="261.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="446.0" cy="247.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="473.0" cy="238.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="476.4" cy="248.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="479.9" cy="257.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="449.5" cy="256.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="452.9" cy="266.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="483.3" cy="267.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="486.8" cy="276.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="456.4" cy="275.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="490.2" cy="286.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="493.7" cy="295.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="497.2" cy="305.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="459.8" cy="285.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="463.3" cy="294.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="466.8" cy="304.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="470.2" cy="313.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="515.8" cy="214.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="359.4" cy="201.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="326.4" cy="211.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="323.0" cy="201.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="505.6" cy="322.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="355.9" cy="191.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="466.0" cy="334.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="410.1" cy="124.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="459.5" cy="414.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="516.4" cy="487.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="526.5" cy="487.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="536.6" cy="487.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="540.7" cy="456.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="554.8" cy="456.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="520.5" cy="521.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="530.6" cy="521.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="540.7" cy="521.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="550.8" cy="521.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="560.9" cy="521.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="571.0" cy="521.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="581.1" cy="521.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="546.8" cy="487.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="556.9" cy="487.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="567.0" cy="487.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="540.7" cy="446.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="554.8" cy="446.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="588.2" cy="465.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="618.5" cy="447.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="196.1" cy="354.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="186.0" cy="354.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="175.9" cy="354.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="165.7" cy="354.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="196.1" cy="311.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="186.0" cy="311.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="175.9" cy="311.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="164.7" cy="311.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="104.1" cy="358.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="94.0" cy="358.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="83.9" cy="358.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="73.8" cy="358.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="104.1" cy="314.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="94.0" cy="314.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="83.9" cy="314.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="226.4" cy="147.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="226.4" cy="137.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="409.1" cy="172.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.5" cy="112.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.5" cy="102.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.5" cy="91.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="233.5" cy="80.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="233.5" cy="70.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="233.5" cy="60.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="620.3" cy="365.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="601.3" cy="372.5" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="487.6" cy="213.8" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="478.3" cy="188.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="312.0" cy="162.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="341.4" cy="152.0" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="334.5" cy="133.0" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="304.1" cy="144.0" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="297.2" cy="125.0" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="328.6" cy="113.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="527.3" cy="367.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="495.0" cy="378.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="501.9" cy="397.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="534.2" cy="386.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="419.7" cy="104.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="390.3" cy="114.8" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="656.9" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="657.9" cy="540.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="637.7" cy="540.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="636.7" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="679.1" cy="539.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="677.1" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="699.4" cy="539.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="697.3" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="719.6" cy="539.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="717.6" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="737.8" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="739.8" cy="539.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="212.2" cy="429.5" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="212.2" cy="409.3" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="212.2" cy="449.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="212.2" cy="469.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="152.6" cy="408.3" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="152.6" cy="428.5" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="152.6" cy="448.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="152.6" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="132.4" cy="408.3" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="132.4" cy="428.5" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="132.4" cy="448.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="132.4" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="60.6" cy="408.3" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="60.6" cy="428.5" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="60.6" cy="448.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="60.6" cy="468.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="213.2" cy="255.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="213.2" cy="235.5" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="213.2" cy="215.3" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="213.2" cy="193.0" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="153.6" cy="255.7" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="153.6" cy="235.5" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="153.6" cy="215.3" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="153.6" cy="195.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="66.7" cy="271.9" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="66.7" cy="251.6" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="66.7" cy="231.4" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="66.7" cy="211.2" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="66.7" cy="191.0" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="66.7" cy="170.8" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="617.8" cy="232.8" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="626.8" y="236.8" class="nlab">Crude Oil 180</text>
-<circle cx="415.0" cy="303.3" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="424.0" y="307.3" class="nlab">Crude Oil 600</text>
-<circle cx="422.3" cy="428.5" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/>
-<text x="431.3" y="432.5" class="nlab">Water 120</text>
-<circle cx="490.7" cy="513.3" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="499.7" y="517.3" class="nlab">Crude Oil 600</text>
-<circle cx="691.0" cy="12.4" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/>
-<text x="700.0" y="16.4" class="nlab">Water 100</text>
-<circle cx="323.7" cy="352.8" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="332.7" y="356.8" class="nlab">Crude Oil 0</text>
-<circle cx="320.0" cy="310.0" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="329.0" y="314.0" class="nlab">Crude Oil 75</text>
-<circle cx="285.2" cy="330.4" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="294.2" y="334.4" class="nlab">Crude Oil 150</text>
-<circle cx="305.8" cy="329.1" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="314.8" y="333.1" class="nlab">Crude Oil 75</text>
-<circle cx="333.3" cy="331.2" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="342.3" y="335.2" class="nlab">Crude Oil 150</text>
-<circle cx="295.4" cy="366.5" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="304.4" y="370.5" class="nlab">Crude Oil 150</text>
-<circle cx="277.0" cy="358.0" r="6" fill="#2b2b33" stroke="#0008" stroke-width="0.9"/>
-<text x="286.0" y="362.0" class="nlab">Crude Oil 300</text>
-<circle cx="144.9" cy="148.4" r="6" fill="#2f7fd6" stroke="#0008" stroke-width="0.9"/>
-<text x="153.9" y="152.4" class="nlab">Water 210</text></svg>
+<div class="panel">
+  <h2>Material flow <span class="muted" style="font-weight:400;font-size:12.5px">&mdash; manifolds collapsed, belts aggregated by item</span></h2>
+  <div class="flow"><pre class="mermaid">flowchart LR
+  n1[&quot;Fuel x8&lt;br/&gt;320/min&quot;]:::mach
+  n2{{&quot;Fuel gen x53&lt;br/&gt;13,250 MW&quot;}}:::gen
+  n3[&quot;Plastic x17&lt;br/&gt;340/min&quot;]:::mach
+  n4[(&quot;Storage x6&quot;)]:::store
+  n5[&quot;Empty Canister x4&lt;br/&gt;240/min&quot;]:::mach
+  n6[&quot;Plastic x6&lt;br/&gt;120/min&quot;]:::mach
+  n7[&quot;Fuel x24&lt;br/&gt;960/min&quot;]:::mach
+  n8([&quot;Water&lt;br/&gt;330/min&quot;]):::res
+  n9[&quot;Fabric x3&lt;br/&gt;90/min&quot;]:::mach
+  n10[&quot;Smokeless Powder x1&lt;br/&gt;20/min&quot;]:::mach
+  n11[&quot;Packaged Fuel x1&lt;br/&gt;60/min&quot;]:::mach
+  n12[&quot;ResourceSink x5&quot;]:::mach
+  n13[&quot;Rubber x11&lt;br/&gt;220/min&quot;]:::mach
+  n14([&quot;Crude Oil&lt;br/&gt;2,100/min&quot;]):::res
+  n15&gt;&quot;⇥ Plastic&lt;br/&gt;(to Main Base)&quot;]:::io
+  n16&gt;&quot;⇥ Plastic&lt;br/&gt;(to Aluminum Plant)&quot;]:::io
+  n17&gt;&quot;⇥ Rubber&lt;br/&gt;(to Main Base)&quot;]:::io
+  n18&gt;&quot;⇥ Rubber&lt;br/&gt;(to Aluminum Plant)&quot;]:::io
+  n19&gt;&quot;⇥ Packaged Fuel&lt;br/&gt;(to Aluminum Plant)&quot;]:::io
+  n20&gt;&quot;⇤ Crude Oil&lt;br/&gt;(from Aluminum Plant)&quot;]:::io
+  n21&gt;&quot;⇥ Fuel&lt;br/&gt;(to Aluminum Plant)&quot;]:::io
+  n3 --&gt;|&quot;Plastic&quot;| n15
+  n3 --&gt;|&quot;Plastic&quot;| n12
+  n3 --&gt;|&quot;Plastic&quot;| n16
+  n13 --&gt;|&quot;Rubber&quot;| n17
+  n13 --&gt;|&quot;Rubber&quot;| n18
+  n7 --&gt;|&quot;Fuel&quot;| n4
+  n7 --&gt;|&quot;Fuel&quot;| n12
+  n7 --&gt;|&quot;Fuel&quot;| n9
+  n9 --&gt;|&quot;Fabric&quot;| n4
+  n3 --&gt;|&quot;Plastic&quot;| n5
+  n5 --&gt;|&quot;Empty Canister&quot;| n11
+  n11 --&gt;|&quot;Packaged Fuel&quot;| n19
+  n11 --&gt;|&quot;Packaged Fuel&quot;| n4
+  n7 --&gt;|&quot;Fuel&quot;| n6
+  n10 --&gt;|&quot;Smokeless Powder&quot;| n4
+  n4 --&gt; n10
+  n6 --&gt;|&quot;Plastic&quot;| n15
+  n6 --&gt;|&quot;Plastic&quot;| n12
+  n6 --&gt;|&quot;Plastic&quot;| n16
+  n20 --&gt;|&quot;Crude Oil&quot;| n13
+  n20 --&gt;|&quot;Crude Oil&quot;| n3
+  n3 --&gt;|&quot;Plastic&quot;| n1
+  n13 --&gt;|&quot;Rubber&quot;| n1
+  n1 --&gt;|&quot;Fuel&quot;| n2
+  n14 --&gt;|&quot;Crude Oil&quot;| n3
+  n14 --&gt;|&quot;Crude Oil&quot;| n13
+  n14 --&gt;|&quot;Crude Oil&quot;| n7
+  n3 --&gt;|&quot;Plastic&quot;| n10
+  n7 --&gt;|&quot;Fuel&quot;| n2
+  n8 --&gt;|&quot;Water&quot;| n9
+  n7 --&gt;|&quot;Fuel&quot;| n21
+  n7 --&gt;|&quot;Fuel&quot;| n11
+  n1 --&gt;|&quot;Fuel&quot;| n21
+  n1 --&gt;|&quot;Fuel&quot;| n11
+  n8 --&gt;|&quot;Water&quot;| n6
+  classDef res fill:#b36a2b,stroke:#0006,color:#fff;
+  classDef gen fill:#d4a017,stroke:#0006,color:#1b2028;
+  classDef store fill:#7a8699,stroke:#0006,color:#fff;
+  classDef io fill:#c05617,stroke:#0006,color:#fff;
+  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre></div>
+  <div class="legend">
+    <span><i style="background:#b36a2b"></i>resource node</span>
+    <span><i style="background:#2f7fd6"></i>machine group (xN)</span>
+    <span><i style="background:#d4a017"></i>generator</span>
+    <span><i style="background:#7a8699"></i>storage buffer</span>
+    <span><i style="background:#c05617"></i>&#8676; import / export &#8677; (other zones)</span>
+  </div>
 </div>
-<div class="muted" style="font-size:12px;padding-top:8px">Dots = production machines &middot; gold = generators &middot; coloured + labelled = resource nodes (rate/min at current clock). Top-down world coords.</div>
-</div>
-<div class="panel"><h2>Extraction</h2>
-<table><thead><tr><th>Resource</th><th class="n">Potential/min</th><th class="n">Live/min</th><th>Uptime</th></tr></thead>
-<tbody><tr><td>Crude Oil</td><td class="n">2,100</td><td class="n">2,040</td><td><div class="bar"><div style="width:97%"></div></div></td></tr>
+<div class="cols">
+  <div class="panel"><h2>Extraction</h2>
+    <table><thead><tr><th>Resource</th><th class="n">Potential/min</th><th class="n">Live/min</th><th>Uptime</th></tr></thead>
+    <tbody><tr><td>Crude Oil</td><td class="n">2,100</td><td class="n">2,040</td><td><div class="bar"><div style="width:97%"></div></div></td></tr>
 <tr><td>Water</td><td class="n">330</td><td class="n">119</td><td><div class="bar"><div style="width:36%"></div></div></td></tr></tbody></table></div>
-<div class="panel"><h2>Produces</h2><span class="chip">Oil/Fuel <b>71</b></span> <span class="chip">Fabric <b>3</b></span> <span class="chip">Sulfur/Ammo <b>1</b></span></div>
-<div class="panel"><h2>Exports &rarr;</h2><span class="chip">Rubber <b>55</b></span> <span class="chip">Fuel <b>35</b></span> <span class="chip">Plastic <b>34</b></span> <span class="chip">Packaged Fuel <b>1</b></span></div>
-<div class="panel"><h2>&larr; Imports</h2><span class="chip">Crude Oil <b>6</b></span></div>
+  <div class="panel"><h2>Produces</h2><span class="chip">Oil/Fuel <b>71</b></span> <span class="chip">Fabric <b>3</b></span> <span class="chip">Sulfur/Ammo <b>1</b></span>
+    <h2 style="margin-top:12px">Exports &rarr;</h2><span class="chip">Rubber <b>55</b></span> <span class="chip">Fuel <b>35</b></span> <span class="chip">Plastic <b>34</b></span> <span class="chip">Packaged Fuel <b>1</b></span>
+    <h2 style="margin-top:12px">&larr; Imports</h2><span class="chip">Crude Oil <b>6</b></span></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+  var dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({startOnLoad:true, theme: dark?'dark':'default',
+    flowchart:{useMaxWidth:false, htmlLabels:true, curve:'basis', nodeSpacing:45, rankSpacing:70}});
+</script>
 </div></body></html>

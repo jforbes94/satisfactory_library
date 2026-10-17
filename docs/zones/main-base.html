@@ -1,20 +1,17 @@
 <!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Main Base &middot; Zone</title><style>
-:root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;
-  --pow:#d4a017;--prod:#9aa6b2;--grid:#e9e3d7;--mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;
-  --accent:#f6963c;--pow:#e3b94a;--prod:#4a5663;--grid:#1a232f;}}
-:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--pow:#e3b94a;--prod:#4a5663;--grid:#1a232f;}
+<title>Main Base &middot; Flow</title><style>
+:root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;--grid:#e9e3d7;
+  --mono:ui-monospace,Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;--accent:#f6963c;--grid:#1a232f;}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
-.wrap{max-width:1040px;margin:0 auto;padding:26px 18px 60px}
+.wrap{max-width:1100px;margin:0 auto;padding:26px 18px 60px}
 a{color:var(--accent);text-decoration:none}
 .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--accent);font-weight:600}
 h1{font-size:26px;margin:2px 0}.sub{color:var(--muted);font-size:14px;margin-bottom:16px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0;box-shadow:0 1px 2px #0001,0 8px 24px #0001}
-.mapwrap{background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:28px 28px;border-radius:10px;overflow:auto}
-svg{display:block;max-width:100%;height:auto}
-.nlab{fill:var(--ink);font-family:var(--mono);font-size:11px;paint-order:stroke;stroke:var(--panel);stroke-width:3px}
+.flow{overflow:auto}.flow .mermaid{min-width:100%}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
@@ -27,349 +24,262 @@ td.n{font-family:var(--mono);text-align:right}
 .card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .card h3{margin:0 0 4px;font-size:15px;color:var(--ink)}.meta{font-size:12.5px;color:var(--ink)}
 .links a{margin-right:16px;font-weight:600}
-@media (max-width:560px){.wrap{padding:18px 14px 48px}}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media (max-width:620px){.cols{grid-template-columns:1fr}.wrap{padding:18px 14px 48px}}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding-top:8px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 </style></head><body><div class="wrap">
 <div class="eyebrow"><a href="../index.html">&#8592; Atlas</a></div>
 <h1>Main Base</h1>
 <div class="sub">454 buildings &middot; 0 MW &middot; Pull this-10.17.26-13.58.18.sav</div>
-<div class="panel"><div class="mapwrap">
-  <svg viewBox="0 0 760 641" width="760" height="641" xmlns="http://www.w3.org/2000/svg"><circle cx="535.4" cy="372.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="538.7" cy="366.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.4" cy="363.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="533.9" cy="379.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="416.7" cy="346.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="425.4" cy="347.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="433.3" cy="347.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="402.7" cy="262.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="394.8" cy="262.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="373.8" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="381.7" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="474.7" cy="546.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="472.6" cy="542.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="470.4" cy="538.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="468.2" cy="534.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="481.1" cy="527.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="483.2" cy="531.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="485.4" cy="534.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="487.6" cy="538.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="498.9" cy="570.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="507.2" cy="584.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="505.0" cy="567.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="511.1" cy="563.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="517.1" cy="560.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="523.2" cy="556.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="513.3" cy="581.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.4" cy="577.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="525.4" cy="574.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="501.2" cy="588.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="492.9" cy="573.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="529.2" cy="553.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="535.3" cy="549.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="531.5" cy="570.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="537.5" cy="567.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="543.6" cy="563.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="523.1" cy="535.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.6" cy="529.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="516.1" cy="523.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="512.6" cy="517.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="509.1" cy="511.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="505.6" cy="505.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="502.1" cy="498.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="498.6" cy="492.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="495.1" cy="486.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="491.6" cy="480.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="488.1" cy="474.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="484.6" cy="468.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="537.5" cy="527.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="534.0" cy="520.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="530.5" cy="514.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="527.0" cy="508.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="523.5" cy="502.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="520.0" cy="496.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="516.5" cy="490.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="513.0" cy="484.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="509.5" cy="478.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="506.0" cy="472.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="502.5" cy="466.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="499.0" cy="460.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="367.6" cy="556.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="375.0" cy="569.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="373.7" cy="552.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="381.1" cy="565.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.6" cy="416.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.6" cy="411.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.6" cy="407.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.6" cy="403.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="417.6" cy="398.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.6" cy="416.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.6" cy="411.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.6" cy="407.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.6" cy="403.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="403.6" cy="398.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="381.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.6" cy="381.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.6" cy="374.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="374.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="367.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.6" cy="367.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.6" cy="360.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="360.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="353.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.6" cy="353.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="382.6" cy="346.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.7" cy="346.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="399.2" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="399.2" cy="311.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="374.7" cy="310.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="374.7" cy="318.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.8" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.7" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="415.8" cy="382.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="415.8" cy="375.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="428.0" cy="375.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="428.0" cy="382.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="377.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="369.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="360.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="386.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="324.0" cy="386.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="324.0" cy="377.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="324.0" cy="369.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="324.0" cy="360.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="347.6" cy="351.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="368.6" cy="373.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="368.6" cy="366.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.7" cy="373.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.7" cy="366.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="376.4" cy="354.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="376.4" cy="346.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="331.8" cy="318.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.0" cy="318.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.0" cy="314.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="331.8" cy="314.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="331.8" cy="309.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.0" cy="309.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="331.0" cy="290.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="331.0" cy="283.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.8" cy="290.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="345.8" cy="283.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="326.6" cy="251.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="338.8" cy="251.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="217.0" cy="141.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="230.8" cy="143.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="218.8" cy="136.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="230.8" cy="138.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="224.1" cy="105.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="236.1" cy="108.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="225.3" cy="99.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="237.4" cy="101.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="222.6" cy="114.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.6" cy="116.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="227.3" cy="87.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="239.3" cy="89.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="228.5" cy="80.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="424.5" cy="295.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="448.2" cy="295.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="424.5" cy="284.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="193.3" cy="376.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="172.3" cy="376.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="193.3" cy="365.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="172.3" cy="365.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="227.4" cy="266.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="227.4" cy="287.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="214.3" cy="266.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="214.3" cy="287.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="394.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="394.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="387.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="387.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="380.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="380.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="372.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="372.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="365.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="365.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="358.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="358.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.5" cy="351.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="351.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.9" cy="217.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="519.9" cy="200.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="479.6" cy="209.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="463.9" cy="209.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="353.7" cy="297.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="369.5" cy="297.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="267.1" cy="279.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="251.4" cy="279.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="254.9" cy="241.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="254.9" cy="220.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="315.2" cy="282.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="315.2" cy="261.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="315.2" cy="232.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="315.2" cy="211.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="415.8" cy="368.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="218.7" cy="141.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="230.8" cy="143.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="219.8" cy="135.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="231.8" cy="137.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="220.7" cy="130.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="232.8" cy="132.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="222.0" cy="117.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.0" cy="120.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="222.5" cy="110.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="234.5" cy="112.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="224.5" cy="103.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="236.6" cy="105.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="227.5" cy="91.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="239.6" cy="93.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="228.9" cy="83.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="241.0" cy="85.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="386.8" cy="549.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="392.9" cy="560.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="581.1" cy="286.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="565.4" cy="286.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="664.7" cy="374.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="648.9" cy="374.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="720.6" cy="391.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="681.3" cy="455.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="697.9" cy="283.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="682.2" cy="283.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="746.0" cy="283.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="746.9" cy="349.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="746.9" cy="328.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="677.8" cy="324.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="677.8" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="688.3" cy="324.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="688.3" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="341.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="341.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="331.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="331.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="345.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="345.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="349.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="349.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="354.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="354.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="358.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="358.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="362.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="362.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="367.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="367.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="273.7" cy="371.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="261.5" cy="371.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="542.6" cy="295.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="542.6" cy="307.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="559.2" cy="292.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="559.2" cy="271.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="146.1" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="161.8" cy="336.7" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="537.9" cy="185.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="568.5" cy="167.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="721.5" cy="488.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="707.5" cy="488.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="752.1" cy="485.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="752.1" cy="497.6" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="748.6" cy="522.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="360.7" cy="251.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="360.7" cy="251.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="360.7" cy="251.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="360.7" cy="251.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="366.0" cy="286.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="378.2" cy="286.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="366.0" cy="279.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="378.2" cy="279.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="366.0" cy="271.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="378.2" cy="271.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.4" cy="370.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="319.6" cy="370.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.4" cy="363.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="319.6" cy="363.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.4" cy="356.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="319.6" cy="356.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="307.4" cy="349.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="319.6" cy="349.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="516.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="512.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="508.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="503.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="499.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="516.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="512.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="508.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="503.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="499.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="516.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="516.9" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="512.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="508.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="503.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="406.7" cy="499.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="512.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="508.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="503.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="387.4" cy="499.4" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="414.5" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="414.5" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="421.5" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="421.5" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="429.4" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="429.4" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="436.4" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="436.4" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="443.4" cy="496.8" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="443.4" cy="509.0" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.3" cy="480.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.3" cy="480.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.3" cy="480.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="395.3" cy="480.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="440.3" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="440.3" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="440.3" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="440.3" cy="319.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="404.1" cy="479.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="404.1" cy="479.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="404.1" cy="479.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="404.1" cy="479.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="740.8" cy="562.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="374.7" cy="52.5" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="374.7" cy="68.2" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="143.4" cy="304.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="159.2" cy="304.3" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="52.5" cy="327.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="68.2" cy="327.1" r="2.4" fill="var(--prod)" opacity="0.5"/>
-<circle cx="460.3" cy="404.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="457.0" cy="404.1" r="4.5" fill="var(--pow)" stroke="#0007" stroke-width="0.7"/>
-<circle cx="385.2" cy="418.7" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/>
-<text x="394.2" y="422.7" class="nlab">Iron Ore 300</text>
-<circle cx="363.2" cy="509.5" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/>
-<text x="372.2" y="513.5" class="nlab">Iron Ore 240</text>
-<circle cx="429.9" cy="520.7" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/>
-<text x="438.9" y="524.7" class="nlab">Iron Ore 240</text>
-<circle cx="335.4" cy="566.0" r="6" fill="#c9b68a" stroke="#0008" stroke-width="0.9"/>
-<text x="344.4" y="570.0" class="nlab">Limestone 300</text>
-<circle cx="410.8" cy="424.5" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/>
-<text x="419.8" y="428.5" class="nlab">Iron Ore 300</text>
-<circle cx="210.4" cy="149.6" r="6" fill="#c0703a" stroke="#0008" stroke-width="0.9"/>
-<text x="219.4" y="153.6" class="nlab">Copper Ore 240</text>
-<circle cx="324.8" cy="298.3" r="6" fill="#c0703a" stroke="#0008" stroke-width="0.9"/>
-<text x="333.8" y="302.3" class="nlab">Copper Ore 600</text>
-<circle cx="338.4" cy="330.4" r="6" fill="#c0703a" stroke="#0008" stroke-width="0.9"/>
-<text x="347.4" y="334.4" class="nlab">Copper Ore 600</text>
-<circle cx="396.1" cy="537.2" r="6" fill="#b36a2b" stroke="#0008" stroke-width="0.9"/>
-<text x="405.1" y="541.2" class="nlab">Iron Ore 600</text></svg>
+<div class="panel">
+  <h2>Material flow <span class="muted" style="font-weight:400;font-size:12.5px">&mdash; manifolds collapsed, belts aggregated by item</span></h2>
+  <div class="flow"><pre class="mermaid">flowchart LR
+  n1[&quot;Time Crystal x1&lt;br/&gt;6/min&quot;]:::mach
+  n2[&quot;Black Powder x1&lt;br/&gt;45/min&quot;]:::mach
+  n3[&quot;Copper Ingot x36&lt;br/&gt;1,350/min&quot;]:::mach
+  n4[&quot;Radio Control Unit x2&lt;br/&gt;6/min&quot;]:::mach
+  n5[&quot;Solid Biofuel x1&lt;br/&gt;60/min&quot;]:::mach
+  n6[&quot;AI Limiter x4&lt;br/&gt;20/min&quot;]:::mach
+  n7[&quot;Iron Rebar x2&lt;br/&gt;30/min&quot;]:::mach
+  n8[&quot;Crystal Oscillator x2&lt;br/&gt;3/min&quot;]:::mach
+  n9[&quot;Biomass x1&lt;br/&gt;150/min&quot;]:::mach
+  n10[&quot;Biomass x1&lt;br/&gt;300/min&quot;]:::mach
+  n11[&quot;Electromagnetic Control Rod x2&lt;br/&gt;8/min&quot;]:::mach
+  n12[&quot;Adaptive Control Unit x2&lt;br/&gt;2/min&quot;]:::mach
+  n13[&quot;Assembly Director System x1&lt;br/&gt;1/min&quot;]:::mach
+  n14[&quot;Reinforced Iron Plate x7&lt;br/&gt;36/min&quot;]:::mach
+  n15[&quot;Supercomputer x2&lt;br/&gt;4/min&quot;]:::mach
+  n16[&quot;Steel Ingot x9&lt;br/&gt;585/min&quot;]:::mach
+  n17[&quot;Biomass x1&lt;br/&gt;60/min&quot;]:::mach
+  n18[&quot;Copper Powder x4&lt;br/&gt;200/min&quot;]:::mach
+  n19[&quot;Circuit Board x4&lt;br/&gt;34/min&quot;]:::mach
+  n20[&quot;High-Speed Connector x2&lt;br/&gt;8/min&quot;]:::mach
+  n21[&quot;Stun Rebar x2&lt;br/&gt;20/min&quot;]:::mach
+  n22[&quot;Versatile Framework x2&lt;br/&gt;10/min&quot;]:::mach
+  n23[&quot;Diamonds x1&lt;br/&gt;12/min&quot;]:::mach
+  n24[&quot;Iron Plate x15&lt;br/&gt;308/min&quot;]:::mach
+  n25[&quot;Motor x2&lt;br/&gt;10/min&quot;]:::mach
+  n26[(&quot;Storage x143&quot;)]:::store
+  n27[&quot;Magnetic Field Generator x2&lt;br/&gt;2/min&quot;]:::mach
+  n28[&quot;Heavy Modular Frame x2&lt;br/&gt;4/min&quot;]:::mach
+  n29[&quot;Reinforced Iron Plate x3&lt;br/&gt;18/min&quot;]:::mach
+  n30([&quot;Copper Ore&lt;br/&gt;1,440/min&quot;]):::res
+  n31[&quot;Screw x24&lt;br/&gt;960/min&quot;]:::mach
+  n32[&quot;Cable x9&lt;br/&gt;315/min&quot;]:::mach
+  n33[&quot;Ficsite Ingot x1&lt;br/&gt;30/min&quot;]:::mach
+  n34[&quot;Iron Rod x28&lt;br/&gt;420/min&quot;]:::mach
+  n35[&quot;Nobelisk x1&lt;br/&gt;10/min&quot;]:::mach
+  n36[&quot;Smart Plating x3&lt;br/&gt;6/min&quot;]:::mach
+  n37[&quot;Rotor x4&lt;br/&gt;16/min&quot;]:::mach
+  n38([&quot;Limestone&lt;br/&gt;300/min&quot;]):::res
+  n39[&quot;Modular Engine x2&lt;br/&gt;2/min&quot;]:::mach
+  n40[&quot;Encased Industrial Beam x2&lt;br/&gt;20/min&quot;]:::mach
+  n41[&quot;Iron Ingot x38&lt;br/&gt;1,140/min&quot;]:::mach
+  n42[&quot;Steel Pipe x8&lt;br/&gt;160/min&quot;]:::mach
+  n43[&quot;Wire x21&lt;br/&gt;705/min&quot;]:::mach
+  n44[&quot;Stator x4&lt;br/&gt;45/min&quot;]:::mach
+  n45[&quot;Automated Wiring x2&lt;br/&gt;8/min&quot;]:::mach
+  n46[&quot;AssemblerMk1 x2&quot;]:::mach
+  n47[&quot;Computer x2&lt;br/&gt;8/min&quot;]:::mach
+  n48[&quot;Steel Beam x4&lt;br/&gt;60/min&quot;]:::mach
+  n49[&quot;Modular Frame x4&lt;br/&gt;17/min&quot;]:::mach
+  n50[&quot;Concrete x6&lt;br/&gt;100/min&quot;]:::mach
+  n51[&quot;Copper Sheet x13&lt;br/&gt;130/min&quot;]:::mach
+  n52[&quot;Nitrogen Gas x1&lt;br/&gt;240/min&quot;]:::mach
+  n53[&quot;Turbo Motor x1&lt;br/&gt;2/min&quot;]:::mach
+  n54[&quot;ConstructorMk1 x2&quot;]:::mach
+  n55[&quot;ResourceSink x4&quot;]:::mach
+  n56([&quot;Iron Ore&lt;br/&gt;1,680/min&quot;]):::res
+  n57&gt;&quot;⇤ Plastic&lt;br/&gt;(from Oil Power Plant)&quot;]:::io
+  n58&gt;&quot;⇤ Rubber&lt;br/&gt;(from Oil Power Plant)&quot;]:::io
+  n59&gt;&quot;⇥ mixed&lt;br/&gt;(to Caterium)&quot;]:::io
+  n60&gt;&quot;⇤ Quickwire&lt;br/&gt;(from Caterium)&quot;]:::io
+  n61&gt;&quot;⇤ mixed&lt;br/&gt;(from Caterium)&quot;]:::io
+  n62&gt;&quot;⇥ Crystal Oscillator&lt;br/&gt;(to Caterium)&quot;]:::io
+  n63&gt;&quot;⇥ Radio Control Unit&lt;br/&gt;(to Caterium)&quot;]:::io
+  n64&gt;&quot;⇥ Nitrogen Gas&lt;br/&gt;(to Caterium)&quot;]:::io
+  n65&gt;&quot;⇤ Turbo Motor&lt;br/&gt;(from Caterium)&quot;]:::io
+  n66&gt;&quot;⇥ Copper Powder&lt;br/&gt;(to Caterium)&quot;]:::io
+  n67&gt;&quot;⇤ Concrete&lt;br/&gt;(from Caterium)&quot;]:::io
+  n68&gt;&quot;⇤ Coal&lt;br/&gt;(from Coal Field)&quot;]:::io
+  n69&gt;&quot;⇥ Time Crystal&lt;br/&gt;(to Caterium)&quot;]:::io
+  n70&gt;&quot;⇥ Ficsite Ingot&lt;br/&gt;(to Caterium)&quot;]:::io
+  n26 --&gt; n10
+  n26 --&gt; n17
+  n17 --&gt;|&quot;Biomass&quot;| n26
+  n10 --&gt;|&quot;Biomass&quot;| n26
+  n5 --&gt;|&quot;Solid Biofuel&quot;| n26
+  n26 --&gt; n9
+  n9 --&gt;|&quot;Biomass&quot;| n26
+  n29 --&gt;|&quot;Reinforced Iron Plate&quot;| n36
+  n29 --&gt;|&quot;Reinforced Iron Plate&quot;| n26
+  n29 --&gt;|&quot;Reinforced Iron Plate&quot;| n49
+  n56 --&gt;|&quot;Iron Ore&quot;| n16
+  n56 --&gt;|&quot;Iron Ore&quot;| n26
+  n22 --&gt;|&quot;Versatile Framework&quot;| n26
+  n22 --&gt;|&quot;Versatile Framework&quot;| n27
+  n25 --&gt;|&quot;Motor&quot;| n26
+  n25 --&gt;|&quot;Motor&quot;| n39
+  n57 --&gt;|&quot;Plastic&quot;| n26
+  n58 --&gt;|&quot;Rubber&quot;| n26
+  n26 --&gt; n15
+  n26 --&gt; n47
+  n26 --&gt; n19
+  n26 --&gt; n39
+  n41 --&gt;|&quot;Iron Ingot&quot;| n26
+  n34 --&gt;|&quot;Iron Rod&quot;| n31
+  n31 --&gt;|&quot;Screw&quot;| n26
+  n31 --&gt;|&quot;Screw&quot;| n37
+  n31 --&gt;|&quot;Screw&quot;| n29
+  n38 --&gt;|&quot;Limestone&quot;| n50
+  n50 --&gt;|&quot;Concrete&quot;| n26
+  n50 --&gt;|&quot;Concrete&quot;| n40
+  n56 --&gt;|&quot;Iron Ore&quot;| n41
+  n41 --&gt;|&quot;Iron Ingot&quot;| n24
+  n41 --&gt;|&quot;Iron Ingot&quot;| n34
+  n34 --&gt;|&quot;Iron Rod&quot;| n26
+  n34 --&gt;|&quot;Iron Rod&quot;| n37
+  n37 --&gt;|&quot;Rotor&quot;| n25
+  n37 --&gt;|&quot;Rotor&quot;| n36
+  n37 --&gt;|&quot;Rotor&quot;| n26
+  n45 --&gt;|&quot;Automated Wiring&quot;| n12
+  n24 --&gt;|&quot;Iron Plate&quot;| n29
+  n24 --&gt;|&quot;Iron Plate&quot;| n26
+  n16 --&gt;|&quot;Steel Ingot&quot;| n42
+  n16 --&gt;|&quot;Steel Ingot&quot;| n48
+  n48 --&gt;|&quot;Steel Beam&quot;| n22
+  n48 --&gt;|&quot;Steel Beam&quot;| n26
+  n48 --&gt;|&quot;Steel Beam&quot;| n40
+  n40 --&gt;|&quot;Encased Industrial Beam&quot;| n28
+  n40 --&gt;|&quot;Encased Industrial Beam&quot;| n26
+  n3 --&gt;|&quot;Copper Ingot&quot;| n43
+  n3 --&gt;|&quot;Copper Ingot&quot;| n54
+  n43 --&gt;|&quot;Wire&quot;| n26
+  n43 --&gt;|&quot;Wire&quot;| n44
+  n32 --&gt;|&quot;Cable&quot;| n45
+  n30 --&gt;|&quot;Copper Ore&quot;| n3
+  n43 --&gt;|&quot;Wire&quot;| n32
+  n32 --&gt;|&quot;Cable&quot;| n47
+  n32 --&gt;|&quot;Cable&quot;| n20
+  n32 --&gt;|&quot;Cable&quot;| n26
+  n26 --&gt; n23
+  n26 --&gt; n2
+  n36 --&gt;|&quot;Smart Plating&quot;| n26
+  n36 --&gt;|&quot;Smart Plating&quot;| n39
+  n26 --&gt; n59
+  n26 --&gt; n8
+  n19 --&gt;|&quot;Circuit Board&quot;| n12
+  n19 --&gt;|&quot;Circuit Board&quot;| n47
+  n19 --&gt;|&quot;Circuit Board&quot;| n20
+  n6 --&gt;|&quot;AI Limiter&quot;| n11
+  n6 --&gt;|&quot;AI Limiter&quot;| n15
+  n51 --&gt;|&quot;Copper Sheet&quot;| n26
+  n51 --&gt;|&quot;Copper Sheet&quot;| n19
+  n51 --&gt;|&quot;Copper Sheet&quot;| n6
+  n54 --&gt; n26
+  n54 --&gt; n19
+  n54 --&gt; n6
+  n60 --&gt;|&quot;Quickwire&quot;| n20
+  n60 --&gt;|&quot;Quickwire&quot;| n6
+  n60 --&gt;|&quot;Quickwire&quot;| n21
+  n60 --&gt;|&quot;Quickwire&quot;| n26
+  n2 --&gt;|&quot;Black Powder&quot;| n35
+  n35 --&gt;|&quot;Nobelisk&quot;| n26
+  n26 --&gt; n53
+  n39 --&gt;|&quot;Modular Engine&quot;| n26
+  n28 --&gt;|&quot;Heavy Modular Frame&quot;| n26
+  n28 --&gt;|&quot;Heavy Modular Frame&quot;| n12
+  n12 --&gt;|&quot;Adaptive Control Unit&quot;| n13
+  n11 --&gt;|&quot;Electromagnetic Control Rod&quot;| n26
+  n11 --&gt;|&quot;Electromagnetic Control Rod&quot;| n27
+  n13 --&gt;|&quot;Assembly Director System&quot;| n26
+  n26 --&gt; n4
+  n26 --&gt; n55
+  n27 --&gt;|&quot;Magnetic Field Generator&quot;| n26
+  n26 --&gt; n18
+  n61 --&gt; n26
+  n61 --&gt; n55
+  n26 --&gt; n35
+  n26 --&gt; n7
+  n8 --&gt;|&quot;Crystal Oscillator&quot;| n62
+  n8 --&gt;|&quot;Crystal Oscillator&quot;| n4
+  n4 --&gt;|&quot;Radio Control Unit&quot;| n63
+  n4 --&gt;|&quot;Radio Control Unit&quot;| n53
+  n52 --&gt;|&quot;Nitrogen Gas&quot;| n64
+  n52 --&gt;|&quot;Nitrogen Gas&quot;| n26
+  n26 --&gt; n52
+  n65 --&gt;|&quot;Turbo Motor&quot;| n26
+  n53 --&gt;|&quot;Turbo Motor&quot;| n26
+  n18 --&gt;|&quot;Copper Powder&quot;| n66
+  n67 --&gt;|&quot;Concrete&quot;| n26
+  n67 --&gt;|&quot;Concrete&quot;| n40
+  n26 --&gt; n28
+  n68 --&gt;|&quot;Coal&quot;| n26
+  n68 --&gt;|&quot;Coal&quot;| n16
+  n26 --&gt; n41
+  n26 --&gt; n34
+  n30 --&gt;|&quot;Copper Ore&quot;| n26
+  n3 --&gt;|&quot;Copper Ingot&quot;| n26
+  n3 --&gt;|&quot;Copper Ingot&quot;| n51
+  n26 --&gt; n3
+  n7 --&gt;|&quot;Iron Rebar&quot;| n21
+  n21 --&gt;|&quot;Stun Rebar&quot;| n26
+  n47 --&gt;|&quot;Computer&quot;| n26
+  n47 --&gt;|&quot;Computer&quot;| n12
+  n47 --&gt;|&quot;Computer&quot;| n15
+  n23 --&gt;|&quot;Diamonds&quot;| n26
+  n26 --&gt; n1
+  n1 --&gt;|&quot;Time Crystal&quot;| n69
+  n26 --&gt; n33
+  n33 --&gt;|&quot;Ficsite Ingot&quot;| n70
+  n44 --&gt;|&quot;Stator&quot;| n26
+  n26 --&gt; n44
+  n26 --&gt; n25
+  n26 --&gt; n45
+  n26 --&gt; n11
+  n54 --&gt; n44
+  n42 --&gt;|&quot;Steel Pipe&quot;| n26
+  n42 --&gt;|&quot;Steel Pipe&quot;| n28
+  n26 --&gt; n32
+  n26 --&gt; n24
+  n26 --&gt; n14
+  n26 --&gt; n46
+  n14 --&gt;|&quot;Reinforced Iron Plate&quot;| n26
+  n26 --&gt; n36
+  n26 --&gt; n49
+  n49 --&gt;|&quot;Modular Frame&quot;| n22
+  n49 --&gt;|&quot;Modular Frame&quot;| n26
+  n46 --&gt; n26
+  n15 --&gt;|&quot;Supercomputer&quot;| n26
+  n15 --&gt;|&quot;Supercomputer&quot;| n46
+  n15 --&gt;|&quot;Supercomputer&quot;| n13
+  classDef res fill:#b36a2b,stroke:#0006,color:#fff;
+  classDef gen fill:#d4a017,stroke:#0006,color:#1b2028;
+  classDef store fill:#7a8699,stroke:#0006,color:#fff;
+  classDef io fill:#c05617,stroke:#0006,color:#fff;
+  classDef mach fill:#2f7fd6,stroke:#0006,color:#fff;</pre></div>
+  <div class="legend">
+    <span><i style="background:#b36a2b"></i>resource node</span>
+    <span><i style="background:#2f7fd6"></i>machine group (xN)</span>
+    <span><i style="background:#d4a017"></i>generator</span>
+    <span><i style="background:#7a8699"></i>storage buffer</span>
+    <span><i style="background:#c05617"></i>&#8676; import / export &#8677; (other zones)</span>
+  </div>
 </div>
-<div class="muted" style="font-size:12px;padding-top:8px">Dots = production machines &middot; gold = generators &middot; coloured + labelled = resource nodes (rate/min at current clock). Top-down world coords.</div>
-</div>
-<div class="panel"><h2>Extraction</h2>
-<table><thead><tr><th>Resource</th><th class="n">Potential/min</th><th class="n">Live/min</th><th>Uptime</th></tr></thead>
-<tbody><tr><td>Iron Ore</td><td class="n">1,680</td><td class="n">695</td><td><div class="bar"><div style="width:41%"></div></div></td></tr>
+<div class="cols">
+  <div class="panel"><h2>Extraction</h2>
+    <table><thead><tr><th>Resource</th><th class="n">Potential/min</th><th class="n">Live/min</th><th>Uptime</th></tr></thead>
+    <tbody><tr><td>Iron Ore</td><td class="n">1,680</td><td class="n">695</td><td><div class="bar"><div style="width:41%"></div></div></td></tr>
 <tr><td>Copper Ore</td><td class="n">1,440</td><td class="n">705</td><td><div class="bar"><div style="width:49%"></div></div></td></tr>
 <tr><td>Limestone</td><td class="n">300</td><td class="n">300</td><td><div class="bar"><div style="width:100%"></div></div></td></tr></tbody></table></div>
-<div class="panel"><h2>Produces</h2><span class="chip">Base/Steel <b>250</b></span> <span class="chip">Computing <b>14</b></span> <span class="chip">Sulfur/Ammo <b>6</b></span> <span class="chip">Biomass <b>3</b></span> <span class="chip">Smart Plating <b>3</b></span> <span class="chip">Quantum <b>3</b></span> <span class="chip">Automated Wiring <b>2</b></span> <span class="chip">Adaptive Control Unit <b>2</b></span></div>
-<div class="panel"><h2>Exports &rarr;</h2><span class="chip">(storage) <b>25</b></span> <span class="chip">Radio Control Unit <b>6</b></span> <span class="chip">Copper Powder <b>4</b></span> <span class="chip">Crystal Oscillator <b>2</b></span> <span class="chip">Nitrogen Gas <b>2</b></span> <span class="chip">Time Crystal <b>1</b></span> <span class="chip">Ficsite Ingot <b>1</b></span></div>
-<div class="panel"><h2>&larr; Imports</h2><span class="chip">Quickwire <b>162</b></span> <span class="chip">Coal <b>40</b></span> <span class="chip">Rubber <b>22</b></span> <span class="chip">Concrete <b>18</b></span> <span class="chip">Plastic <b>17</b></span> <span class="chip">? <b>8</b></span> <span class="chip">Turbo Motor <b>1</b></span></div>
+  <div class="panel"><h2>Produces</h2><span class="chip">Base/Steel <b>250</b></span> <span class="chip">Computing <b>14</b></span> <span class="chip">Sulfur/Ammo <b>6</b></span> <span class="chip">Biomass <b>3</b></span> <span class="chip">Smart Plating <b>3</b></span> <span class="chip">Quantum <b>3</b></span> <span class="chip">Automated Wiring <b>2</b></span> <span class="chip">Adaptive Control Unit <b>2</b></span> <span class="chip">Magnetic Field Generator <b>2</b></span> <span class="chip">Crystal Oscillator <b>2</b></span>
+    <h2 style="margin-top:12px">Exports &rarr;</h2><span class="chip">(storage) <b>25</b></span> <span class="chip">Radio Control Unit <b>6</b></span> <span class="chip">Copper Powder <b>4</b></span> <span class="chip">Crystal Oscillator <b>2</b></span> <span class="chip">Nitrogen Gas <b>2</b></span> <span class="chip">Time Crystal <b>1</b></span> <span class="chip">Ficsite Ingot <b>1</b></span>
+    <h2 style="margin-top:12px">&larr; Imports</h2><span class="chip">Quickwire <b>162</b></span> <span class="chip">Coal <b>40</b></span> <span class="chip">Rubber <b>22</b></span> <span class="chip">Concrete <b>18</b></span> <span class="chip">Plastic <b>17</b></span> <span class="chip">? <b>8</b></span> <span class="chip">Turbo Motor <b>1</b></span></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+  var dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({startOnLoad:true, theme: dark?'dark':'default',
+    flowchart:{useMaxWidth:false, htmlLabels:true, curve:'basis', nodeSpacing:45, rankSpacing:70}});
+</script>
 </div></body></html>

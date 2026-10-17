@@ -151,14 +151,14 @@ def analyze(save_path, thresh=600.0):
     for bid in g["nodes"]:
         groups[zone_of.get(bid, "(unplaced)")].append(bid)
 
-    # generator clocks (own light pass)
+    # clocks for every machine (one pass) -- used for group rates + generator MW
     gv = sp.getPropertyValue
     clock_of = {}
     for lvl in parsed.levels:
         hs = lvl.actorAndComponentObjectHeaders
         for i, o in enumerate(lvl.objects):
             iname = getattr(o, "instanceName", "") or ""
-            if iname in g["nodes"] and g["nodes"][iname]["class"] in POWER_MW:
+            if iname in g["nodes"]:
                 c = gv(o.properties, "mCurrentPotential")
                 clock_of[iname] = 1.0 if c is None else c
 
@@ -212,10 +212,15 @@ def analyze(save_path, thresh=600.0):
             "bbox": (min(xs), min(ys), max(xs), max(ys)) if xs else None,
         }
 
+    # final zone NAME per building (both modes), so downstream tools key by name
+    keyname = {z: zname(z, bids) for z, bids in groups.items()}
+    zone_of_named = {bid: keyname.get(zone_of.get(bid)) for bid in g["nodes"]}
+
     order = sorted(zones, key=lambda n: -len(zones[n]["bids"]))
     mode = f"zones.yaml ({len(named)} named)" if named else f"auto-cluster @ {thresh:.0f} m"
     return {"save": os.path.basename(save_path), "mode": mode, "graph": g, "named": named,
-            "res_at": res_at, "rate_at": rate_at, "up_at": up_at, "zones": zones, "order": order}
+            "res_at": res_at, "rate_at": rate_at, "up_at": up_at, "zones": zones, "order": order,
+            "zone_of": zone_of_named, "clock_of": clock_of, "book": book}
 
 
 def main():
