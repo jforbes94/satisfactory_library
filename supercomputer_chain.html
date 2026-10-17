@@ -1,0 +1,164 @@
+<title>Supercomputer Chain</title>
+<style>
+:root{
+  --bg:#f3f1ec; --panel:#fff; --ink:#1b2028; --muted:#5d6773; --line:#e2ddd3;
+  --accent:#c05617; --good:#2f9e44; --warn:#b8860b; --crit:#c8371f;
+  --box:#faf8f4; --edge:#b9b1a3; --grid:#e9e3d7;
+  --mono:ui-monospace,"Cascadia Code",Consolas,monospace; --sans:"Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0f141b; --panel:#161d27; --ink:#e7edf4; --muted:#93a1b2; --line:#26303d;
+  --accent:#f6963c; --good:#3fb950; --warn:#d9a21b; --crit:#f06a4d;
+  --box:#1b2430; --edge:#3a4552; --grid:#1a232f;}}
+:root[data-theme="dark"]{
+  --bg:#0f141b; --panel:#161d27; --ink:#e7edf4; --muted:#93a1b2; --line:#26303d;
+  --accent:#f6963c; --good:#3fb950; --warn:#d9a21b; --crit:#f06a4d;
+  --box:#1b2430; --edge:#3a4552; --grid:#1a232f;}
+:root[data-theme="light"]{
+  --bg:#f3f1ec; --panel:#fff; --ink:#1b2028; --muted:#5d6773; --line:#e2ddd3;
+  --accent:#c05617; --good:#2f9e44; --warn:#b8860b; --crit:#c8371f;
+  --box:#faf8f4; --edge:#b9b1a3; --grid:#e9e3d7;}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding:26px 18px 60px}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--accent);font-weight:600}
+h1{font-size:26px;margin:2px 0 2px} .sub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0;
+  box-shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.05)}
+.diagram{background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:22px 22px;border-radius:10px;overflow:auto}
+svg{display:block;max-width:100%;height:auto}
+.nbox{fill:var(--box);stroke:var(--edge);stroke-width:1.5}
+.nbox.anchor{stroke:var(--accent);stroke-width:2.5}
+.nbox.target{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2.5}
+.nbox.warnb{stroke:var(--warn);stroke-width:2}
+.nbox.critb{stroke:var(--crit);stroke-width:2;stroke-dasharray:6 4}
+.ntitle{fill:var(--ink);font-weight:650;font-size:14px;font-family:var(--sans)}
+.nmach{fill:var(--muted);font-size:11px;font-family:var(--mono)}
+.nsub{fill:var(--muted);font-size:10px;font-family:var(--sans)}
+.nrate{fill:var(--accent);font-size:13px;font-weight:700;font-family:var(--mono);text-anchor:end}
+.edge{fill:none;stroke:var(--edge);stroke-width:2}
+.elabel{fill:var(--ink);font-size:10.5px;font-family:var(--mono);text-anchor:middle}
+.elabel tspan.m{fill:var(--muted)}
+h2{font-size:15px;margin:2px 0 8px} .hint{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
+th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+td.n{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.flag{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;margin:6px 0}
+.flag b{color:var(--ink)} .dot{margin-top:6px;width:8px;height:8px;border-radius:50%;flex:none}
+.dot.w{background:var(--warn)} .dot.c{background:var(--crit)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding:8px 4px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+</style>
+<div class="wrap">
+  <div class="eyebrow">FICSIT &middot; Supercomputer Chain</div>
+  <h1>Supercomputer line, anchored to 4 PCB</h1>
+  <div class="sub">30 Circuit Board/min &rarr; <b>~1.58 Supercomputers/min</b> at target &middot; <b style="color:var(--crit)">live pull 09/06: Quickwire-starved at 10%</b></div>
+
+  <div class="panel">
+    <div class="diagram">
+      <svg viewBox="0 0 1000 560" width="1000" height="560" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="var(--edge)"/></marker></defs>
+
+        <!-- edges -->
+        <path class="edge" d="M245,151 C315,151 315,101 385,101" marker-end="url(#a)"/>
+        <text class="elabel" x="315" y="118">25.3 <tspan class="m">CB</tspan></text>
+        <path class="edge" d="M245,151 C315,151 315,281 385,281" marker-end="url(#a)"/>
+        <text class="elabel" x="312" y="210">4.75 <tspan class="m">CB</tspan></text>
+        <path class="edge" d="M245,411 C315,411 315,281 385,281" marker-end="url(#a)"/>
+        <text class="elabel" x="316" y="352">266 <tspan class="m">Quickwire</tspan></text>
+        <path class="edge" d="M245,411 C315,411 315,461 385,461" marker-end="url(#a)"/>
+        <text class="elabel" x="315" y="428">64 <tspan class="m">Quickwire</tspan></text>
+        <path class="edge" d="M595,101 C662,101 662,280 725,280" marker-end="url(#a)"/>
+        <text class="elabel" x="665" y="176">6.3 <tspan class="m">&times;4</tspan></text>
+        <path class="edge" d="M595,281 C660,281 660,280 725,280" marker-end="url(#a)"/>
+        <text class="elabel" x="660" y="272">4.75 <tspan class="m">&times;3</tspan></text>
+        <path class="edge" d="M595,461 C662,461 662,280 725,280" marker-end="url(#a)"/>
+        <text class="elabel" x="665" y="392">3.2 <tspan class="m">&times;2</tspan></text>
+
+        <!-- Circuit Board (anchor) -->
+        <g transform="translate(35,112)">
+          <rect class="nbox anchor" width="210" height="80" rx="9"/>
+          <text class="ntitle" x="14" y="24">Circuit Board</text>
+          <text class="nrate" x="196" y="24">30/min</text>
+          <text class="nmach" x="14" y="43">4&times; Assembler</text>
+          <text class="nsub" x="14" y="62">your anchor</text>
+          <text class="nsub" x="14" y="74">+ Copper Sheet, Plastic</text>
+        </g>
+        <!-- Quickwire -->
+        <g transform="translate(35,372)">
+          <rect class="nbox critb" width="210" height="80" rx="9"/>
+          <text class="ntitle" x="14" y="24">Quickwire</text>
+          <text class="nrate" x="196" y="24">60/min</text>
+          <text class="nmach" x="14" y="43">1&times; live &middot; need ~5.5</text>
+          <text class="nsub" x="14" y="62" style="fill:var(--crit)">10% supply &rarr; whole chain</text>
+          <text class="nsub" x="14" y="74">want 330/min (266 HSC+64 AI)</text>
+        </g>
+        <!-- Computer -->
+        <g transform="translate(385,61)">
+          <rect class="nbox" width="210" height="80" rx="9"/>
+          <text class="ntitle" x="14" y="24">Computer</text>
+          <text class="nrate" x="196" y="24">6.3/min</text>
+          <text class="nmach" x="14" y="43">1&times; live (2.5) &middot; need ~2.5</text>
+          <text class="nsub" x="14" y="62">4 per Supercomputer</text>
+          <text class="nsub" x="14" y="74">+ Cable, Plastic</text>
+        </g>
+        <!-- High-Speed Connector -->
+        <g transform="translate(385,241)">
+          <rect class="nbox" width="210" height="80" rx="9"/>
+          <text class="ntitle" x="14" y="24">High-Speed Conn.</text>
+          <text class="nrate" x="196" y="24">4.75/min</text>
+          <text class="nmach" x="14" y="43">1&times; live (3.75) &middot; need ~1.3</text>
+          <text class="nsub" x="14" y="62">3 per Supercomputer</text>
+          <text class="nsub" x="14" y="74">+ Cable</text>
+        </g>
+        <!-- AI Limiter -->
+        <g transform="translate(385,421)">
+          <rect class="nbox critb" width="210" height="80" rx="9"/>
+          <text class="ntitle" x="14" y="24">AI Limiter</text>
+          <text class="nrate" x="196" y="24">20/min</text>
+          <text class="nmach" x="14" y="43">4&times; live &middot; need only 3.2</text>
+          <text class="nsub" x="14" y="62" style="fill:var(--crit)">eats 400 Quickwire/min</text>
+          <text class="nsub" x="14" y="74">still running &mdash; cut 3 of 4</text>
+        </g>
+        <!-- Supercomputer (target) -->
+        <g transform="translate(725,232)">
+          <rect class="nbox target" width="235" height="96" rx="10"/>
+          <text class="ntitle" x="16" y="26" style="font-size:16px">Supercomputer</text>
+          <text class="nrate" x="220" y="26">1.58/min</text>
+          <text class="nmach" x="16" y="47" style="fill:var(--crit)">0 built &middot; target 1&times; Mfr</text>
+          <text class="nsub" x="16" y="68" style="font-size:11px">4 Computer + 2 AI + 3 HSC</text>
+          <text class="nsub" x="16" y="82" style="font-size:11px">+ 28 Plastic each</text>
+        </g>
+      </svg>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>your anchor (4 PCB)</span>
+      <span><i style="background:var(--warn)"></i>the real cost (Quickwire)</span>
+      <span><i style="background:var(--crit)"></i>overbuilt (AI)</span>
+      <span>arrow label = items/min &middot; &times;N = per Supercomputer</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Build sheet <span class="hint">off 30 CB/min</span></h2>
+    <table>
+      <thead><tr><th>Make</th><th>Building</th><th class="n">Machines</th><th class="n">Rate/min</th><th class="n">Per SC</th></tr></thead>
+      <tbody>
+        <tr><td>Circuit Board</td><td>Assembler</td><td class="n">4</td><td class="n">30</td><td class="n">19</td></tr>
+        <tr><td>Computer</td><td>Manufacturer</td><td class="n">~2.5</td><td class="n">6.3</td><td class="n">4</td></tr>
+        <tr><td>High-Speed Connector</td><td>Manufacturer</td><td class="n">~1.3</td><td class="n">4.75</td><td class="n">3</td></tr>
+        <tr><td>AI Limiter</td><td>Assembler</td><td class="n">0.6</td><td class="n">3.2</td><td class="n">2</td></tr>
+        <tr><td>Quickwire</td><td>Constructor</td><td class="n">~4.5</td><td class="n">266</td><td class="n">—</td></tr>
+        <tr><td><b>Supercomputer</b></td><td>Manufacturer</td><td class="n"><b>1</b></td><td class="n"><b>1.58</b></td><td class="n">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Live pull &mdash; fix in order</h2>
+    <div class="flag"><span class="dot c"></span><div><b>1. Cut the AI Limiters.</b> Save still shows <b>4 running</b> (20/min) &mdash; you said you cut them, but they're here, eating <b>400 Quickwire/min</b>. Chain needs only 3.2/min. Drop 3 of 4 &rarr; frees ~340 Quickwire instantly.</div></div>
+    <div class="flag"><span class="dot c"></span><div><b>2. Scale Quickwire.</b> Only <b>1 Constructor (60/min)</b> live, feeding a chain that wants ~330 &rarr; whole block runs at <b>10%</b>. Build to ~5.5 Constructors + ~5.5 Caterium smelters.</div></div>
+    <div class="flag"><span class="dot w"></span><div><b>3. Build the Supercomputer.</b> No Manufacturer running the final recipe yet. Once Quickwire flows, 1 Manufacturer &rarr; <b>1.58 SC/min</b> off your 30 CB anchor.</div></div>
+  </div>
+</div>

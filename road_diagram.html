@@ -1,0 +1,101 @@
+<title>Road Piece &middot; Blueprint Plan</title>
+<style>
+:root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;
+ --deck:#c9c2b4;--deck-l:#b8b0a0;--wall:#e08a2e;--barrier:#d9a21b;--curb:#a89b86;--lane:#c05617;
+ --pillar:#6b7a88;--ladder:#8a6d3b;--grid:#e7e1d5;--mono:ui-monospace,Consolas,monospace;
+ --sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;
+ --line:#26303d;--accent:#f6963c;--deck:#3a4048;--deck-l:#2c333c;--wall:#f6963c;--barrier:#d9a21b;
+ --curb:#4a4f57;--lane:#f6963c;--pillar:#5a6b7a;--ladder:#b98a44;--grid:#1a232f;}}
+:root[data-theme="dark"]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;
+ --accent:#f6963c;--deck:#3a4048;--deck-l:#2c333c;--wall:#f6963c;--barrier:#d9a21b;--curb:#4a4f57;
+ --lane:#f6963c;--pillar:#5a6b7a;--ladder:#b98a44;--grid:#1a232f;}
+:root[data-theme="light"]{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;
+ --accent:#c05617;--deck:#c9c2b4;--deck-l:#b8b0a0;--wall:#e08a2e;--barrier:#d9a21b;--curb:#a89b86;
+ --lane:#c05617;--pillar:#6b7a88;--ladder:#8a6d3b;--grid:#e7e1d5;}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 60px}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--accent);font-weight:600}
+h1{font-size:26px;margin:2px 0 2px}.sub{color:var(--muted);font-size:14px;margin-bottom:20px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin:16px 0;
+ box-shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.05)}
+.diagram{display:flex;justify-content:center;background:
+ radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:20px 20px;border-radius:10px;padding:14px;overflow:auto}
+svg{max-width:100%;height:auto}
+.deck{fill:var(--deck);stroke:var(--deck-l);stroke-width:1}
+.base{fill:none;stroke:var(--muted);stroke-width:1;stroke-dasharray:4 3;opacity:.5}
+.curb{fill:var(--curb);opacity:.5}
+.wall{fill:var(--wall)}
+.barrier{fill:var(--barrier)}
+.pillar{fill:var(--pillar);opacity:.85}
+.node{fill:var(--lane)}
+.ladder{fill:var(--ladder);opacity:.9}
+.lane{stroke:var(--lane);stroke-width:2.5;stroke-dasharray:7 6;fill:none}
+.pcross{stroke:#fff;stroke-width:1.5;opacity:.8}.lrung{stroke:#fff;stroke-width:1.2;opacity:.7}
+.legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:12px;font-size:12.5px;color:var(--muted)}
+.lg{display:flex;align-items:center;gap:6px}.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.sw.deck{background:var(--deck)}.sw.wall{background:var(--wall)}.sw.barrier{background:var(--barrier)}
+.sw.curb{background:var(--curb)}.sw.lane{background:var(--lane)}.sw.pillar{background:var(--pillar);border-radius:50%}
+.sw.ladder{background:var(--ladder)}
+h2{font-size:15px;margin:0 0 8px}.hint{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+td{padding:5px 8px;border-bottom:1px solid var(--grid)}.num{text-align:right;font-family:var(--mono)}
+.compass{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+</style>
+<div class="wrap">
+  <div class="eyebrow">FICSIT &middot; Blueprint Plan</div>
+  <h1>straight road piece</h1>
+  <div class="sub">24 m wide &times; 24 m long, raised 16 m on a pillar &middot; 36 pieces &middot; top-down view</div>
+
+  <div class="panel">
+    <div class="diagram">
+      <svg viewBox="0 0 476 476" width="476" height="476" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="var(--lane)"/></marker></defs>
+        <rect class="base" x="182.0" y="238.0" width="112.0" height="112.0"/>
+<rect class="base" x="182.0" y="126.0" width="112.0" height="112.0"/>
+<rect class="deck" x="294.0" y="70.0" width="112.0" height="112.0" rx="2"/>
+<rect class="deck" x="182.0" y="70.0" width="112.0" height="112.0" rx="2"/>
+<rect class="deck" x="70.0" y="70.0" width="112.0" height="112.0" rx="2"/>
+<rect class="deck" x="70.0" y="182.0" width="112.0" height="112.0" rx="2"/>
+<rect class="deck" x="182.0" y="182.0" width="112.0" height="112.0" rx="2"/>
+<rect class="deck" x="294.0" y="182.0" width="112.0" height="112.0" rx="2"/>
+<rect class="deck" x="294.0" y="294.0" width="112.0" height="112.0" rx="2"/>
+<rect class="deck" x="182.0" y="294.0" width="112.0" height="112.0" rx="2"/>
+<rect class="deck" x="70.0" y="294.0" width="112.0" height="112.0" rx="2"/>
+<rect class="curb" x="182.0" y="294.0" width="112.0" height="112.0"/>
+<rect class="curb" x="182.0" y="182.0" width="112.0" height="112.0"/>
+<rect class="curb" x="182.0" y="70.0" width="112.0" height="112.0"/>
+<rect class="wall" x="64.4" y="294.0" width="11.2" height="112.0" rx="2"/>
+<rect class="wall" x="64.4" y="182.0" width="11.2" height="112.0" rx="2"/>
+<rect class="wall" x="64.4" y="70.0" width="11.2" height="112.0" rx="2"/>
+<rect class="wall" x="400.4" y="70.0" width="11.2" height="112.0" rx="2"/>
+<rect class="wall" x="400.4" y="182.0" width="11.2" height="112.0" rx="2"/>
+<rect class="wall" x="400.4" y="294.0" width="11.2" height="112.0" rx="2"/>
+<rect class="barrier" x="225.4" y="71.4" width="25.2" height="53.2" rx="2"/>
+<rect class="barrier" x="225.4" y="127.4" width="25.2" height="53.2" rx="2"/>
+<rect class="barrier" x="225.4" y="183.4" width="25.2" height="53.2" rx="2"/>
+<rect class="barrier" x="225.4" y="239.4" width="25.2" height="53.2" rx="2"/>
+<rect class="barrier" x="225.4" y="295.4" width="25.2" height="53.2" rx="2"/>
+<rect class="barrier" x="225.4" y="351.4" width="25.2" height="53.2" rx="2"/>
+<circle class="pillar" cx="238.0" cy="238.0" r="42.0"/><line class="pcross" x1="212.8" y1="238.0" x2="263.2" y2="238.0"/><line class="pcross" x1="238.0" y1="212.8" x2="238.0" y2="263.2"/>
+<circle class="pillar" cx="238.0" cy="238.0" r="42.0"/><line class="pcross" x1="212.8" y1="238.0" x2="263.2" y2="238.0"/><line class="pcross" x1="238.0" y1="212.8" x2="238.0" y2="263.2"/>
+<circle class="pillar" cx="238.0" cy="238.0" r="42.0"/><line class="pcross" x1="212.8" y1="238.0" x2="263.2" y2="238.0"/><line class="pcross" x1="238.0" y1="212.8" x2="238.0" y2="263.2"/>
+<circle class="node" cx="140.0" cy="406.0" r="5"/>
+<circle class="node" cx="126.0" cy="70.0" r="5"/>
+<circle class="node" cx="322.0" cy="70.0" r="5"/>
+<circle class="node" cx="322.0" cy="406.0" r="5"/>
+<rect class="ladder" x="389.2" y="333.2" width="33.6" height="33.6" rx="2"/><line class="lrung" x1="389.2" y1="344.0" x2="422.8" y2="344.0"/><line class="lrung" x1="389.2" y1="356.0" x2="422.8" y2="356.0"/>
+<line class="lane" x1="140.0" y1="470.0" x2="140.0" y2="6" marker-end="url(#arrow)"/>
+<line class="lane" x1="322.0" y1="470.0" x2="322.0" y2="6" marker-end="url(#arrow)"/>
+      </svg>
+    </div>
+    <div class="compass">&uarr; direction of travel</div>
+    <div class="legend"><span class="lg"><i class="sw deck"></i>Road deck (foundation)</span><span class="lg"><i class="sw wall"></i>Guardrail wall</span><span class="lg"><i class="sw barrier"></i>Center median barrier</span><span class="lg"><i class="sw curb"></i>Quarter-pipe curb</span><span class="lg"><i class="sw lane"></i>Truck lane (travel →)</span><span class="lg"><i class="sw pillar"></i>Pillar support</span><span class="lg"><i class="sw ladder"></i>Ladder access</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>Parts list <span class="hint">what one stamp places</span></h2>
+    <table><tbody><tr><td>Foundation (road deck)</td><td class='num'>9</td></tr><tr><td>Wall (guardrail)</td><td class='num'>6</td></tr><tr><td>Concrete Barrier (median)</td><td class='num'>6</td></tr><tr><td>Vehicle Path Node</td><td class='num'>4</td></tr><tr><td>Quarter Pipe (curb)</td><td class='num'>3</td></tr><tr><td>Pillar (support)</td><td class='num'>3</td></tr><tr><td>Foundation (base)</td><td class='num'>2</td></tr><tr><td>Vehicle Path (lane)</td><td class='num'>2</td></tr><tr><td>Ladder (access)</td><td class='num'>1</td></tr></tbody></table>
+  </div>
+</div>

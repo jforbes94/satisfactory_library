@@ -1,0 +1,9 @@
+# --- Raw save binaries (large; regenerate reports from your own instead) ---
+*.sav
+
+# --- Python caches / envs ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env

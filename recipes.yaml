@@ -1,0 +1,842 @@
+# =============================================================================
+#  Satisfactory recipe & building data  --  EDIT THIS FILE to add recipes.
+# =============================================================================
+#
+#  This is the ONLY file you need to touch as you unlock new recipes.
+#  Everything the planner knows comes from here.
+#
+#  Each recipe has:
+#     name    : what you call it (must be unique)
+#     class   : the save-file recipe id (Recipe_*_C) so the save reader can map
+#               a machine's recipe to this entry. Omit for recipes not in-game yet.
+#     building: which machine makes it (must match a name under `buildings:`)
+#     inputs  : {item: quantity_per_craft}
+#     outputs : {item: quantity_per_craft}
+#     time    : seconds for one craft
+#     alt     : true if it's an Alternate recipe, false for the standard one
+#
+#  The planner turns "quantity per craft" + "time" into items/minute for you:
+#     rate_per_minute = quantity * 60 / time
+#
+#  Raw resources (Iron Ore, Copper Ore, Coal, Limestone, Leaves, ...) are
+#  anything used as an input but with no recipe of its own. Don't list them.
+# =============================================================================
+
+# ---- Machines and their base power draw, in MW (megawatts) at 100% clock ----
+buildings:
+  Smelter: 4
+  Foundry: 16
+  Constructor: 4
+  Assembler: 15
+  Manufacturer: 55
+  Refinery: 30
+  Packager: 10
+  Blender: 75
+  Particle Accelerator: 1000   # variable 500-1500 MW; representative value
+  Converter: 250               # variable 100-400 MW; representative value
+  Quantum Encoder: 1000        # variable 0-2000 MW; representative value
+  Miner Mk.1: 5
+  Miner Mk.2: 12
+  Miner Mk.3: 30
+  Water Extractor: 20
+
+# ---- Items always treated as RAW (supplied by extractors), even if a recipe
+#      makes them as a byproduct -- so they aren't flagged as false bottlenecks.
+raw_items:
+  - Water
+  - Nitrogen Gas   # from Resource Wells (not a recipe machine); Unpackage Nitrogen also "makes" it, so pin raw
+
+# ---- Recipes ----
+recipes:
+
+  # ---------- Smelting (ore -> ingot) ----------
+  - name: Iron Ingot
+    class: Recipe_IngotIron_C
+    building: Smelter
+    inputs: {Iron Ore: 1}
+    outputs: {Iron Ingot: 1}
+    time: 2
+    alt: false
+
+  - name: Copper Ingot
+    class: Recipe_IngotCopper_C
+    building: Smelter
+    inputs: {Copper Ore: 1}
+    outputs: {Copper Ingot: 1}
+    time: 2
+    alt: false
+
+  - name: Steel Ingot
+    class: Recipe_IngotSteel_C
+    building: Foundry
+    inputs: {Iron Ore: 3, Coal: 3}
+    outputs: {Steel Ingot: 3}
+    time: 4
+    alt: false
+
+  # ---------- Constructor parts ----------
+  - name: Iron Plate
+    class: Recipe_IronPlate_C
+    building: Constructor
+    inputs: {Iron Ingot: 3}
+    outputs: {Iron Plate: 2}
+    time: 6
+    alt: false
+
+  - name: Iron Rod
+    class: Recipe_IronRod_C
+    building: Constructor
+    inputs: {Iron Ingot: 1}
+    outputs: {Iron Rod: 1}
+    time: 4
+    alt: false
+
+  - name: Screw
+    class: Recipe_Screw_C
+    building: Constructor
+    inputs: {Iron Rod: 1}
+    outputs: {Screw: 4}
+    time: 6
+    alt: false
+
+  - name: Wire
+    class: Recipe_Wire_C
+    building: Constructor
+    inputs: {Copper Ingot: 1}
+    outputs: {Wire: 2}
+    time: 4
+    alt: false
+
+  - name: Cable
+    class: Recipe_Cable_C
+    building: Constructor
+    inputs: {Wire: 2}
+    outputs: {Cable: 1}
+    time: 2
+    alt: false
+
+  - name: Copper Sheet
+    class: Recipe_CopperSheet_C
+    building: Constructor
+    inputs: {Copper Ingot: 2}
+    outputs: {Copper Sheet: 1}
+    time: 6
+    alt: false
+
+  - name: Steel Beam
+    class: Recipe_SteelBeam_C
+    building: Constructor
+    inputs: {Steel Ingot: 4}
+    outputs: {Steel Beam: 1}
+    time: 4
+    alt: false
+
+  - name: Steel Pipe
+    class: Recipe_SteelPipe_C
+    building: Constructor
+    inputs: {Steel Ingot: 3}
+    outputs: {Steel Pipe: 2}
+    time: 6
+    alt: false
+
+  - name: Concrete
+    class: Recipe_Concrete_C
+    building: Constructor
+    inputs: {Limestone: 3}
+    outputs: {Concrete: 1}
+    time: 4
+    alt: false
+
+  # ---------- Assembler parts ----------
+  - name: Reinforced Iron Plate
+    class: Recipe_IronPlateReinforced_C
+    building: Assembler
+    inputs: {Iron Plate: 6, Screw: 12}
+    outputs: {Reinforced Iron Plate: 1}
+    time: 12
+    alt: false
+
+  - name: Modular Frame
+    class: Recipe_ModularFrame_C
+    building: Assembler
+    inputs: {Reinforced Iron Plate: 3, Iron Rod: 12}
+    outputs: {Modular Frame: 2}
+    time: 60
+    alt: false
+
+  - name: Rotor
+    class: Recipe_Rotor_C
+    building: Assembler
+    inputs: {Iron Rod: 5, Screw: 25}
+    outputs: {Rotor: 1}
+    time: 15
+    alt: false
+
+  - name: Stator
+    class: Recipe_Stator_C
+    building: Assembler
+    inputs: {Steel Pipe: 3, Wire: 8}
+    outputs: {Stator: 1}
+    time: 12
+    alt: false
+
+  - name: Motor
+    class: Recipe_Motor_C
+    building: Assembler
+    inputs: {Rotor: 2, Stator: 2}
+    outputs: {Motor: 1}
+    time: 12
+    alt: false
+
+  - name: Encased Industrial Beam
+    class: Recipe_EncasedIndustrialBeam_C
+    building: Assembler
+    inputs: {Steel Beam: 3, Concrete: 6}
+    outputs: {Encased Industrial Beam: 1}
+    time: 10
+    alt: false
+
+  # ---------- Space Elevator (Project Assembly) parts ----------
+  - name: Smart Plating
+    class: Recipe_SpaceElevatorPart_1_C
+    building: Assembler
+    inputs: {Reinforced Iron Plate: 1, Rotor: 1}
+    outputs: {Smart Plating: 1}
+    time: 30
+    alt: false
+
+  - name: Versatile Framework
+    class: Recipe_SpaceElevatorPart_2_C
+    building: Assembler
+    inputs: {Modular Frame: 1, Steel Beam: 12}
+    outputs: {Versatile Framework: 2}
+    time: 24
+    alt: false
+
+  # ---------- Biomass / fuel side-chain (feeds Biomass Generators) ----------
+  - name: Biomass (Leaves)
+    class: Recipe_Biomass_Leaves_C
+    building: Constructor
+    inputs: {Leaves: 10}
+    outputs: {Biomass: 5}
+    time: 5
+    alt: false
+
+  - name: Biomass (Wood)
+    class: Recipe_Biomass_Wood_C
+    building: Constructor
+    inputs: {Wood: 4}
+    outputs: {Biomass: 20}
+    time: 4
+    alt: false
+
+  - name: Biomass (Mycelia)
+    class: Recipe_Biomass_Mycelia_C
+    building: Constructor
+    inputs: {Mycelia: 1}
+    outputs: {Biomass: 10}
+    time: 4
+    alt: false
+
+  - name: Solid Biofuel
+    class: Recipe_Biofuel_C
+    building: Constructor
+    inputs: {Biomass: 8}
+    outputs: {Solid Biofuel: 4}
+    time: 4
+    alt: false
+
+  # ---------- Oil processing (Refinery) ----------
+  #  Crude Oil is raw (from Oil Extractors). Note the Heavy Oil Residue
+  #  byproducts from Plastic/Rubber -- Residual Fuel sinks them.
+  - name: Plastic
+    class: Recipe_Plastic_C
+    building: Refinery
+    inputs: {Crude Oil: 3}
+    outputs: {Plastic: 2, Heavy Oil Residue: 1}
+    time: 6
+    alt: false
+
+  - name: Rubber
+    class: Recipe_Rubber_C
+    building: Refinery
+    inputs: {Crude Oil: 3}
+    outputs: {Rubber: 2, Heavy Oil Residue: 2}
+    time: 6
+    alt: false
+
+  - name: Residual Fuel
+    class: Recipe_ResidualFuel_C
+    building: Refinery
+    inputs: {Heavy Oil Residue: 6}
+    outputs: {Fuel: 4}
+    time: 6
+    alt: false
+
+  # ---------- Caterium (verify Caterium Ingot if you tweak it) ----------
+  - name: Caterium Ingot
+    class: Recipe_IngotCaterium_C
+    building: Smelter
+    inputs: {Caterium Ore: 3}
+    outputs: {Caterium Ingot: 1}
+    time: 4
+    alt: false
+
+  - name: Quickwire
+    class: Recipe_Quickwire_C
+    building: Constructor
+    inputs: {Caterium Ingot: 1}
+    outputs: {Quickwire: 5}
+    time: 5
+    alt: false
+
+  # ---------- Quartz (Raw Quartz is raw / mined) ----------
+  - name: Quartz Crystal
+    class: Recipe_QuartzCrystal_C
+    building: Constructor
+    inputs: {Raw Quartz: 5}
+    outputs: {Quartz Crystal: 3}
+    time: 8
+    alt: false
+
+  - name: Silica
+    class: Recipe_Silica_C
+    building: Constructor
+    inputs: {Raw Quartz: 3}
+    outputs: {Silica: 5}
+    time: 8
+    alt: false
+
+  # ---------- Electronics ----------
+  - name: Circuit Board
+    class: Recipe_CircuitBoard_C
+    building: Assembler
+    inputs: {Copper Sheet: 2, Plastic: 4}
+    outputs: {Circuit Board: 1}
+    time: 8
+    alt: false
+
+  # ---------- Phase 3 heavy parts (Manufacturer) ----------
+  - name: Heavy Modular Frame
+    class: Recipe_ModularFrameHeavy_C
+    building: Manufacturer
+    inputs: {Modular Frame: 5, Steel Pipe: 20, Encased Industrial Beam: 5, Screw: 120}
+    outputs: {Heavy Modular Frame: 1}
+    time: 30
+    alt: false
+
+  - name: Modular Engine
+    class: Recipe_SpaceElevatorPart_4_C
+    building: Manufacturer
+    inputs: {Motor: 2, Rubber: 15, Smart Plating: 2}
+    outputs: {Modular Engine: 1}
+    time: 60
+    alt: false
+
+  - name: Automated Wiring
+    class: Recipe_SpaceElevatorPart_3_C
+    building: Assembler
+    inputs: {Stator: 1, Cable: 20}
+    outputs: {Automated Wiring: 1}
+    time: 24
+    alt: false
+
+  - name: Computer
+    class: Recipe_Computer_C
+    building: Manufacturer
+    inputs: {Circuit Board: 4, Cable: 8, Plastic: 16}
+    outputs: {Computer: 1}
+    time: 24
+    alt: false
+
+  - name: Adaptive Control Unit
+    class: Recipe_SpaceElevatorPart_5_C
+    building: Manufacturer
+    inputs: {Automated Wiring: 5, Circuit Board: 5, Heavy Modular Frame: 1, Computer: 2}
+    outputs: {Adaptive Control Unit: 1}
+    time: 60
+    alt: false
+
+  # ---------- SAM (SAM is raw / mined) ----------
+  - name: Reanimated SAM
+    class: Recipe_IngotSAM_C
+    building: Constructor
+    inputs: {SAM: 4}
+    outputs: {Reanimated SAM: 1}
+    time: 2
+    alt: false
+
+  # ---------- Aluminum chain (Bauxite is raw; note the byproducts) ----------
+  #  Alumina Solution makes Silica as a byproduct; Aluminum Scrap makes Water
+  #  (loop the Water back into Alumina Solution). Water is under raw_items so it
+  #  isn't flagged as a bottleneck (Water Extractors top it up).
+  - name: Alumina Solution
+    class: Recipe_AluminaSolution_C
+    building: Refinery
+    inputs: {Bauxite: 12, Water: 18}
+    outputs: {Alumina Solution: 12, Silica: 5}
+    time: 6
+    alt: false
+
+  - name: Aluminum Scrap
+    class: Recipe_AluminumScrap_C
+    building: Refinery
+    inputs: {Alumina Solution: 4, Coal: 2}
+    outputs: {Aluminum Scrap: 6, Water: 2}
+    time: 1
+    alt: false
+
+  - name: Aluminum Ingot
+    class: Recipe_IngotAluminum_C
+    building: Foundry
+    inputs: {Aluminum Scrap: 6, Silica: 5}
+    outputs: {Aluminum Ingot: 4}
+    time: 4
+    alt: false
+
+  - name: Alclad Aluminum Sheet
+    class: Recipe_AluminumSheet_C
+    building: Assembler
+    inputs: {Aluminum Ingot: 3, Copper Ingot: 1}
+    outputs: {Alclad Aluminum Sheet: 3}
+    time: 6
+    alt: false
+
+  - name: Aluminum Casing
+    class: Recipe_AluminumCasing_C
+    building: Constructor
+    inputs: {Aluminum Ingot: 3}
+    outputs: {Aluminum Casing: 2}
+    time: 2
+    alt: false
+
+  # ---------- Fuel (Crude Oil -> Fuel + Polymer Resin byproduct) ----------
+  - name: Fuel
+    class: Recipe_LiquidFuel_C
+    building: Refinery
+    inputs: {Crude Oil: 6}
+    outputs: {Fuel: 4, Polymer Resin: 3}
+    time: 6
+    alt: false
+
+  # ---------- Advanced electronics ----------
+  - name: Crystal Oscillator
+    class: Recipe_CrystalOscillator_C
+    building: Manufacturer
+    inputs: {Quartz Crystal: 36, Cable: 28, Reinforced Iron Plate: 5}
+    outputs: {Crystal Oscillator: 2}
+    time: 120
+    alt: false
+
+  - name: Radio Control Unit
+    class: Recipe_RadioControlUnit_C
+    building: Manufacturer
+    inputs: {Aluminum Casing: 32, Crystal Oscillator: 1, Computer: 2}
+    outputs: {Radio Control Unit: 2}
+    time: 48
+    alt: false
+
+  - name: AI Limiter
+    class: Recipe_AILimiter_C
+    building: Assembler
+    inputs: {Copper Sheet: 5, Quickwire: 20}
+    outputs: {AI Limiter: 1}
+    time: 12
+    alt: false
+
+  - name: High-Speed Connector
+    class: Recipe_HighSpeedConnector_C
+    building: Manufacturer
+    inputs: {Quickwire: 56, Cable: 10, Circuit Board: 1}
+    outputs: {High-Speed Connector: 1}
+    time: 16
+    alt: false
+
+  - name: Supercomputer
+    class: Recipe_ComputerSuper_C
+    building: Manufacturer
+    inputs: {Computer: 4, AI Limiter: 2, High-Speed Connector: 3, Plastic: 28}
+    outputs: {Supercomputer: 1}
+    time: 32
+    alt: false
+
+  - name: Empty Canister
+    class: Recipe_FluidCanister_C
+    building: Constructor
+    inputs: {Plastic: 2}
+    outputs: {Empty Canister: 4}
+    time: 4
+    alt: false
+
+  # =========================================================================
+  #  ALTERNATE recipes (alt: true) -- add the ones you unlock from Hard Drives
+  # =========================================================================
+
+  - name: Cast Screw
+    class: Recipe_Alternate_Screw_C
+    building: Constructor
+    inputs: {Iron Ingot: 5}
+    outputs: {Screw: 20}
+    time: 24
+    alt: true
+
+  - name: Polyester Fabric
+    class: Recipe_Alternate_PolyesterFabric_C
+    building: Refinery
+    inputs: {Polymer Resin: 1, Water: 1}
+    outputs: {Fabric: 1}
+    time: 2
+    alt: true
+
+  - name: Stitched Iron Plate
+    class: Recipe_Alternate_ReinforcedIronPlate_1_C
+    building: Assembler
+    inputs: {Iron Plate: 10, Wire: 20}
+    outputs: {Reinforced Iron Plate: 3}
+    time: 32
+    alt: true
+
+  - name: Steel Screw
+    class: Recipe_Alternate_Screw_2_C
+    building: Constructor
+    inputs: {Steel Beam: 1}
+    outputs: {Screw: 52}
+    time: 12
+    alt: true
+
+  - name: Steeled Frame
+    class: Recipe_Alternate_ModularFrame_C
+    building: Assembler
+    inputs: {Reinforced Iron Plate: 2, Steel Pipe: 10}
+    outputs: {Modular Frame: 3}
+    time: 60
+    alt: true
+
+  - name: Solid Steel Ingot
+    class: Recipe_Alternate_IngotSteel_1_C
+    building: Foundry
+    inputs: {Iron Ingot: 2, Coal: 2}
+    outputs: {Steel Ingot: 3}
+    time: 3
+    alt: true
+
+  - name: Black Powder
+    class: Recipe_Gunpowder_C
+    building: Assembler
+    inputs: {Coal: 1, Sulfur: 1}
+    outputs: {Black Powder: 2}
+    time: 4
+    alt: false
+
+  - name: Nobelisk
+    class: Recipe_Nobelisk_C
+    building: Assembler
+    inputs: {Black Powder: 2, Steel Pipe: 2}
+    outputs: {Nobelisk: 1}
+    time: 6
+    alt: false
+
+  - name: SAM Fluctuator
+    class: Recipe_SAMFluctuator_C
+    building: Manufacturer
+    inputs: {Reanimated SAM: 6, Wire: 5, Steel Pipe: 3}
+    outputs: {SAM Fluctuator: 1}
+    time: 6
+    alt: false
+
+  - name: Electromagnetic Control Rod
+    class: Recipe_ElectromagneticControlRod_C
+    building: Assembler
+    inputs: {Stator: 3, AI Limiter: 2}
+    outputs: {Electromagnetic Control Rod: 2}
+    time: 30
+    alt: false
+
+  - name: Assembly Director System
+    class: Recipe_SpaceElevatorPart_7_C
+    building: Assembler
+    inputs: {Adaptive Control Unit: 2, Supercomputer: 1}
+    outputs: {Assembly Director System: 1}
+    time: 80
+    alt: false
+
+  - name: Magnetic Field Generator
+    class: Recipe_SpaceElevatorPart_6_C
+    building: Assembler
+    inputs: {Versatile Framework: 5, Electromagnetic Control Rod: 2}
+    outputs: {Magnetic Field Generator: 2}
+    time: 120
+    alt: false
+
+  - name: Packaged Fuel
+    class: Recipe_Fuel_C
+    building: Packager
+    inputs: {Fuel: 2, Empty Canister: 2}
+    outputs: {Packaged Fuel: 2}
+    time: 3
+    alt: false
+
+  - name: Pure Aluminum Ingot
+    class: Recipe_PureAluminumIngot_C
+    building: Smelter
+    inputs: {Aluminum Scrap: 2}
+    outputs: {Aluminum Ingot: 1}
+    time: 2
+    alt: true
+
+  - name: Empty Fluid Tank
+    class: Recipe_GasTank_C
+    building: Constructor
+    inputs: {Aluminum Ingot: 1}
+    outputs: {Empty Fluid Tank: 1}
+    time: 1
+    alt: false
+
+  - name: Heat Sink
+    class: Recipe_HeatSink_C
+    building: Assembler
+    inputs: {Alclad Aluminum Sheet: 5, Copper Sheet: 3}
+    outputs: {Heat Sink: 1}
+    time: 8
+    alt: false
+
+  - name: Cooling System
+    class: Recipe_CoolingSystem_C
+    building: Blender
+    inputs: {Heat Sink: 2, Rubber: 2, Water: 5, Nitrogen Gas: 25}
+    outputs: {Cooling System: 1}
+    time: 10
+    alt: false
+
+  - name: Packaged Water
+    class: Recipe_PackagedWater_C
+    building: Packager
+    inputs: {Water: 2, Empty Canister: 2}
+    outputs: {Packaged Water: 2}
+    time: 2
+    alt: false
+
+  - name: Packaged Nitrogen Gas
+    class: Recipe_PackagedNitrogen_C
+    building: Packager
+    inputs: {Nitrogen Gas: 4, Empty Fluid Tank: 1}
+    outputs: {Packaged Nitrogen Gas: 1}
+    time: 1
+    alt: false
+
+  - name: Unpackage Nitrogen Gas
+    class: Recipe_UnpackageNitrogen_C
+    building: Packager
+    inputs: {Packaged Nitrogen Gas: 1}
+    outputs: {Nitrogen Gas: 4, Empty Fluid Tank: 1}
+    time: 1
+    alt: false
+
+  - name: Fused Modular Frame
+    class: Recipe_FusedModularFrame_C
+    building: Blender
+    inputs: {Heavy Modular Frame: 1, Aluminum Casing: 50, Nitrogen Gas: 25}
+    outputs: {Fused Modular Frame: 1}
+    time: 40
+    alt: false
+
+  - name: Turbo Motor
+    class: Recipe_MotorTurbo_C
+    building: Manufacturer
+    inputs: {Cooling System: 4, Radio Control Unit: 2, Motor: 4, Rubber: 24}
+    outputs: {Turbo Motor: 1}
+    time: 32
+    alt: false
+
+  - name: Pressure Conversion Cube
+    class: Recipe_PressureConversionCube_C
+    building: Assembler
+    inputs: {Fused Modular Frame: 1, Radio Control Unit: 2}
+    outputs: {Pressure Conversion Cube: 1}
+    time: 60
+    alt: false
+
+  - name: Thermal Propulsion Rocket
+    class: Recipe_SpaceElevatorPart_8_C
+    building: Manufacturer
+    inputs: {Modular Engine: 5, Turbo Motor: 2, Cooling System: 6, Fused Modular Frame: 2}
+    outputs: {Thermal Propulsion Rocket: 2}
+    time: 120
+    alt: false
+
+  - name: Compacted Coal
+    class: Recipe_Alternate_EnrichedCoal_C
+    building: Assembler
+    inputs: {Coal: 5, Sulfur: 5}
+    outputs: {Compacted Coal: 5}
+    time: 12
+    alt: true
+
+  - name: Residual Plastic
+    class: Recipe_ResidualPlastic_C
+    building: Refinery
+    inputs: {Polymer Resin: 6, Water: 2}
+    outputs: {Plastic: 2}
+    time: 6
+    alt: true
+
+  - name: Smokeless Powder
+    class: Recipe_GunpowderMK2_C
+    building: Refinery
+    inputs: {Black Powder: 2, Heavy Oil Residue: 1}
+    outputs: {Smokeless Powder: 2}
+    time: 6
+    alt: false
+
+  - name: Copper Powder
+    class: Recipe_CopperDust_C
+    building: Constructor
+    inputs: {Copper Ingot: 30}
+    outputs: {Copper Powder: 5}
+    time: 6
+    alt: false
+
+  - name: Nuclear Pasta
+    class: Recipe_SpaceElevatorPart_9_C
+    building: Particle Accelerator
+    inputs: {Copper Powder: 200, Pressure Conversion Cube: 1}
+    outputs: {Nuclear Pasta: 1}
+    time: 120
+    alt: false
+
+  - name: Iron Rebar
+    class: Recipe_SpikedRebar_C
+    building: Constructor
+    inputs: {Iron Rod: 1}
+    outputs: {Iron Rebar: 1}
+    time: 4
+    alt: false
+
+  - name: Stun Rebar
+    class: Recipe_Rebar_Stunshot_C
+    building: Assembler
+    inputs: {Iron Rebar: 1, Quickwire: 5}
+    outputs: {Stun Rebar: 1}
+    time: 6
+    alt: false
+
+  - name: Sulfuric Acid
+    class: Recipe_SulfuricAcid_C
+    building: Refinery
+    inputs: {Sulfur: 5, Water: 5}
+    outputs: {Sulfuric Acid: 5}
+    time: 6
+    alt: false
+
+  - name: Diamonds
+    class: Recipe_Diamond_C
+    building: Particle Accelerator
+    inputs: {Coal: 20}
+    outputs: {Diamonds: 1}
+    time: 2
+    alt: false
+
+  - name: Time Crystal
+    class: Recipe_TimeCrystal_C
+    building: Converter
+    inputs: {Diamonds: 2}
+    outputs: {Time Crystal: 1}
+    time: 10
+    alt: false
+
+  - name: Ficsite Ingot (Aluminum)
+    class: Recipe_FicsiteIngot_AL_C
+    building: Converter
+    inputs: {Reanimated SAM: 2, Aluminum Ingot: 4}
+    outputs: {Ficsite Ingot: 1}
+    time: 2
+    alt: true
+
+  - name: Ficsite Trigon
+    class: Recipe_FicsiteMesh_C
+    building: Constructor
+    inputs: {Ficsite Ingot: 1}
+    outputs: {Ficsite Trigon: 3}
+    time: 6
+    alt: false
+
+  - name: Excited Photonic Matter
+    class: Recipe_QuantumEnergy_C
+    building: Converter
+    inputs: {}
+    outputs: {Excited Photonic Matter: 10}
+    time: 3
+    alt: false
+
+  - name: Neural-Quantum Processor
+    class: Recipe_TemporalProcessor_C
+    building: Quantum Encoder
+    inputs: {Time Crystal: 5, Supercomputer: 1, Ficsite Trigon: 15, Excited Photonic Matter: 25}
+    outputs: {Neural-Quantum Processor: 1}
+    time: 20
+    alt: false
+
+  - name: Adhered Iron Plate
+    class: Recipe_Alternate_AdheredIronPlate_C
+    building: Assembler
+    inputs: {Iron Plate: 3, Rubber: 1}
+    outputs: {Reinforced Iron Plate: 1}
+    time: 16
+    alt: true
+
+  # ---------- Phase 5 / Quantum / Nuclear (verified satisfactory.wiki.gg 2026-10-17) ----------
+  - name: Dark Matter Residue
+    class: Recipe_DarkEnergy_C
+    building: Converter
+    inputs: {Reanimated SAM: 5}
+    outputs: {Dark Matter Residue: 10}
+    time: 6
+    alt: false
+
+  - name: Dark Matter Crystal
+    class: Recipe_DarkMatter_C
+    building: Particle Accelerator
+    inputs: {Diamonds: 1, Dark Matter Residue: 5}
+    outputs: {Dark Matter Crystal: 1}
+    time: 2
+    alt: false
+
+  - name: Superposition Oscillator
+    class: Recipe_SuperpositionOscillator_C
+    building: Quantum Encoder
+    inputs: {Dark Matter Crystal: 6, Crystal Oscillator: 1, Alclad Aluminum Sheet: 9, Excited Photonic Matter: 25}
+    outputs: {Superposition Oscillator: 1, Dark Matter Residue: 25}
+    time: 12
+    alt: false
+
+  - name: Encased Uranium Cell
+    class: Recipe_UraniumCell_C
+    building: Blender
+    inputs: {Uranium: 10, Concrete: 3, Sulfuric Acid: 8}
+    outputs: {Encased Uranium Cell: 5, Sulfuric Acid: 2}
+    time: 12
+    alt: false
+
+  - name: Turbofuel
+    class: Recipe_Alternate_Turbofuel_C
+    building: Refinery
+    inputs: {Fuel: 6, Compacted Coal: 4}
+    outputs: {Turbofuel: 5}
+    time: 16
+    alt: true
+
+  - name: Singularity Cell
+    class: Recipe_SingularityCell_C
+    building: Manufacturer
+    inputs: {Nuclear Pasta: 1, Dark Matter Crystal: 20, Iron Plate: 100, Concrete: 200}
+    outputs: {Singularity Cell: 10}
+    time: 60
+    alt: false
+
+  - name: Ballistic Warp Drive
+    class: Recipe_SpaceElevatorPart_11_C
+    building: Manufacturer
+    inputs: {Thermal Propulsion Rocket: 1, Singularity Cell: 5, Superposition Oscillator: 2, Dark Matter Crystal: 40}
+    outputs: {Ballistic Warp Drive: 1}
+    time: 60
+    alt: false

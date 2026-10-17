@@ -1,0 +1,41 @@
+# Named zones for zone_report.py.  Buildings are assigned to the NEAREST center
+# whose radius covers them (Voronoi-ish). Centers/radii in METRES, from the real
+# building clusters in the 10.17.26 save. Rename / merge / move freely -- this file
+# is the single place that defines "your 6 areas". Radius big = nearest-center wins.
+zones:
+  - name: Main Base            # iron/copper/steel + computing + quantum manufacturing
+    center: [-2563, -480]
+    radius: 900
+  - name: Oil Power Plant      # 2280 crude -> ~14.5 GW, rubber/plastic export
+    center: [-2562, 725]
+    radius: 900
+  - name: Aluminum Plant       # 900 bauxite -> alumina/scrap/ingot
+    center: [-2086, 562]
+    radius: 700
+  - name: Caterium             # 600 caterium -> quickwire (exports to base)
+    center: [-1969, -574]
+    radius: 700
+  - name: Coal Field           # 4x Mk3 @250% = 1800/min, droned/belted out
+    center: [-2717, -1422]
+    radius: 700
+  - name: Coal Power           # 1x pure Mk2 -> 8 coal gennies (own island)
+    center: [-990, -463]
+    radius: 500
+  - name: Nuclear              # uranium node (plant in progress)
+    center: [-989, 607]
+    radius: 900
+  - name: Turbofuel & Sulfur   # 540 sulfur, turbofuel gennies ~9 GW
+    center: [-295, -415]
+    radius: 400
+  - name: Fuel Refinery        # 1350 crude -> Fuel (342 edges) feeding Turbofuel
+    center: [-365, -201]
+    radius: 400
+  - name: SW Steel & SAM       # steel + SAM/quartz manufacturing, southwest
+    center: [-942, -1349]
+    radius: 900
+  - name: Nitrogen Wells       # 840 nitrogen gas (fracking)
+    center: [-1444, 1223]
+    radius: 900
+  - name: Quartz & SAM Outpost # raw quartz / SAM / sulfur mining
+    center: [-1986, -1580]
+    radius: 700

@@ -1,0 +1,158 @@
+<title>Turbofuel Power Plant</title>
+<style>
+:root{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;
+  --good:#2f9e44;--warn:#b8860b;--crit:#c8371f;--drone:#2f7fd6;--box:#faf8f4;--edge:#b9b1a3;--grid:#e9e3d7;
+  --mono:ui-monospace,"Cascadia Code",Consolas,monospace;--sans:"Segoe UI",system-ui,sans-serif;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;
+  --accent:#f6963c;--good:#3fb950;--warn:#d9a21b;--crit:#f06a4d;--drone:#4ea0f0;--box:#1b2430;--edge:#3a4552;--grid:#1a232f;}}
+:root[data-theme=light]{--bg:#f3f1ec;--panel:#fff;--ink:#1b2028;--muted:#5d6773;--line:#e2ddd3;--accent:#c05617;
+  --good:#2f9e44;--warn:#b8860b;--crit:#c8371f;--drone:#2f7fd6;--box:#faf8f4;--edge:#b9b1a3;--grid:#e9e3d7;}
+:root[data-theme=dark]{--bg:#0f141b;--panel:#161d27;--ink:#e7edf4;--muted:#93a1b2;--line:#26303d;
+  --accent:#f6963c;--good:#3fb950;--warn:#d9a21b;--crit:#f06a4d;--drone:#4ea0f0;--box:#1b2430;--edge:#3a4552;--grid:#1a232f;}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
+.wrap{max-width:1160px;margin:0 auto;padding:26px 18px 60px}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--accent);font-weight:600}
+h1{font-size:26px;margin:2px 0} .sub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0;box-shadow:0 1px 2px #0001,0 8px 24px #0001}
+.diagram{background:radial-gradient(circle at 1px 1px,var(--grid) 1px,transparent 0);background-size:22px 22px;border-radius:10px;overflow:auto}
+svg{display:block;max-width:100%;height:auto}
+.nbox{fill:var(--box);stroke:var(--edge);stroke-width:1.5}
+.nbox.in{stroke:var(--accent);stroke-width:2.5}
+.nbox.power{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2.5}
+.nbox.drone{fill:var(--drone);fill-opacity:.12;stroke:var(--drone);stroke-width:2.5}
+.nbox.by{stroke:var(--good);stroke-width:2;stroke-dasharray:6 3}
+.ntitle{fill:var(--ink);font-weight:650;font-size:14px;font-family:var(--sans)}
+.nmach{fill:var(--muted);font-size:11px;font-family:var(--mono)}
+.nsub{fill:var(--muted);font-size:10px;font-family:var(--sans)}
+.nrate{fill:var(--accent);font-size:13px;font-weight:700;font-family:var(--mono);text-anchor:end}
+.nrate.d{fill:var(--drone)}
+.edge{fill:none;stroke:var(--edge);stroke-width:2}
+.edge.by{stroke:var(--good)}
+.elabel{fill:var(--ink);font-size:10.5px;font-family:var(--mono);text-anchor:middle}
+.elabel tspan.m{fill:var(--muted)}
+h2{font-size:15px;margin:2px 0 8px}.hint{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:6px 9px;border-bottom:1px solid var(--grid);text-align:left}
+th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+td.n{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.flag{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;margin:6px 0}
+.flag b{color:var(--ink)} .dot{margin-top:6px;width:8px;height:8px;border-radius:50%;flex:none}
+.dot.c{background:var(--crit)}.dot.w{background:var(--warn)}.dot.g{background:var(--good)}.dot.d{background:var(--drone)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding:8px 4px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+</style>
+<div class="wrap">
+  <div class="eyebrow">FICSIT &middot; Turbofuel Power Plant</div>
+  <h1>Turbofuel plant &mdash; ~8.3 GW + drone fuel</h1>
+  <div class="sub">400 Fuel &rarr; 333 Turbofuel, split <b>250 to 24 generators (~8.3 GW)</b> + <b>83 packaged for drones</b> &middot; + 100 Plastic byproduct</div>
+
+  <div class="panel">
+    <div class="diagram">
+      <svg viewBox="0 0 1160 460" width="1160" height="460" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="var(--edge)"/></marker>
+          <marker id="g" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="var(--good)"/></marker></defs>
+
+        <!-- edges -->
+        <path class="edge" d="M220,98 C280,98 280,170 335,170" marker-end="url(#a)"/>
+        <text class="elabel" x="278" y="128">400 <tspan class="m">Fuel</tspan></text>
+        <path class="edge" d="M220,278 C280,278 280,206 335,206" marker-end="url(#a)"/>
+        <text class="elabel" x="278" y="262">267 <tspan class="m">Comp. Coal</tspan></text>
+        <!-- turbofuel splits -->
+        <path class="edge" d="M525,180 C580,180 580,88 635,88" marker-end="url(#a)"/>
+        <text class="elabel" x="582" y="128">83 <tspan class="m">&rarr; drones</tspan></text>
+        <path class="edge" d="M525,196 C580,196 580,213 635,213" marker-end="url(#a)"/>
+        <text class="elabel" x="582" y="188">250 <tspan class="m">&rarr; power</tspan></text>
+        <!-- byproduct -->
+        <path class="edge by" d="M125,136 C125,250 300,250 335,350" marker-end="url(#g)"/>
+        <text class="elabel" x="245" y="252" style="fill:var(--good)">300 Polymer Resin</text>
+
+        <!-- Fuel -->
+        <g transform="translate(30,60)">
+          <rect class="nbox in" width="190" height="76" rx="9"/>
+          <text class="ntitle" x="13" y="23">Fuel</text>
+          <text class="nrate" x="177" y="23">400/min</text>
+          <text class="nmach" x="13" y="41">~10&times; Refinery</text>
+          <text class="nsub" x="13" y="58">+ 600 Crude Oil</text>
+          <text class="nsub" x="13" y="70">&rarr; 300 Polymer Resin</text>
+        </g>
+        <!-- Compacted Coal -->
+        <g transform="translate(30,240)">
+          <rect class="nbox in" width="190" height="76" rx="9"/>
+          <text class="ntitle" x="13" y="23">Compacted Coal</text>
+          <text class="nrate" x="177" y="23">267/min</text>
+          <text class="nmach" x="13" y="41">11&times; Assembler</text>
+          <text class="nsub" x="13" y="58">+ 267 Coal</text>
+          <text class="nsub" x="13" y="70">+ 267 Sulfur</text>
+        </g>
+        <!-- Turbofuel -->
+        <g transform="translate(335,150)">
+          <rect class="nbox" width="190" height="76" rx="9"/>
+          <text class="ntitle" x="13" y="23">Turbofuel</text>
+          <text class="nrate" x="177" y="23">333/min</text>
+          <text class="nmach" x="13" y="41">18&times; Refinery</text>
+          <text class="nsub" x="13" y="58">splits 2 ways &rarr;</text>
+          <text class="nsub" x="13" y="70">250 power &middot; 83 drones</text>
+        </g>
+        <!-- Packaged Turbofuel (drone branch) -->
+        <g transform="translate(635,50)">
+          <rect class="nbox drone" width="215" height="76" rx="9"/>
+          <text class="ntitle" x="13" y="23">Packaged Turbofuel</text>
+          <text class="nrate d" x="201" y="23">83/min</text>
+          <text class="nmach" x="13" y="41">~2&times; Packager</text>
+          <text class="nsub" x="13" y="58">+ 83 Empty Canister</text>
+          <text class="nsub" x="13" y="70">&rarr; drone fuel</text>
+        </g>
+        <!-- Generators -->
+        <g transform="translate(635,175)">
+          <rect class="nbox power" width="215" height="76" rx="9"/>
+          <text class="ntitle" x="14" y="24" style="font-size:16px">Fuel Generators</text>
+          <text class="nrate" x="201" y="24">~8,300 MW</text>
+          <text class="nmach" x="14" y="44">24&times; @ ~140%</text>
+          <text class="nsub" x="14" y="64">burns 250 Turbofuel</text>
+        </g>
+        <!-- Residual Plastic (byproduct) -->
+        <g transform="translate(335,350)">
+          <rect class="nbox by" width="215" height="76" rx="9"/>
+          <text class="ntitle" x="13" y="23">Residual Plastic</text>
+          <text class="nrate" x="201" y="23">100/min</text>
+          <text class="nmach" x="13" y="41">5&times; Refinery</text>
+          <text class="nsub" x="13" y="58">eats all 300 Polymer Resin</text>
+          <text class="nsub" x="13" y="70">+ 100 Water &middot; feeds plastic</text>
+        </g>
+      </svg>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>raw-fed stage</span>
+      <span><i style="background:var(--accent);opacity:.4"></i>power out</span>
+      <span><i style="background:var(--drone)"></i>drone fuel</span>
+      <span><i style="background:var(--good)"></i>byproduct &rarr; plastic</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Build sheet <span class="hint">400 Fuel &middot; 1/4 of turbofuel to drones</span></h2>
+    <table>
+      <thead><tr><th>Make</th><th>Building</th><th class="n">Count</th><th class="n">Out/min</th><th>Feed in /min</th></tr></thead>
+      <tbody>
+        <tr><td>Fuel</td><td>Refinery</td><td class="n">~10</td><td class="n">400</td><td>600 Crude &rarr; +300 Polymer Resin</td></tr>
+        <tr><td>Compacted Coal</td><td>Assembler</td><td class="n">11</td><td class="n">267</td><td>267 Coal + 267 Sulfur</td></tr>
+        <tr><td>Turbofuel</td><td>Refinery</td><td class="n">18</td><td class="n">333</td><td>400 Fuel + 267 Compacted Coal</td></tr>
+        <tr><td><b>Fuel Generators</b></td><td>Generator @140%</td><td class="n"><b>24</b></td><td class="n">~8.3 GW</td><td>250 Turbofuel</td></tr>
+        <tr><td><b>Packaged Turbofuel</b></td><td>Packager</td><td class="n"><b>~2</b></td><td class="n">83</td><td>83 Turbofuel + 83 Empty Canister &rarr; drones</td></tr>
+        <tr><td>Residual Plastic</td><td>Refinery</td><td class="n">5</td><td class="n">100</td><td>300 Polymer Resin + 100 Water</td></tr>
+      </tbody>
+    </table>
+    <div class="legend"><span>Raw draw: 600 Crude &middot; 267 Coal &middot; 267 Sulfur &middot; 100 Water &middot; 83 Empty Canister (for drone fuel)</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>Build notes</h2>
+    <div class="flag"><span class="dot d"></span><div><b>Drone branch:</b> peel ~1/4 of turbofuel (83/min) off the header into ~2 Packagers &rarr; 83 Packaged Turbofuel/min. That's premium drone fuel (dense, fewer refuels). Feed your drone home ports from here.</div></div>
+    <div class="flag"><span class="dot w"></span><div><b>Empty canisters:</b> packaging needs 83 canisters/min in, and drones leave the empties at the destination ports &mdash; loop them back to the Packager or sink them, or the line clogs.</div></div>
+    <div class="flag"><span class="dot g"></span><div><b>Generators @ ~140% = free power</b> (linear, 1 shard each) &mdash; 24 gennies burn the 250 Turbofuel for ~8.3 GW. Add more gennies (or raise the clock) if you later feed them the drone share too.</div></div>
+    <div class="flag"><span class="dot c"></span><div><b>Consume all 300 Polymer Resin</b> (5 Residual Plastic refineries) or the Fuel refineries clog and everything stops. Bonus 100 Plastic/min toward your shortage.</div></div>
+    <div class="flag"><span class="dot d"></span><div><b>Split the header with a simple junction</b> &mdash; no valve needed. The Packager and generators both pull what they need; if you want to guarantee the 1/4 under contention, a valve on the drone branch caps it, but normally demand sorts it.</div></div>
+  </div>
+</div>

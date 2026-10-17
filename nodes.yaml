@@ -1,0 +1,164 @@
+# auto-seeded miner/extractor registry (resource+purity are the ONLY hand-entered fields)
+nodes:
+  - pos: [-2813, -720]   # MinerMk2 @200%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2810, -1427]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2755, -1659]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2718, -1462]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2683, -550]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2671, -244]   # MinerMk2 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2669, -1334]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2667, -513]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2662, 752]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2657, -1626]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2654, 725]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2644, 761]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2639, -308]   # MinerMk2 @200%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2633, 724]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2619, 705]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2614, -412]   # MinerMk2 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2606, 726]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2601, -277]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2584, -406]   # MinerMk2 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2562, -296]   # MinerMk2 @200%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2525, 698]   # OilPump @250%
+    resource: Crude Oil
+    purity: ???   # impure | normal | pure
+  - pos: [-2450, 906]   # OilPump @250%
+    resource: Crude Oil
+    purity: ???   # impure | normal | pure
+  - pos: [-2325, 628]   # OilPump @150%
+    resource: Crude Oil
+    purity: ???   # impure | normal | pure
+  - pos: [-2171, 112]   # MinerMk1 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-2130, -1700]   # MinerMk1 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1949, -258]   # MinerMk2 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1822, -1424]   # MinerMk2 @200%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1785, -798]   # MinerMk2 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1774, 450]   # MinerMk2 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1720, -1441]   # MinerMk2 @150%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1476, 1257]   # Fracking @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1457, 1194]   # Fracking @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1456, 1260]   # Fracking @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1443, 1246]   # Fracking @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1429, 1184]   # Fracking @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1428, 1202]   # Fracking @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1418, 1220]   # Fracking @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1136, -504]   # MinerMk3 @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1132, -441]   # MinerMk3 @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1106, -1352]   # MinerMk2 @112%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1101, -1292]   # MinerMk2 @112%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1079, 602]   # MinerMk3 @162%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1077, -1306]   # MinerMk2 @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-1076, -524]   # MinerMk2 @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-968, -1353]   # MinerMk2 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-759, 516]   # MinerMk3 @100%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-438, -84]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-432, -65]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-418, -99]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-411, -726]   # MinerMk3 @200%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-402, -43]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-399, -936]   # MinerMk3 @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-390, -104]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure
+  - pos: [-370, -78]   # Fracking @250%
+    resource: ???
+    purity: ???   # impure | normal | pure

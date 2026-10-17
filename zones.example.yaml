@@ -1,0 +1,18 @@
+# Example zones config for zone_report.py.  Copy to `zones.yaml` and edit.
+#
+# Buildings are assigned to the NEAREST named center whose radius covers them.
+# Centers and radii are in METRES (save world coords / 100). If `zones.yaml` is
+# absent, zone_report falls back to automatic position clustering.
+#
+# Find your own centers by running `python zone_report.py` once with no zones.yaml:
+# it auto-clusters and prints each cluster's center, which you then name here.
+zones:
+  - name: Main Base
+    center: [0, 0]
+    radius: 900
+  - name: Power Plant
+    center: [1000, 500]
+    radius: 700
+  - name: Mining Outpost
+    center: [-1500, -1000]
+    radius: 700
